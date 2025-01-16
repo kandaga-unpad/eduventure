@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+	font-family:
+		'Work Sans',
+		system-ui,
+		-apple-system,
+		BlinkMacSystemFont,
+		'Segoe UI',
+		Roboto,
+		Oxygen,
+		Ubuntu,
+		Cantarell,
+		'Open Sans',
+		'Helvetica Neue',
+		sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family:
+		'Work Sans',
+		system-ui,
+		-apple-system,
+		BlinkMacSystemFont,
+		'Segoe UI',
+		Roboto,
+		Oxygen,
+		Ubuntu,
+		Cantarell,
+		'Open Sans',
+		'Helvetica Neue',
+		sans-serif;
+	@apply font-600 text-dark;
+}
+
+h1 {
+	@apply text-3xl md:text-4xl xl:text-5xl font-bold;
+}
+
+h2 {
+	@apply text-2xl md:text-3xl xl:text-4xl font-bold;
+}
+
+h3 {
+	@apply text-xl md:text-2xl xl:text-3xl font-bold;
+}
+
+h4 {
+	@apply text-lg md:text-xl xl:text-2xl font-bold;
+}
+
+h5 {
+	@apply text-base md:text-lg xl:text-xl font-bold;
+}
+
+h6 {
+	@apply text-sm md:text-base xl:text-lg font-bold;
+}
+
+a {
+	@apply text-sky-8 hover:(underline) transition-all-500;
+}
+
+.form-input {
+	@apply flex flex-col gap-2 w-full py-5;
+}
+
+input,
+textarea {
+	@apply px-8 py-4 rounded-3xl border border-gray-400 w-full;
+}
+
+label {
+	@apply pl-8 text-gray-600;
+}
+
+button:disabled,
+button[disabled] {
+	@apply btn bg-gray-3 text-gray-6 py-4 cursor-not-allowed;
+}
+
+ol {
+	@apply list-decimal pl-8;
+}
+
+ul {
+	@apply list-disc pl-8;
+}
