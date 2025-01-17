@@ -63,25 +63,25 @@ h6 {
 }
 
 a {
-	@apply text-sky-8 hover:(underline) transition-all-500;
+	@apply text-sky-8 transition-all-500;
 }
 
 .form-input {
-	@apply flex flex-col gap-2 w-full py-5;
+	@apply flex flex-col gap-2 w-full py-1;
 }
 
 input,
 textarea {
-	@apply px-8 py-4 rounded-3xl border border-gray-400 w-full;
+	@apply border border-gray-400 w-full;
 }
 
 label {
-	@apply pl-8 text-gray-600;
+	@apply text-gray-600;
 }
 
 button:disabled,
 button[disabled] {
-	@apply btn bg-gray-3 text-gray-6 py-4 cursor-not-allowed;
+	@apply cursor-not-allowed;
 }
 
 ol {

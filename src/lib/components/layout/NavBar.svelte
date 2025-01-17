@@ -5,7 +5,7 @@
 		</a>
 	</div>
 	<div class="flex items-center gap-10">
-		<div class="flex items-center gap-3">
+		<div class="flex items-center gap-5">
 			<a href="/">Home</a>
 			<a href="/eduventure">Daftar Eduventure</a>
 		</div>

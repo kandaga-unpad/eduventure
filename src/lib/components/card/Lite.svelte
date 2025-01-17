@@ -1,4 +1,4 @@
-<div class="bg-white shadow-lg relative">
+<div class="bg-white shadow-2xl relative rounded-b-lg">
 	<div class="relative">
 		<div class="h-70 bg-gradient-to-b from-blue-4 to-blue-9 rounded-t-2xl"></div>
 		<div class="absolute top-1/3 text-center w-full">
@@ -6,17 +6,19 @@
 		</div>
 	</div>
 	<div class="px-10 absolute mt--15 text-center w-full flex flex-col gap-4">
-		<div
-			class="bg-blue-1 rounded-2xl shadow-md h-23 flex flex-col items-center justify-center gap-1"
-		>
-			<h3>Rp100.000</h3>
-			<p>Eduventure Bag</p>
+		<div class="bg-blue-50 rounded-2xl shadow-md h-23 flex items-center justify-center gap-5 p-5">
+			<img src="/card/graduation.webp" class="h-15" alt="icon" />
+			<div class="flex flex-col text-left gap-1">
+				<h3>Rp100.000</h3>
+				<p class="text-xs">(Mendapatkan Eduventure Bag)</p>
+			</div>
 		</div>
-		<div
-			class="bg-blue-1 rounded-2xl shadow-md h-23 flex flex-col items-center justify-center gap-1"
-		>
-			<h3>Rp150.000</h3>
-			<p>Kaos Unpad</p>
+		<div class="bg-blue-50 rounded-2xl shadow-md h-23 flex items-center justify-center gap-5">
+			<div class="flex flex-col text-right gap-1">
+				<h3>Rp150.000</h3>
+				<p class="text-xs">(Mendapatkan Kaos Unpad)</p>
+			</div>
+			<img src="/card/graduation.webp" class="h-15" alt="icon" />
 		</div>
 	</div>
 	<div class="flex flex-col justify-between h-2xl">

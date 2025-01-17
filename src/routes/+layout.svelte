@@ -5,8 +5,17 @@
 
 	import NavBar from '$lib/components/layout/NavBar.svelte';
 	import Footer from '$lib/components/layout/Footer.svelte';
+	import { onMount } from 'svelte';
+	import { fly, fade } from 'svelte/transition';
 
-	let { children } = $props();
+	let { children, data } = $props();
+
+	onMount(() => {
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth'
+		});
+	});
 </script>
 
 <svelte:head>
@@ -17,10 +26,11 @@
 	<header class="bg-white shadow-lg w-full fixed z-20">
 		<NavBar />
 	</header>
-
-	<section>
-		{@render children()}
-	</section>
+	{#key data.url}
+		<section in:fly={{ y: -200, duration: 500, delay: 300 }} out:fade={{ duration: 300 }}>
+			{@render children()}
+		</section>
+	{/key}
 
 	<footer>
 		<Footer />

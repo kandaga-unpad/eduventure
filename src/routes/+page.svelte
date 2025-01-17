@@ -1,12 +1,13 @@
 <script>
 	import GenericCard from '$lib/components/card/GenericCard.svelte';
 	import Lite from '$lib/components/card/Lite.svelte';
+	import ZonaEduventure from '$lib/components/card/ZonaEduventure.svelte';
 	import HeroDesc from '$lib/components/hero/HeroDesc.svelte';
 	import HeroImg from '$lib/components/hero/HeroImg.svelte';
 
-	let eduventureExperience = {
+	const eduventureExperience = {
 		color: 'green',
-		nama: 'Eduventure Experience',
+		nama: 'Eduventure <br /> Experience',
 		harga: 'Rp350.000',
 		detail: 'Kaos Unpad + Snackbox',
 		textPertama:
@@ -19,7 +20,7 @@
 
 	const eduventureFullPackage = {
 		color: 'orange',
-		nama: 'Eduventure Full Package',
+		nama: 'Eduventure <br /> Full Package',
 		harga: 'Spesial',
 		detail: 'Oleh MMU Event & Tour Organizer',
 		textPertama:
@@ -29,6 +30,39 @@
 							<p>Instagram: <a href="https://instagram.com/mmu.eventtourorganizer">mmu.eventtourorganizer</a></p>`,
 		select: 'Pilih Full Package',
 		url: '/'
+	};
+
+	const zona1 = {
+		tipe: 'Zona 1 : Kesehatan',
+		nama: 'Rumpun Ilmu Kesehatan',
+		gambar: '/zona/zona1.jpg',
+		deskripsi:
+			'Rumpun Ilmu Kesehatan yang ada di Universitas Padjadjaran terdiri dari Fakultas Kedokteran, Fakultas Kedokteran Gigi, Fakultas Keperawatan, Fakultas Farmasi dan Fakultas Psikologi. Pada zona ini, peserta akan diajak untuk mengenal lebih jauh tentang dunia kesehatan melalui simulasi dan praktik langsung.',
+		link: '/',
+		button: 'Pilih Zona 1',
+		isReverse: false
+	};
+
+	const zona2 = {
+		tipe: 'Zona 2 : Sosial & Humaniora',
+		nama: 'Rumpun Ilmu Sosial dan Humaniora',
+		gambar: '/zona/zona2.webp',
+		deskripsi:
+			'Rumpun Ilmu Sosial dan Humaniora terdiri dari Fakultas Hukum, Fakultas Ekonomi dan Bisnis, Fakultas Ilmu Sosial dan Ilmu Politik, Fakultas Ilmu Budaya dan Fakultas Ilmu Komunikasi. Pada zona ini, peserta akan diajak untuk mengenal lebih jauh tentang dunia sosial dan humaniora melalui simulasi dan praktik langsung.',
+		link: '/',
+		button: 'Pilih Zona 2',
+		isReverse: true
+	};
+
+	const zona3 = {
+		tipe: 'Zona 3 : Saintek & Agrokomplek',
+		nama: 'Rumpun Ilmu Saintek dan Agrokomplek',
+		gambar: '/zona/zona3.jpg',
+		deskripsi:
+			'Rumpun Ilmu Saintek dan Agrokomplek terdiri dari Fakultas Matematika dan Ilmu Pengetahuan Alam, Fakutas Pertanian, Fakultas Peternakan, Fakultas Teknik Geologi, Fakultas Teknologi Industri Pertanian, Fakultas Perikanan dan Ilmu Kelautan. Pada zona ini, peserta akan diajak untuk mengenal lebih jauh tentang dunia sains dan teknologi melalui simulasi dan praktik langsung.',
+		link: '/',
+		button: 'Pilih Zona 3',
+		isReverse: false
 	};
 </script>
 
@@ -54,17 +88,21 @@
 	<div class="w-full bg-brand-primary text-center py-10">
 		<h1 class="text-white">Eduventure</h1>
 	</div>
-	<div class="container ma py-10">
-		<div class="grid grid-cols-3 gap-5">
+	<div class="container ma py-10" id="skema-eduventure">
+		<div class="grid grid-cols-1 xl:grid-cols-3 gap-5 px-5 xl:px-0">
 			<Lite />
 			<GenericCard eduventure={eduventureExperience} />
 			<GenericCard eduventure={eduventureFullPackage} />
 		</div>
 	</div>
-	<div class="w-full bg-brand-primary text-center py-10">
-		<h1 class="text-white">Eduventure</h1>
+	<div class="w-full bg-brand-primary text-center py-10 mt-30">
+		<h1 class="text-white">Zona Eduventure Experience</h1>
 	</div>
-	<div class="container ma py-10"></div>
+	<div class="container ma px-5 xl:px-0">
+		<ZonaEduventure zona={zona1} />
+		<ZonaEduventure zona={zona2} />
+		<ZonaEduventure zona={zona3} />
+	</div>
 </section>
 
 <style>
@@ -73,6 +111,6 @@
 	}
 
 	.eduventure-intro {
-		@apply container ma flex items-center justify-between gap-10 my-20;
+		@apply container ma flex flex-col xl:flex-row items-center justify-between gap-10 mb-20 px-5 xl:px-0;
 	}
 </style>

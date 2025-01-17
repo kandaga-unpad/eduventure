@@ -1,3 +1,7 @@
+<script>
+	import { handleAnchorClick } from '../composables/link';
+</script>
+
 <div class="text-center">
 	<div class="my-5">
 		<h1 class="text-brand-secondary mb-0 xl:mb-2">Eduventure</h1>
@@ -13,7 +17,7 @@
 		</p>
 	</div>
 	<div class="flex items-center justify-center gap-5">
-		<a href="#skema-eduventure">
+		<a href="#skema-eduventure" on:click={handleAnchorClick}>
 			<button class="main-btn">Pelajari</button>
 		</a>
 		<a href="#skema-eduventure">
