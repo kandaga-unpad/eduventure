@@ -32,8 +32,8 @@
 	};
 </script>
 
-<section>
-	<div class="hero-section">
+<section class="h-screen">
+	<!-- <div class="hero-section">
 		<HeroDesc />
 		<HeroImg />
 	</div>
@@ -64,15 +64,27 @@
 	<div class="w-full bg-brand-primary text-center py-10">
 		<h1 class="text-white">Eduventure</h1>
 	</div>
-	<div class="container ma py-10"></div>
+	<div class="container ma py-10"></div> -->
+	<div class="relative">
+		<img src="/background.webp" class="w-full h-screen object-cover relative" alt="" />
+		<div class="h-screen w-full object-cover bg-white/85 absolute top-0"></div>
+	</div>
+	<div class="absolute top-1/5 w-full">
+		<div class="flex flex-col items-center justify-center gap-5">
+			<img src="/logo.webp" class="h-35" alt="Logo Eduventure" />
+			<h1 class="text-7xl">Unpad Eduventure</h1>
+			<h3>Segera Hadir</h3>
+			<h3 class="bg-brand-primary text-white p-5 rounded-xl">20 Januari 2025</h3>
+		</div>
+	</div>
 </section>
 
 <style>
-	.hero-section {
+	/* .hero-section {
 		@apply container ma px-5 grid grid-cols-1 xl:grid-cols-2 items-center justify-between gap-5 py-30 xl:py-50;
 	}
 
 	.eduventure-intro {
 		@apply container ma flex items-center justify-between gap-10 my-20;
-	}
+	} */
 </style>

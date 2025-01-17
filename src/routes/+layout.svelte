@@ -14,9 +14,9 @@
 </svelte:head>
 
 <main>
-	<header class="bg-white shadow-lg w-full fixed z-20">
+	<!-- <header class="bg-white shadow-lg w-full fixed z-20">
 		<NavBar />
-	</header>
+	</header> -->
 
 	<section>
 		{@render children()}
