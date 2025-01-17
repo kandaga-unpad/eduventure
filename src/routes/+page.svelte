@@ -70,9 +70,9 @@
 		<div class="h-screen w-full object-cover bg-white/85 absolute top-0"></div>
 	</div>
 	<div class="absolute top-1/5 w-full">
-		<div class="flex flex-col items-center justify-center gap-5">
-			<img src="/logo.webp" class="h-35" alt="Logo Eduventure" />
-			<h1 class="text-7xl">Unpad Eduventure</h1>
+		<div class="flex flex-col items-center justify-center gap-5 p-5 lg:p-0">
+			<img src="/logo.webp" class="h-full max-h-35 text-center" alt="Logo Eduventure" />
+			<h1>Unpad Eduventure</h1>
 			<h3>Segera Hadir</h3>
 			<h3 class="bg-brand-primary text-white p-5 rounded-xl">20 Januari 2025</h3>
 		</div>
