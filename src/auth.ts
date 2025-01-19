@@ -7,6 +7,7 @@ export const { handle, signIn, signOut } = SvelteKitAuth({
   providers: [Google({
     clientId: PRIVATE_EDUVENTURE_GOOGLE_CLIENTID,
     clientSecret: PRIVATE_EDUVENTURE_GOOGLE_SECRET,
+    redirectProxyUrl: `${PRIVATE_EDUVENTURE_AUTH_URL}/auth/google/callback`
   })],
   secret: PRIVATE_EDUVENTURE_AUTH_SECRET,
   basePath: PRIVATE_EDUVENTURE_AUTH_URL,
@@ -42,11 +43,7 @@ export const { handle, signIn, signOut } = SvelteKitAuth({
       return true;
     },
     async redirect({ url, baseUrl }) {
-      // Allows relative callback URLs
-      if (url.startsWith("/")) return `${baseUrl}${url}`
-
-      // Allows callback URLs on the same origin
-      if (new URL(url).origin === baseUrl) return url
+      console.log(baseUrl, url)
 
       return baseUrl
     }
