@@ -45,6 +45,8 @@ export const load: PageServerLoad = async (events) => {
     return acc;
   }, {});
 
+  console.log(getDetailTagihan)
+
   return {
     tagihan: getDetailTagihan,
     totalTiket: countPilihanZona,

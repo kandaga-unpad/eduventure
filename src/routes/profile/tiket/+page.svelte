@@ -69,7 +69,7 @@
 											})}
 										</p>
 										<p>: {tiket.pilihan_zona.jam_mulai} - {tiket.pilihan_zona.jam_selesai}</p>
-										<p>: {tiket.pilihan_zona.location}</p>
+										<p class="text-xs">: {tiket.pilihan_zona.location}</p>
 										{#if tiket.status_pendaftaran === 'pending'}
 											<p class="text-gray-6">: {statusPembayaran(tiket.status_pendaftaran)}</p>
 										{:else if tiket.status_pendaftaran === 'paid'}

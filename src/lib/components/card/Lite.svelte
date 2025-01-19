@@ -32,7 +32,7 @@
 			<p class="mt-10">Kuota peserta sudah penuh <br /> hingga bulan Maret 2025.</p>
 		</div>
 		<div class="p-10">
-			<a href="/">
+			<a href="/eduventure/lite">
 				<button class="btn bg-brand-primary text-white px-15 w-full">Pilih Lite</button>
 			</a>
 		</div>
