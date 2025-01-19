@@ -10,6 +10,7 @@ export const { handle, signIn, signOut } = SvelteKitAuth({
   })],
   secret: PRIVATE_EDUVENTURE_AUTH_SECRET,
   basePath: PRIVATE_EDUVENTURE_AUTH_URL,
+  trustHost: true,
   callbacks: {
     async signIn({ user }) {
       const existingUser = await fetch(`${PUBLIC_EDUVENTURE_HOST}/api/user/` + user.email)
