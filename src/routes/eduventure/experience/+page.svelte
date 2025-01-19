@@ -1,6 +1,8 @@
 <script>
 	import { goto } from '$app/navigation';
+	import { page } from '$app/state';
 	import { ticketStore } from '$lib/composables/ticketStore';
+	import { SignIn } from '@auth/sveltekit/components';
 
 	let tiketZona1 = $state($ticketStore.tiketZona1);
 	let tiketZona2 = $state($ticketStore.tiketZona2);
@@ -49,8 +51,14 @@
 
 	const buyTicket = async () => {
 		const total = totalTiketZona1 + totalTiketZona2 + totalTiketZona3;
+		const session = page.data.session?.user;
+
 		if (total === 0) {
 			alert('Tidak ada tiket yang dibeli');
+			return;
+		} else if (!session) {
+			alert('Silahkan login terlebih dahulu');
+			await goto('/signin');
 			return;
 		}
 
@@ -241,6 +249,19 @@
 					<p>Jumlah: {tiketZona1 + tiketZona2 + tiketZona3}</p>
 					<p>Total Harga: Rp{totalTiketZona1 + totalTiketZona2 + totalTiketZona3}</p>
 				</div>
+				{#if !page.data.session?.user}
+					<div class="flex flex-col justify-center items-center">
+						<p class="text-white bg-red-6 rounded text-center text-sm my-3 w-full">
+							Anda belum Login, pastikan anda sudah Login sebelum membeli tiket
+						</p>
+						<SignIn>
+							<div slot="submitButton" class="bg-green-7 text-white text-xs py-2 px-4 rounded">
+								Login
+							</div>
+						</SignIn>
+					</div>
+				{/if}
+
 				<button class="btn bg-brand-primary text-white w-full mt-5" onclick={buyTicket}>
 					Beli Tiket
 				</button>

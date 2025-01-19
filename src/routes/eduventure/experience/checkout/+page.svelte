@@ -21,7 +21,7 @@
 	let totalTiket = $state(
 		$ticketStore.tiketZona1 + $ticketStore.tiketZona2 + $ticketStore.tiketZona3
 	);
-	let userEmailGoogle = 'chrisnaadhip@gmail.com';
+	let userEmailGoogle = data.session?.user?.email;
 
 	let biodataPeserta: BiodataPeserta[] = $state(
 		new Array($ticketStore.tiketZona1 + $ticketStore.tiketZona2 + $ticketStore.tiketZona3).fill({
@@ -44,7 +44,7 @@
 		sekolah: '',
 		kelas: null,
 		kota: '',
-		email_pendaftar: 'chrisnaadhip@gmail.com',
+		email_pendaftar: userEmailGoogle,
 		kode_tagihan: '',
 		pilihan_zona: ''
 	});
@@ -95,8 +95,7 @@
 						kode_tagihan: '',
 						pilihan_zona: ''
 					});
-					console.log('res from client: ' + response);
-					await goto('/eduventure/experience/pembayaran/' + response.midtrans.token);
+					await goto('/eduventure/experience/pembayaran/' + response.kode);
 				})
 				.catch((err) => {
 					console.error(err);

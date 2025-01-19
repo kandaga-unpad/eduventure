@@ -79,11 +79,7 @@
 				</div>
 			</div>
 			<div class="w-full max-w-md flex gap-2">
-				<a
-					href="https://app.sandbox.midtrans.com/snap/v4/redirection/{data.kodeTagihan}"
-					class="bayar-sekarang"
-					target="_blank"
-				>
+				<a href={data.tagihan[0].url_tagihan} class="bayar-sekarang" target="_blank">
 					Bayar Sekarang
 				</a>
 				<a href="/#" class="status-pembayaran"> Cek Status Pembayaran </a>

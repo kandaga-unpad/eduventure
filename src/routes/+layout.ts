@@ -1,5 +1,7 @@
-export function load({ url }) {
+export async function load({ url, data }) {
+
   return {
-    url: url.pathname
+    url: url.pathname,
+    session: data.session
   }
 }

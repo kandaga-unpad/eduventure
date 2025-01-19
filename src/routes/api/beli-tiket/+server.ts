@@ -23,12 +23,26 @@ export const POST: RequestHandler = async ({ request, fetch }) => {
   }))
 
   const { biodataPeserta } = await body;
+  const orderId = `eduventure-tiket-${Math.random().toString(36).substring(2, 15)}`
 
   const transactionDetails = {
     "transaction_details": {
-      "order_id": `eduventure-tiket-${biodataPeserta[0].nama}-${Math.random().toString(36).substring(2, 8)}`,
+      "order_id": `eduventure-tiket-${Math.random().toString(36).substring(2, 15)}`,
       "gross_amount": biodataPeserta.length * 350000
-    }, "credit_card": {
+    },
+    "customer_details": {
+      "first_name": biodataPeserta[0].nama_pendaftar,
+      "email": biodataPeserta[0].email_pendaftar,
+      "phone": biodataPeserta[0].kontak
+    },
+    "product_details": {
+      "product_id": orderId,
+      "product_name": "Tiket Eduventure Experience",
+      "quantity": biodataPeserta.length,
+      "price": 350000,
+      "subtotal": 350000 * biodataPeserta.length
+    },
+    "credit_card": {
       "secure": true
     }
   }
@@ -37,20 +51,25 @@ export const POST: RequestHandler = async ({ request, fetch }) => {
     const alterBiodataPeserta = await biodataPeserta.map((item: any) => {
       return {
         ...item,
-        kode_tagihan: transaction.token
+        kode_tagihan: orderId,
+        url_tagihan: transaction.redirect_url
       }
     })
 
     await directus.request(createItems('tiket_eduventure_experience', alterBiodataPeserta));
     await directus.request(updateItem('peserta_eduventure', dataPeserta[0].id, {
-      kode_tagihan: [...dataPeserta[0].kode_tagihan, transaction.token]
+      kode_tagihan: [...dataPeserta[0].kode_tagihan, orderId]
     }))
+    console.log(transaction)
     return transaction
   })
+
+  console.log(payMidtrans)
 
   return json({
     status: 'success',
     message: 'Berhasil memesan tiket',
-    midtrans: payMidtrans
+    midtrans: payMidtrans,
+    kode: orderId
   })
 }
