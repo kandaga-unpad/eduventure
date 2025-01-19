@@ -12,7 +12,7 @@ export const POST: RequestHandler = async ({ request }) => {
 
   const keysOrQuery = await directus.request(readItems('tiket_eduventure_experience', {
     filter: {
-      order_id: {
+      kode_tagihan: {
         _eq: body.order_id
       }
     }

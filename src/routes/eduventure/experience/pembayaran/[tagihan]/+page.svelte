@@ -82,7 +82,7 @@
 				<a href={data.tagihan[0].url_tagihan} class="bayar-sekarang" target="_blank">
 					Bayar Sekarang
 				</a>
-				<a href="/#" class="status-pembayaran"> Cek Status Pembayaran </a>
+				<a href="/profile/tiket" class="status-pembayaran"> Cek Status Pembayaran </a>
 			</div>
 		</div>
 	{:else}

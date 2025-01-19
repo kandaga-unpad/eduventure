@@ -32,8 +32,6 @@ export const { handle, signIn, signOut } = SvelteKitAuth({
           const response = await res.json();
           if (response.status === 'created') {
             return true
-          } else {
-            console.log(response)
           }
 
         })
@@ -43,7 +41,6 @@ export const { handle, signIn, signOut } = SvelteKitAuth({
       return true;
     },
     async redirect({ url, baseUrl }) {
-      console.log(baseUrl, url)
 
       return baseUrl
     }

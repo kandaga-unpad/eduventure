@@ -58,6 +58,8 @@ export const actions: Actions = {
       url_tagihan: ''
     }
 
+    console.log(dataPeserta)
+
     const transactionDetails = {
       "transaction_details": {
         "order_id": orderId,
@@ -88,13 +90,11 @@ export const actions: Actions = {
         biodataPeserta
       ));
       await directus.request(updateItem('peserta_eduventure', dataPeserta[0].id, {
-        kode_tagihan: [...dataPeserta[0].kode_tagihan, orderId],
+        kode_tagihan: [...biodataPeserta.kode_tagihan, orderId],
       }))
       console.log(transaction)
       return transaction
     })
-
-    console.log(payMidtrans.token)
 
     await redirect(303, '/eduventure/experience/pembayaran/' + orderId)
   }

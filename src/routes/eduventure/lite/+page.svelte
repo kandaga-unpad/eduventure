@@ -24,10 +24,7 @@
 				/>
 				<p>
 					Unpad Eduventure adalah program edukasi interaktif yang dirancang untuk siswa SMP dan SMA
-					(dan sederajat). Kegiatan ini menggabungkan konsep education dan adventure yang berfokus
-					pada eksplorasi fakultas dan program studi yang ada di Universitas Padjadjaran. Program
-					ini dirancang untuk membantu siswa memahami dunia perkuliahan dan karier yang sesuai
-					dengan minat mereka melalui simulasi, praktik langsung, dan pengalaman seru.
+					(dan sederajat).
 				</p>
 				<div class="grid grid-cols-3 gap-3">
 					<figure>
@@ -62,7 +59,7 @@
 				<p class="mt-5">
 					Pematerian umum dipandu oleh Kantor Komunikasi Publik dengan durasi 60 menit di Gedung
 					Rektorat. Program dilaksanakan pada jadwal yang disepakati pihak sekolah dan Universitas
-					Padjadjaran melalui korespondensi dengan PIC melalui email humas@unpad.ac.id.
+					Padjadjaran melalui korespondensi PIC.
 				</p>
 				<p>
 					Pembayaran dapat dilakukan melalui transfer ke Rekening BNI an. DPNG Unpad Nomor:
@@ -71,8 +68,12 @@
 				</p>
 				<div class="w-full flex items-center justify-center gap-3 text-center">
 					<button class="btn bg-brand-secondary text-white w-full">Salin Nomor Rekening</button>
-					<a href="mailto:humas@unpad.ac.id" class="btn bg-brand-primary text-white w-full">
-						Hubungi Humas
+					<a
+						href="https://www.cognitoforms.com/UniversitasPadjadjaran21/EduventureLite"
+						target="_blank"
+						class="btn bg-brand-primary text-white w-full"
+					>
+						Isi Form Pendaftaran
 					</a>
 				</div>
 			</div>

@@ -76,7 +76,7 @@
 		<div class="flex flex-col gap-4 text-justify">
 			<p>
 				Unpad Eduventure adalah program edukasi interaktif yang dirancang untuk siswa SMP dan SMA
-				(dan sederajat). Kegiatan ini menggabungkan konsep education dan adventure yang berfokus
+				(dan sederajat). Kegiatan ini menggabungkan konsep pendidikan dan petualangan yang berfokus
 				pada eksplorasi fakultas dan program studi yang ada di Universitas Padjadjaran.
 			</p>
 			<p>

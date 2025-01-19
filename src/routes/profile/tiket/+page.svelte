@@ -80,16 +80,23 @@
 									</div>
 								</div>
 								<div class="w-full flex items-center justify-center gap-5 p-5">
-									<a
-										href="/profile/tiket/{tiket.id}"
-										class="btn bg-brand-primary border-1 border-brand-primary text-white py-1 w-full"
-										>Lihat Tiket</a
-									>
-									<a
-										href="tel:082211676765"
-										class="btn bg-whte text-brand-primary border-1 border-brand-primary py-1 w-full hover:(bg-brand-primary text-white)"
-										>Hubungi Eduventure</a
-									>
+									{#if tiket.status_pendaftaran === 'pending'}
+										<a
+											href={tiket.url_tagihan}
+											class="btn bg-green-7 text-white w-full"
+											target="_blank"
+											rel="noopener noreferrer">Bayar Sekarang</a
+										>
+									{:else if tiket.status_pendaftaran === 'paid'}
+										<a
+											href="/profile/tiket/{tiket.id}"
+											class="btn bg-brand-primary text-white w-full">Lihat Tiket</a
+										>
+									{:else if tiket.status_pendaftaran === 'cancel'}
+										<a href="tel:082211676765" class="btn bg-red-6 text-white w-full"
+											>Hubungi Eduventure</a
+										>
+									{/if}
 								</div>
 							</div>
 						{/each}
