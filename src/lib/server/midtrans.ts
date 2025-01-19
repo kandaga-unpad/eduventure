@@ -6,13 +6,13 @@ import { PRIVATE_MIDTRANS_SERVERKEY } from '$env/static/private';
 import { PRIVATE_MIDTRANS_CLIENTKEY } from '$env/static/private';
 
 export const midtransCoreApi = new midtransClient.CoreApi({
-  isProduction: true,
+  isProduction: false,
   serverKey: PRIVATE_MIDTRANS_SERVERKEY,
   clientKey: PRIVATE_MIDTRANS_CLIENTKEY,
 })
 
 export const midTransSnap = new midtransClient.Snap({
-  isProduction: true,
+  isProduction: false,
   serverKey: PRIVATE_MIDTRANS_SERVERKEY,
   clientKey: PRIVATE_MIDTRANS_CLIENTKEY,
 })
