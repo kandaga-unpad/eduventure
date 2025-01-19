@@ -1,5 +1,5 @@
 <script>
-	import { handleAnchorClick } from '../composables/link';
+	import { handleAnchorClick } from '../../composables/link';
 </script>
 
 <div class="text-center">

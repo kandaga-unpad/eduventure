@@ -16,8 +16,12 @@
 				</a>
 			</div>
 			<div class="mb-10 flex flex-col items-center gap-5 px-15 text-justify">
-				<h2>Eduventure Lite Universitas Padjadjaran</h2>
-				<img src="/zona/lite.webp" class="w-full rounded-lg" alt="Eduventure Lite" />
+				<h2 class="text-center my-5">Eduventure Lite Universitas Padjadjaran</h2>
+				<img
+					src="/zona/lite.webp"
+					class="w-full rounded-lg max-h-md object-cover"
+					alt="Eduventure Lite"
+				/>
 				<p>
 					Unpad Eduventure adalah program edukasi interaktif yang dirancang untuk siswa SMP dan SMA
 					(dan sederajat). Kegiatan ini menggabungkan konsep education dan adventure yang berfokus
@@ -55,7 +59,7 @@
 						<figcaption>Tote Bag Unpad</figcaption>
 					</figure>
 				</div>
-				<p>
+				<p class="mt-5">
 					Pematerian umum dipandu oleh Kantor Komunikasi Publik dengan durasi 60 menit di Gedung
 					Rektorat. Program dilaksanakan pada jadwal yang disepakati pihak sekolah dan Universitas
 					Padjadjaran melalui korespondensi dengan PIC melalui email humas@unpad.ac.id.
@@ -73,14 +77,11 @@
 				</div>
 			</div>
 		</div>
-		{#if data.params === 'experience'}
-			<div class="bg-blue-1 shadow-2xl rounded-lg text-center p-10">
-				<h5>Pembelian Tiket</h5>
-			</div>
-		{/if}
+	</div>
+	<div class="my-10 text-center">
+		<a href="/eduventure">&leftarrow;Kembali</a>
 	</div>
 </section>
-6
 
 <style>
 	section {

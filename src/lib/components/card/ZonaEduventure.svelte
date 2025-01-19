@@ -2,13 +2,13 @@
 	export let zona;
 </script>
 
-<div class="grid grid-cols-1 gap-20 my-20 xl:grid-cols-2">
-	<div class="relative {zona.isReverse === true ? 'order-last' : ''}">
+<div class="grid grid-cols-1 gap-5 xl:gap-20 my-20 xl:grid-cols-2">
+	<div class="relative {zona.isReverse === true ? 'xl:order-last' : ''}">
 		<div class="bg-brand-secondary h-md w-full rounded-lg"></div>
 		<img
 			src={zona.gambar}
 			alt="Zona Eduventure 1"
-			class="absolute top--8 right--8 h-md w-full object-cover rounded-lg"
+			class="absolute top-0 xl:top--8 xl:right--8 h-md w-full object-cover rounded-lg"
 		/>
 	</div>
 	<div class="flex flex-col gap-4">

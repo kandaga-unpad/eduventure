@@ -71,6 +71,7 @@ a {
 }
 
 input,
+select,
 textarea {
 	@apply border border-gray-400 w-full;
 }

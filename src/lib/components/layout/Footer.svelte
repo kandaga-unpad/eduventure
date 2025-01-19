@@ -4,7 +4,7 @@
 			class="grid items-start justify-between grid-cols-1 xl:grid-cols-3 gap-20 xl:gap-5 mb-10 px-5 xl:px-0"
 		>
 			<div>
-				<img src="eduventure-white.webp" alt="Eduventure" />
+				<img src="/eduventure-white.webp" alt="Eduventure" />
 				<h6 class="text-white my-4">Eduventure Universitas Padjadjaran</h6>
 				<div class="flex">
 					<a

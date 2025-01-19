@@ -1,6 +1,6 @@
 <script>
 	import { goto } from '$app/navigation';
-	import { ticketStore } from '$lib/components/composables/ticketStore';
+	import { ticketStore } from '$lib/composables/ticketStore';
 
 	let tiketZona1 = $state($ticketStore.tiketZona1);
 	let tiketZona2 = $state($ticketStore.tiketZona2);
@@ -64,8 +64,8 @@
 </script>
 
 <section>
-	<div class="grid grid-cols-1 xl:grid-cols-3 gap-5">
-		<div class="flex flex-col items-center col-span-2 bg-gray-1 shadow-2xl rounded-lg">
+	<div class="grid grid-cols-1 xl:grid-cols-3 gap-5 my-10">
+		<div class="flex flex-col items-center col-span-2 bg-white shadow-2xl rounded-lg">
 			<div class="flex my-10">
 				<img src="/logo-unpad.png" class="h-20" alt="Logo Eduventure" />
 				<img src="/logo.webp" class="h-24" alt="Logo Eduventure" />
@@ -77,8 +77,12 @@
 				</a>
 			</div>
 			<div class="mb-10 flex flex-col items-center gap-5 px-15 text-justify">
-				<h2 class="text-center">Eduventure Experience <br /> Universitas Padjadjaran</h2>
-				<img src="/zona/lite.webp" class="w-full rounded-lg" alt="Eduventure Lite" />
+				<h2 class="text-center my-5">Eduventure Experience <br /> Universitas Padjadjaran</h2>
+				<img
+					src="/background.webp"
+					class="w-full rounded-lg max-h-md object-cover"
+					alt="Eduventure Experience"
+				/>
 				<p>
 					Unpad Eduventure adalah program edukasi interaktif yang dirancang untuk siswa SMP dan SMA
 					(dan sederajat). Kegiatan ini menggabungkan konsep education dan adventure yang berfokus
@@ -86,59 +90,38 @@
 					ini dirancang untuk membantu siswa memahami dunia perkuliahan dan karier yang sesuai
 					dengan minat mereka melalui simulasi, praktik langsung, dan pengalaman seru.
 				</p>
-				<div class="grid grid-cols-3 gap-3">
-					<figure>
-						<img src="/edu/yasporbi.jpg" alt="Kunjungan SMA" class="sma-gallery" />
-						<figcaption>SMA Yasporbi Jakarta</figcaption>
-					</figure>
-					<figure>
-						<img src="/edu/al-irsyad.jpg" alt="Kunjungan SMA" class="sma-gallery" />
-						<figcaption>Al-Irsyad Boarding School</figcaption>
-					</figure>
-					<figure>
-						<img src="/edu/sman1padalarang.jpg" alt="Kunjungan SMA" class="sma-gallery" />
-						<figcaption>SMAN 1 Padalarang</figcaption>
-					</figure>
-				</div>
 				<p>
-					Program sosialisasi Universitas Padjadjaran berdurasi 1 jam termasuk makanan ringan dan
-					merchandise Unpad. Tersedia dalam dua kategori harga, yaitu Rp150.000/siswa (mendapatkan
-					merchandise berupa Kaos Unpad) dan Rp100.000/siswa (mendapatkan merchandise berupa Tote
-					Bag Unpad).
-				</p>
-				<div class="grid grid-cols-2 gap-3">
-					<figure>
-						<img src="/zona/KaosUnpad.jpg" class="sma-gallery" alt="" />
-						<figcaption>Kaos Unpad</figcaption>
-					</figure>
-					<figure>
-						<img src="/zona/BagUnpad.jpg" class="sma-gallery" alt="" />
-						<figcaption>Tote Bag Unpad</figcaption>
-					</figure>
-				</div>
-				<p>
-					Pematerian umum dipandu oleh Kantor Komunikasi Publik dengan durasi 60 menit di Gedung
-					Rektorat. Program dilaksanakan pada jadwal yang disepakati pihak sekolah dan Universitas
-					Padjadjaran melalui korespondensi dengan PIC melalui email humas@unpad.ac.id.
+					Pematerian umum dipandu oleh Kantor Komunikasi Publik dengan durasi 30 menit di Gedung
+					Rektorat. Setiap sesi pengalaman di fakultas/sekolah berlangsung selama 30 menit dan
+					dipandu oleh satu mahasiswa yang ditugaskan oleh fakultas/sekolah. Kegiatan dimulai dari
+					Gedung Rektorat dan dilanjutkan ke fakultas/sekolah menggunakan angkutan dalam kampus yang
+					dipandu oleh panitia mahasiswa magang. Program ini dilaksanakan sesuai jadwal yang telah
+					ditentukan oleh Universitas Padjadjaran.
 				</p>
 				<p>
-					Pembayaran dapat dilakukan melalui transfer ke Rekening BNI an. DPNG Unpad Nomor:
-					9882340560000001 setelah mendapatkan surat konfirmasi dari panitia. Kuota peserta sudah
-					penuh untuk hingga bulan Maret 2025.
+					Harga tiket 1 zona adalah Rp350.000 per siswa termasuk merchandise kaos Unpad dan makanan
+					ringan​. Untuk Eduventure Experience tanggal 22-23 Februari 2025, tiket sudah termasuk
+					akses kegiatan Open House Universitas Padjadjaran.
 				</p>
-				<div class="w-full flex items-center justify-center gap-3 text-center">
-					<button class="btn bg-brand-secondary text-white w-full">Salin Nomor Rekening</button>
-					<a href="mailto:humas@unpad.ac.id" class="btn bg-brand-primary text-white w-full">
-						Hubungi Humas
-					</a>
-				</div>
+				<p>Terdapat 3 Zona untuk Eduventure yakni:</p>
+				<figure>
+					<img src="/zona/3_zona.jpg" alt="3 Zona" />
+				</figure>
+				<h1>Merchandise Kaos Unpad</h1>
+				<figure>
+					<img src="/zona/kaosexp.jpg" class="sma-gallery" alt="" />
+					<figcaption>Kaos Unpad</figcaption>
+				</figure>
 			</div>
 		</div>
 		<div class="flex flex-col gap-5">
-			<div class="bg-gray-4 p-5 rounded-lg">
+			<div class="bg-blue-50 p-5 rounded-lg">
 				<h5 class="text-center">Pembelian Tiket</h5>
-				<div class="bg-gray-2 p-3 my-5">
+				<div class="bg-white p-3 my-5">
 					<p class="text-lg font-bold">Zona 1 (Ilmu Kesehatan)</p>
+					<div>
+						<p class="text-xs text-brand-primary font-bold">22 Februari 2025 | 08.00 - 12.00</p>
+					</div>
 					<hr class="my-2" />
 					<div class="grid grid-cols-3 items-center justify-center text-sm">
 						<div>
@@ -174,8 +157,11 @@
 						</div>
 					</div>
 				</div>
-				<div class="bg-gray-2 p-3 my-5">
+				<div class="bg-white p-3 my-5">
 					<p class="text-lg font-bold">Zona 2 (Sosial dan Humaniora)</p>
+					<div>
+						<p class="text-xs text-brand-primary font-bold">22 Februari 2025 | 13.00 - 17.00</p>
+					</div>
 					<hr class="my-2" />
 					<div class="grid grid-cols-3 items-center justify-center text-sm">
 						<div>
@@ -211,8 +197,11 @@
 						</div>
 					</div>
 				</div>
-				<div class="bg-gray-2 p-3 my-5">
+				<div class="bg-white p-3 my-5">
 					<p class="text-lg font-bold">Zona 3 (Saintek dan Agrokomplek)</p>
+					<div>
+						<p class="text-xs text-brand-primary font-bold">23 Februari 2025 | 08.00 - 12.00</p>
+					</div>
 					<hr class="my-2" />
 					<div class="grid grid-cols-3 items-center justify-center text-sm">
 						<div>
@@ -261,8 +250,10 @@
 			</div>
 		</div>
 	</div>
+	<div class="my-10 text-center">
+		<a href="/eduventure">&leftarrow;Kembali</a>
+	</div>
 </section>
-6
 
 <style>
 	section {

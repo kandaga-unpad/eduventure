@@ -89,7 +89,7 @@
 		<h1 class="text-white">Eduventure</h1>
 	</div>
 	<div class="container ma py-10" id="skema-eduventure">
-		<div class="grid grid-cols-1 xl:grid-cols-3 gap-5 px-5 xl:px-0">
+		<div class="grid grid-cols-1 xl:grid-cols-3 gap-5 px-5 xl:px-2">
 			<Lite />
 			<GenericCard eduventure={eduventureExperience} />
 			<GenericCard eduventure={eduventureFullPackage} />
