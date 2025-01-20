@@ -33,14 +33,13 @@ export const { handle, signIn, signOut } = SvelteKitAuth({
           if (response.status === 'created') {
             return true
           }
-
         })
           .catch((err) => console.error(err));
       }
 
       return true;
     },
-    async redirect({ url, baseUrl }) {
+    async redirect() {
 
       return PRIVATE_EDUVENTURE_AUTH_URL
     }

@@ -72,7 +72,7 @@
 		<HeroImg />
 	</div>
 	<div class="eduventure-intro">
-		<img src="/logo.webp" class="max-w-sm" alt="" />
+		<img src="/Logo-Eduventure.png" class="max-w-lg" alt="" />
 		<div class="flex flex-col gap-4 text-justify">
 			<p>
 				Unpad Eduventure adalah program edukasi interaktif yang dirancang untuk siswa SMP dan SMA

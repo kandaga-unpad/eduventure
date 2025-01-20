@@ -26,8 +26,6 @@ export const POST: RequestHandler = async ({ request, fetch, locals }) => {
   const { biodataPeserta } = await body;
   const orderId = `eduventure-tiket-${Math.random().toString(36).substring(2, 15)}`
 
-  console.log(biodataPeserta)
-
   const transactionDetails = {
     "transaction_details": {
       "order_id": orderId,
@@ -64,8 +62,6 @@ export const POST: RequestHandler = async ({ request, fetch, locals }) => {
         url_tagihan: transaction.redirect_url
       }
     })
-
-    console.log(dataPeserta[0])
 
     await directus.request(createItems('tiket_eduventure_experience', alterBiodataPeserta));
     await directus.request(updateItem('peserta_eduventure', dataPeserta[0].id, {

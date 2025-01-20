@@ -40,42 +40,58 @@
 				{:else}
 					<div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
 						{#each data.tagihan as tiket, i}
-							<div class="bg-yellow-50 shadow-2xl w-full">
+							<div class="bg-yellow-50 shadow-2xl w-full text-sm">
 								<h4 class="bg-brand-primary text-white py-2 rounded">
 									Tiket {data.tagihan.length > 1 ? `${i + 1}` : 'Anda'}
 								</h4>
-								<div class="p-5 grid grid-cols-4 gap-3 text-left text-sm">
-									<div>
-										<p>Nama</p>
-										<p>Kelas dan Sekolah</p>
-										<p>Pilihan Zona</p>
-										<p>Tanggal Kegiatan</p>
-										<p>Jam Kegiatan</p>
-										<p>Lokasi</p>
-										<p>Status Pembayaran</p>
-									</div>
-									<div class="col-span-3">
-										<p>: {tiket.nama}</p>
-										<p>: {tiket.kelas} - {tiket.sekolah}</p>
-										<p>: {tiket.pilihan_zona.title}</p>
-										<p>
-											: {new Date(tiket.pilihan_zona.tanggal_acara).toLocaleString('id-ID', {
-												weekday: 'long',
-												day: 'numeric',
-												month: 'long',
-												year: 'numeric'
-											})}
+								<div class="grid grid-cols-4 text-left pl-5 mt-5">
+									<p>Nama</p>
+									<p class="col-span-3">: {tiket.nama}</p>
+								</div>
+								<div class="grid grid-cols-4 text-left pl-5">
+									<p>Sekolah</p>
+									<p class="col-span-3">: Kelas {tiket.kelas} - {tiket.sekolah}</p>
+								</div>
+								<div class="grid grid-cols-4 text-left pl-5">
+									<p>Zona</p>
+									<p class="col-span-3">: {tiket.pilihan_zona.title}</p>
+								</div>
+								<div class="grid grid-cols-4 text-left pl-5">
+									<p>Tanggal</p>
+									<p class="col-span-3">
+										: {new Date(tiket.pilihan_zona.tanggal_acara).toLocaleString('id-ID', {
+											weekday: 'long',
+											day: 'numeric',
+											month: 'long',
+											year: 'numeric'
+										})}
+									</p>
+								</div>
+								<div class="grid grid-cols-4 text-left pl-5">
+									<p>Jam Kegiatan</p>
+									<p class="col-span-3">
+										: {tiket.pilihan_zona.jam_mulai} - {tiket.pilihan_zona.jam_selesai}
+									</p>
+								</div>
+								<div class="grid grid-cols-4 text-left pl-5">
+									<p>Lokasi</p>
+									<p class="col-span-3">: {tiket.pilihan_zona.location}</p>
+								</div>
+								<div class="grid grid-cols-4 text-left pl-5">
+									<p>Status Pembayaran</p>
+									{#if tiket.status_pendaftaran === 'pending'}
+										<p class="text-gray-6 col-span-3">
+											: {statusPembayaran(tiket.status_pendaftaran)}
 										</p>
-										<p>: {tiket.pilihan_zona.jam_mulai} - {tiket.pilihan_zona.jam_selesai}</p>
-										<p class="text-xs">: {tiket.pilihan_zona.location}</p>
-										{#if tiket.status_pendaftaran === 'pending'}
-											<p class="text-gray-6">: {statusPembayaran(tiket.status_pendaftaran)}</p>
-										{:else if tiket.status_pendaftaran === 'paid'}
-											<p class="text-green-6">: {statusPembayaran(tiket.status_pendaftaran)}</p>
-										{:else if tiket.status_pendaftaran === 'cancel'}
-											<p class="text-red-6">: {statusPembayaran(tiket.status_pendaftaran)}</p>
-										{/if}
-									</div>
+									{:else if tiket.status_pendaftaran === 'paid'}
+										<p class="text-green-6 col-span-3">
+											: {statusPembayaran(tiket.status_pendaftaran)}
+										</p>
+									{:else if tiket.status_pendaftaran === 'cancel'}
+										<p class="text-red-6 col-span-3">
+											: {statusPembayaran(tiket.status_pendaftaran)}
+										</p>
+									{/if}
 								</div>
 								<div class="w-full flex items-center justify-center gap-5 p-5">
 									{#if tiket.status_pendaftaran === 'pending'}

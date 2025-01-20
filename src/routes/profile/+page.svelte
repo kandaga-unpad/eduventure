@@ -17,7 +17,7 @@
 				</div>
 			{/if}
 			<div class="flex flex-col items-center justify-center mt-5">
-				<small>Login sebagai</small><br />
+				<small>Login sebagai</small>
 				<h3>{page.data.session.user?.name ?? 'User'}</h3>
 			</div>
 			<div class="flex flex-col items-center justify-center my-10 gap-5">
@@ -84,7 +84,7 @@
 	}
 
 	.avatar {
-		@apply rounded mt--12;
+		@apply rounded mt--12 border-8 border-white;
 	}
 
 	.logout {

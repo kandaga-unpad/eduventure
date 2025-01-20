@@ -58,8 +58,6 @@ export const actions: Actions = {
       url_tagihan: ''
     }
 
-    console.log(dataPeserta)
-
     const transactionDetails = {
       "transaction_details": {
         "order_id": orderId,
@@ -74,7 +72,6 @@ export const actions: Actions = {
           "first_name": session?.user?.name?.split(" ")[0],
           "last_name": session?.user?.name?.split(" ")[1],
           "phone": biodataPeserta.kontak,
-
         }
       },
       "item_details": [{
@@ -88,8 +85,6 @@ export const actions: Actions = {
         "secure": true
       }
     }
-
-
 
     await midTransSnap.createTransaction(transactionDetails).then(async (transaction: any) => {
       biodataPeserta['kode_tagihan'] = orderId

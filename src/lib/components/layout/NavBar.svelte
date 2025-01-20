@@ -18,7 +18,7 @@
 <nav class="container ma flex justify-between items-center py-2 px-5">
 	<div>
 		<a href="/">
-			<img src="/Logo-Eduventure.png" alt="Eduventure" class="max-w-50" />
+			<img src="/Logo-Eduventure.png" alt="Eduventure" class="max-w-70" />
 		</a>
 	</div>
 	<div class="flex items-center gap-10">
@@ -34,7 +34,7 @@
 			</div>
 			{#if $profile}
 				<div
-					class="bg-white shadow-xl absolute top-24 right-20 w-60 p-5 rounded flex flex-col gap-2"
+					class="bg-white shadow-xl absolute top-25 right-20 w-60 p-5 rounded flex flex-col gap-2"
 					in:fade={{ duration: 300 }}
 					out:fade={{ duration: 300 }}
 				>
@@ -111,7 +111,7 @@
 							class="profile-btn bg-brand-secondary text-dark hover:text-white w-full">Tiket Saya</a
 						>
 					</div>
-					<div class="flex items-center justify-center w-full text-center gap-2">
+					<div class="flex items-center justify-center text-center gap-2">
 						<a href="/profile" class="profile-btn bg-brand-primary text-white">Profile</a>
 						<SignOut>
 							<div slot="submitButton" class="profile-btn bg-red-6 text-white w-full">Logout</div>

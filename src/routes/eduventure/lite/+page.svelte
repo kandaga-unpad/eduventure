@@ -1,5 +1,11 @@
 <script>
 	let { data } = $props();
+
+	const copyText = () => {
+		const text = '9882340560000001';
+		navigator.clipboard.writeText(text);
+		alert('Nomor Rekening berhasil disalin!');
+	};
 </script>
 
 <section>
@@ -40,7 +46,7 @@
 						<figcaption>SMAN 1 Padalarang</figcaption>
 					</figure>
 				</div>
-				<p>
+				<p class="mt-10">
 					Program sosialisasi Universitas Padjadjaran berdurasi 1 jam termasuk makanan ringan dan
 					merchandise Unpad. Tersedia dalam dua kategori harga, yaitu Rp150.000/siswa (mendapatkan
 					merchandise berupa Kaos Unpad) dan Rp100.000/siswa (mendapatkan merchandise berupa Tote
@@ -67,7 +73,9 @@
 					penuh untuk hingga bulan Maret 2025.
 				</p>
 				<div class="w-full flex items-center justify-center gap-3 text-center">
-					<button class="btn bg-brand-secondary text-white w-full">Salin Nomor Rekening</button>
+					<button class="btn bg-brand-secondary text-white w-full" onclick={copyText}
+						>Salin Nomor Rekening</button
+					>
 					<a
 						href="https://www.cognitoforms.com/UniversitasPadjadjaran21/EduventureLite"
 						target="_blank"
