@@ -42,7 +42,7 @@ export const { handle, signIn, signOut } = SvelteKitAuth({
     },
     async redirect({ url, baseUrl }) {
 
-      return baseUrl
+      return PRIVATE_EDUVENTURE_AUTH_URL + '/auth/'
     }
   }
 })
