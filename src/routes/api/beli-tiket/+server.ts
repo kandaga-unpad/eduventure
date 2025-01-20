@@ -13,7 +13,8 @@ export const GET: RequestHandler = async () => {
   })
 }
 
-export const POST: RequestHandler = async ({ request, fetch }) => {
+export const POST: RequestHandler = async ({ request, fetch, locals }) => {
+  const session = await locals.auth()
   const body = await request.json();
   const directus = getDirectusInstance(fetch);
   const dataPeserta = await directus.request(readItems('peserta_eduventure', {
@@ -25,23 +26,31 @@ export const POST: RequestHandler = async ({ request, fetch }) => {
   const { biodataPeserta } = await body;
   const orderId = `eduventure-tiket-${Math.random().toString(36).substring(2, 15)}`
 
+  console.log(biodataPeserta)
+
   const transactionDetails = {
     "transaction_details": {
-      "order_id": `eduventure-tiket-${Math.random().toString(36).substring(2, 15)}`,
+      "order_id": orderId,
       "gross_amount": biodataPeserta.length * 350000
     },
     "customer_details": {
-      "first_name": biodataPeserta[0].nama_pendaftar,
+      "first_name": session?.user?.name?.split(" ")[0],
+      "last_name": session?.user?.name?.split(" ")[1],
       "email": biodataPeserta[0].email_pendaftar,
-      "phone": biodataPeserta[0].kontak
+      "phone": biodataPeserta[0].kontak,
+      "billing_address": {
+        "first_name": session?.user?.name?.split(" ")[0],
+        "last_name": session?.user?.name?.split(" ")[1],
+        "phone": biodataPeserta[0].kontak,
+      }
     },
-    "product_details": {
-      "product_id": orderId,
-      "product_name": "Tiket Eduventure Experience",
-      "quantity": biodataPeserta.length,
+    "item_details": [{
+      "id": orderId,
       "price": 350000,
-      "subtotal": 350000 * biodataPeserta.length
-    },
+      "quantity": biodataPeserta.length,
+      "name": "Eduventure Experience",
+      "brand": "Eduventure Unpad",
+    }],
     "credit_card": {
       "secure": true
     }
@@ -60,11 +69,8 @@ export const POST: RequestHandler = async ({ request, fetch }) => {
     await directus.request(updateItem('peserta_eduventure', dataPeserta[0].id, {
       kode_tagihan: [...dataPeserta[0].kode_tagihan, orderId]
     }))
-    console.log(transaction)
     return transaction
   })
-
-  console.log(payMidtrans)
 
   return json({
     status: 'success',

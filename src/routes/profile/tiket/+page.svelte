@@ -1,9 +1,7 @@
 <script>
-	import { statusPembayaran, warnaStatusPembayaran } from '$lib/composables/ticketStore';
+	import { statusPembayaran } from '$lib/composables/ticketStore';
 
 	let { data } = $props();
-
-	console.log(data.totalTiket);
 </script>
 
 <section>

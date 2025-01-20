@@ -66,17 +66,24 @@ export const actions: Actions = {
         "gross_amount": 350000
       },
       "customer_details": {
-        "first_name": biodataPeserta.nama,
+        "first_name": session?.user?.name?.split(" ")[0],
+        "last_name": session?.user?.name?.split(" ")[1],
         "email": biodataPeserta.email,
-        "phone": biodataPeserta.kontak
+        "phone": biodataPeserta.kontak,
+        "billing_address": {
+          "first_name": session?.user?.name?.split(" ")[0],
+          "last_name": session?.user?.name?.split(" ")[1],
+          "phone": biodataPeserta.kontak,
+
+        }
       },
-      "product_details": {
-        "product_id": orderId,
-        "product_name": "Tiket Eduventure Experience",
-        "quantity": biodataPeserta,
+      "item_details": [{
+        "id": orderId,
         "price": 350000,
-        "subtotal": 350000
-      },
+        "quantity": 1,
+        "name": "Eduventure Experience",
+        "brand": "Eduventure Unpad",
+      }],
       "credit_card": {
         "secure": true
       }
@@ -92,7 +99,6 @@ export const actions: Actions = {
       await directus.request(updateItem('peserta_eduventure', dataPeserta[0].id, {
         kode_tagihan: [...biodataPeserta.kode_tagihan, orderId],
       }))
-      console.log(transaction)
       return transaction
     })
 

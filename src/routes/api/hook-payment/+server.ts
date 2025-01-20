@@ -1,7 +1,7 @@
-import { json, type RequestHandler } from "@sveltejs/kit";
 
 import getDirectusInstance from "$lib/server/directus";
 import { readItems, updateItems } from "@directus/sdk";
+import type { RequestHandler } from "@sveltejs/kit";
 
 export const POST: RequestHandler = async ({ request }) => {
   const body = await request.json();
@@ -18,23 +18,31 @@ export const POST: RequestHandler = async ({ request }) => {
     }
   }))
 
-  if (status_code === '200') {
-    const allKeys = keysOrQuery.map((item) => item.id);
-    await directus.request(updateItems('tiket_eduventure_experience', allKeys, {
-      status_pendaftaran: 'paid',
-      tanggal_pembayaran: payment_received,
-      response: body
-    }))
-    return json({
-      status: 'success',
-      message: 'Berhasil memesan tiket',
-      data: body
-    })
-  } else {
-    return json({
-      status: 'failed',
-      message: 'Pembayaran Gagal, silahkan hubungi Admin',
-      data: body
-    })
-  }
+  console.log(keysOrQuery);
+
+  return new Response(JSON.stringify({
+    status: 'success',
+    message: 'Berhasil memesan tiket',
+    key: keysOrQuery
+  }))
+
+  // if (status_code === '200') {
+  //   const allKeys = keysOrQuery.map((item) => item.id);
+  //   await directus.request(updateItems('tiket_eduventure_experience', allKeys, {
+  //     status_pendaftaran: 'paid',
+  //     tanggal_pembayaran: payment_received,
+  //     response: body
+  //   }))
+  //   return json({
+  //     status: 'success',
+  //     message: 'Berhasil memesan tiket',
+  //     data: body
+  //   })
+  // } else {
+  //   return json({
+  //     status: 'failed',
+  //     message: 'Pembayaran Gagal, silahkan hubungi Admin',
+  //     data: body
+  //   })
+  // }
 }
