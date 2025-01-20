@@ -15,7 +15,7 @@
 		textKedua:
 			'Untuk Eduventure Experience tanggal 22-23 Februari 2025, tiket sudah termasuk akses kegiatan Open House Universitas Padjadjaran',
 		select: 'Pilih Experience',
-		url: '/eduventure/epxerience'
+		url: '/eduventure/experience'
 	};
 
 	const eduventureFullPackage = {

@@ -58,7 +58,6 @@
 			return;
 		} else if (!session) {
 			alert('Silahkan login terlebih dahulu');
-			await goto('/signin');
 			return;
 		}
 
