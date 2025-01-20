@@ -75,7 +75,7 @@
 		<div class="flex flex-col items-center col-span-2 bg-white shadow-2xl rounded-lg">
 			<div class="flex my-10">
 				<img src="/logo-unpad.png" class="h-20" alt="Logo Eduventure" />
-				<img src="/logo.webp" class="h-24" alt="Logo Eduventure" />
+				<img src="/Logo-Eduventure.png" class="h-24" alt="Logo Eduventure" />
 			</div>
 
 			<div class="bg-brand-primary px-4 py-1 rounded-xl">

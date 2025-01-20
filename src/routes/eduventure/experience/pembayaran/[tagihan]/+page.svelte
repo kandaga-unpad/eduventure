@@ -66,6 +66,20 @@
 						<p>Tiket</p>
 					</div>
 				</div>
+				<div class="my-5 text-gray-6 px-10 text-sm">
+					<p>Pembayaran dapat dilakukan dengan mengklik tombol Bayar Sekarang</p>
+					<p>
+						Silahkan cek channel pembayaran yang tersedia setelah anda mengklik tombol Bayar
+						Sekarang
+					</p>
+					<p>
+						Setelah anda membayar silahkan untuk mengecek status pembayaran di profil anda atau klik
+						tombol Cek Status Pembayaran dibawah. Jika status belum berubah silahkan reload
+						halamannya, atau hubungi kami jika ada kendala lainnya di nomor : <br />
+						<a href="tel:082211676765">0822-1167-6765</a>
+					</p>
+					<p></p>
+				</div>
 				<div class="mt-10 py-5 bg-blue-2 rounded-b-xl">
 					<p>Jumlah yang harus dibayarkan :</p>
 					<button onclick={copyJumlah} class="bg-transparent">

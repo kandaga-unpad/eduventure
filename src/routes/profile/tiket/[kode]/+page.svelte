@@ -32,7 +32,7 @@
 	<div id="tiket-eduventure-${data.tiket.kode_tagihan}" class="max-w-lg">
 		<h5 class="bg-brand-primary text-white py-2 text-center rounded-t">Tiket Eduventure</h5>
 		<div class="bg-blue-50 flex flex-col items-center p-10">
-			<img src="/logo.webp" alt="Logo Eduventure" class="w-70" />
+			<img src="/Logo-Eduventure.png" alt="Logo Eduventure" class="w-70" />
 			<div class="flex flex-col items-center justify-center gap-3 text-center">
 				<h5>
 					{new Date(data.tiket.pilihan_zona.tanggal_acara).toLocaleString('id-ID', {
@@ -50,7 +50,7 @@
 		</div>
 		<div class="grid bg-blue-2 rounded-b items-start justify-center p-10 gap-5">
 			<div class="flex items-center justify-center">
-				<img src="/logo.webp" alt="Logo Eduventure" class="w-40" />
+				<img src="/Logo-Eduventure.png" alt="Logo Eduventure" class="w-40" />
 			</div>
 			<div class="flex flex-col items-center justify-center">
 				<h6 class="text-center">{data.tiket.pilihan_zona.location}</h6>

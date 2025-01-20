@@ -65,9 +65,11 @@ export const POST: RequestHandler = async ({ request, fetch, locals }) => {
       }
     })
 
+    console.log(dataPeserta[0])
+
     await directus.request(createItems('tiket_eduventure_experience', alterBiodataPeserta));
     await directus.request(updateItem('peserta_eduventure', dataPeserta[0].id, {
-      kode_tagihan: [...dataPeserta[0].kode_tagihan, orderId]
+      kode_tagihan: dataPeserta[0].kode_tagihan === null ? [orderId] : [...dataPeserta[0].kode_tagihan, orderId]
     }))
     return transaction
   })

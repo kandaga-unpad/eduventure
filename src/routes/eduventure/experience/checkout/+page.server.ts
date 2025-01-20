@@ -89,7 +89,9 @@ export const actions: Actions = {
       }
     }
 
-    const payMidtrans = await midTransSnap.createTransaction(transactionDetails).then(async (transaction: any) => {
+
+
+    await midTransSnap.createTransaction(transactionDetails).then(async (transaction: any) => {
       biodataPeserta['kode_tagihan'] = orderId
       biodataPeserta['url_tagihan'] = transaction.redirect_url
 
@@ -97,7 +99,7 @@ export const actions: Actions = {
         biodataPeserta
       ));
       await directus.request(updateItem('peserta_eduventure', dataPeserta[0].id, {
-        kode_tagihan: [...biodataPeserta.kode_tagihan, orderId],
+        kode_tagihan: dataPeserta[0].kode_tagihan.length === null ? [orderId] : [...dataPeserta[0].kode_tagihan, orderId]
       }))
       return transaction
     })
