@@ -18,7 +18,7 @@ export const POST: RequestHandler = async ({ request }) => {
     }
   }))
 
-  if (status_code === '200') {
+  if (status_code === '202' || status_code === '200') {
     const allKeys = keysOrQuery.map((item) => item.id);
     await directus.request(updateItems('tiket_eduventure_experience', allKeys, {
       status_pendaftaran: 'paid',
