@@ -18,6 +18,14 @@ export const POST: RequestHandler = async ({ request }) => {
     }
   }))
 
+  if (keysOrQuery.length === 0) {
+    return json({
+      status: 'failed',
+      message: 'Data Tiket tidak ditemukan',
+      data: body
+    })
+  }
+
   if (status_code === '202' || status_code === '200') {
     const allKeys = keysOrQuery.map((item) => item.id);
     await directus.request(updateItems('tiket_eduventure_experience', allKeys, {
