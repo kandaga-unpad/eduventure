@@ -69,8 +69,9 @@
 				</p>
 				<p>
 					Pembayaran dapat dilakukan melalui transfer ke Rekening BNI an. DPNG Unpad Nomor:
-					9882340560000001 setelah mendapatkan surat konfirmasi dari panitia. Kuota peserta sudah
-					penuh untuk hingga bulan Maret 2025.
+					9882340560000001 setelah mendapatkan surat konfirmasi dari panitia.
+					<!-- Kuota peserta sudah
+					penuh untuk hingga bulan Maret 2025. -->
 				</p>
 				<div class="w-full flex items-center justify-center gap-3 text-center">
 					<button class="btn bg-brand-secondary text-white w-full" onclick={copyText}
