@@ -7,7 +7,7 @@
 			title: 'Eduventure Lite',
 			date: 'Sesuai Jadwal',
 			description:
-				'Eduventure Lite adalah Program Sosialisasi Universitas Padjadjaran yang diselenggarakan oleh Humas Unpad. Untuk saat ini sudah penuh hingga bulan Maret 2025.',
+				'Eduventure Lite adalah Program Sosialisasi Universitas Padjadjaran yang diselenggarakan oleh Humas Unpad.',
 			image: '/zona/lite.webp',
 			location: 'Universitas Padjadjaran',
 			link: '/eduventure/lite'
