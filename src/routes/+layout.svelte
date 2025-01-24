@@ -32,7 +32,7 @@
 
 <main>
 	{#if !page.url.pathname.startsWith('/profile/tiket/')}
-		<header class="bg-white shadow-lg w-full fixed z-20">
+		<header class="bg-white shadow-lg w-full absolute z-20">
 			<NavBar user={page.data.session?.user} />
 		</header>
 	{/if}

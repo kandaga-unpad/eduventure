@@ -18,7 +18,7 @@
 <nav class="container ma flex justify-between items-center py-2 px-5">
 	<div>
 		<a href="/">
-			<img src="/Logo-Eduventure.png" alt="Eduventure" class="max-w-70" />
+			<img src="/Logo-Eduventure.png" alt="Eduventure" class="w-full max-w-70" />
 		</a>
 	</div>
 	<div class="flex items-center gap-10">
