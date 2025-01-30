@@ -6,7 +6,7 @@ import { json, type RequestHandler } from "@sveltejs/kit";
 export const POST: RequestHandler = async ({ request }) => {
   const body = await request.json();
 
-  const { transaction_time, status_code } = body;
+  const { transaction_time, status_code, transaction_status } = body;
   const payment_received = transaction_time.split(' ').join('T');
   const directus = getDirectusInstance(fetch);
 
@@ -26,7 +26,7 @@ export const POST: RequestHandler = async ({ request }) => {
     })
   }
 
-  if (status_code === '202' || status_code === '200') {
+  if (status_code === '200' && transaction_status === 'settlement') {
     const allKeys = keysOrQuery.map((item) => item.id);
     await directus.request(updateItems('tiket_eduventure_experience', allKeys, {
       status_pendaftaran: 'paid',
@@ -36,6 +36,17 @@ export const POST: RequestHandler = async ({ request }) => {
     return json({
       status: 'success',
       message: 'Berhasil memesan tiket',
+      data: body
+    })
+  } else if (status_code === '202' && transaction_status === 'expire') {
+    const allKeys = keysOrQuery.map((item) => item.id);
+    await directus.request(updateItems('tiket_eduventure_experience', allKeys, {
+      status_pendaftaran: 'pending',
+      response: body
+    }))
+    return json({
+      status: 'failed',
+      message: 'Pembayaran Expired',
       data: body
     })
   } else {
