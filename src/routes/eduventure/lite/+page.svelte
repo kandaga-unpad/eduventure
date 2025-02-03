@@ -2,7 +2,7 @@
 	let { data } = $props();
 
 	const copyText = () => {
-		const text = '9882340560000001';
+		const text = '9880619020200219';
 		navigator.clipboard.writeText(text);
 		alert('Nomor Rekening berhasil disalin!');
 	};
@@ -68,8 +68,8 @@
 					Padjadjaran melalui korespondensi PIC.
 				</p>
 				<p>
-					Pembayaran dapat dilakukan melalui transfer ke Rekening BNI an. DPNG Unpad Nomor:
-					9882340560000001 setelah mendapatkan surat konfirmasi dari panitia.
+					Pembayaran dapat dilakukan melalui transfer ke Rekening BNI an. LUHUNG UNPAD Nomor:
+					9880619020200219 setelah mendapatkan surat konfirmasi dari panitia.
 					<!-- Kuota peserta sudah
 					penuh untuk hingga bulan Maret 2025. -->
 				</p>
