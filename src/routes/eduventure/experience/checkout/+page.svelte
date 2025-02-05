@@ -105,7 +105,7 @@
 </script>
 
 <section>
-	<a href="/eduventure/experience">&leftarrow;Kembali</a>
+	<a href="/eduventure/experience" class="text-center mt-10">&leftarrow;Kembali</a>
 	<h1 class="text-center">Konfirmasi Pemesanan</h1>
 	<div class="text-center my-5">
 		<p class="text-xl my-5">
@@ -170,9 +170,6 @@
 				</tbody>
 			</table>
 		</div>
-	</div>
-	<div>
-		<p>{JSON.stringify(biodataPeserta)}</p>
 	</div>
 	<div class="my-5">
 		<h4 class="text-center my-5">Data Pemilik Tiket</h4>

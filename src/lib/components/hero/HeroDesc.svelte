@@ -20,7 +20,7 @@
 		<a href="#skema-eduventure" on:click={handleAnchorClick}>
 			<button class="main-btn">Pelajari</button>
 		</a>
-		<a href="#skema-eduventure">
+		<a href="/eduventure">
 			<button class="secondary-btn">Daftar</button>
 		</a>
 	</div>

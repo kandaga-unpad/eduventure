@@ -58,7 +58,6 @@
 			return;
 		} else if (!session) {
 			alert('Silahkan login terlebih dahulu');
-			await goto('/signin');
 			return;
 		}
 
@@ -76,7 +75,7 @@
 		<div class="flex flex-col items-center col-span-2 bg-white shadow-2xl rounded-lg">
 			<div class="flex my-10">
 				<img src="/logo-unpad.png" class="h-20" alt="Logo Eduventure" />
-				<img src="/logo.webp" class="h-24" alt="Logo Eduventure" />
+				<img src="/Logo-Eduventure.png" class="h-24" alt="Logo Eduventure" />
 			</div>
 
 			<div class="bg-brand-primary px-4 py-1 rounded-xl">
@@ -93,7 +92,7 @@
 				/>
 				<p>
 					Unpad Eduventure adalah program edukasi interaktif yang dirancang untuk siswa SMP dan SMA
-					(dan sederajat). Kegiatan ini menggabungkan konsep education dan adventure yang berfokus
+					(dan sederajat). Kegiatan ini menggabungkan konsep pendidikan dan pengalaman yang berfokus
 					pada eksplorasi fakultas dan program studi yang ada di Universitas Padjadjaran. Program
 					ini dirancang untuk membantu siswa memahami dunia perkuliahan dan karier yang sesuai
 					dengan minat mereka melalui simulasi, praktik langsung, dan pengalaman seru.
@@ -108,7 +107,7 @@
 				</p>
 				<p>
 					Harga tiket 1 zona adalah Rp350.000 per siswa termasuk merchandise kaos Unpad dan makanan
-					ringan​. Untuk Eduventure Experience tanggal 22-23 Februari 2025, tiket sudah termasuk
+					ringan. Untuk Eduventure Experience tanggal 22-23 Februari 2025, tiket sudah termasuk
 					akses kegiatan Open House Universitas Padjadjaran.
 				</p>
 				<p>Terdapat 3 Zona untuk Eduventure yakni:</p>

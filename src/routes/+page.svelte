@@ -15,7 +15,7 @@
 		textKedua:
 			'Untuk Eduventure Experience tanggal 22-23 Februari 2025, tiket sudah termasuk akses kegiatan Open House Universitas Padjadjaran',
 		select: 'Pilih Experience',
-		url: '/'
+		url: '/eduventure/experience'
 	};
 
 	const eduventureFullPackage = {
@@ -29,7 +29,7 @@
 							<p>⁠Email : <a href="mailto:mahatmasagievent@gmail.com">mahatmasagievent@gmail.com</a></p>
 							<p>Instagram: <a href="https://instagram.com/mmu.eventtourorganizer">mmu.eventtourorganizer</a></p>`,
 		select: 'Pilih Full Package',
-		url: '/'
+		url: '/eduventure/full-package'
 	};
 
 	const zona1 = {
@@ -38,7 +38,7 @@
 		gambar: '/zona/zona1.jpg',
 		deskripsi:
 			'Rumpun Ilmu Kesehatan yang ada di Universitas Padjadjaran terdiri dari Fakultas Kedokteran, Fakultas Kedokteran Gigi, Fakultas Keperawatan, Fakultas Farmasi dan Fakultas Psikologi. Pada zona ini, peserta akan diajak untuk mengenal lebih jauh tentang dunia kesehatan melalui simulasi dan praktik langsung.',
-		link: '/',
+		link: '/eduventure/experience',
 		button: 'Pilih Zona 1',
 		isReverse: false
 	};
@@ -49,7 +49,7 @@
 		gambar: '/zona/zona2.webp',
 		deskripsi:
 			'Rumpun Ilmu Sosial dan Humaniora terdiri dari Fakultas Hukum, Fakultas Ekonomi dan Bisnis, Fakultas Ilmu Sosial dan Ilmu Politik, Fakultas Ilmu Budaya dan Fakultas Ilmu Komunikasi. Pada zona ini, peserta akan diajak untuk mengenal lebih jauh tentang dunia sosial dan humaniora melalui simulasi dan praktik langsung.',
-		link: '/',
+		link: '/eduventure/experience',
 		button: 'Pilih Zona 2',
 		isReverse: true
 	};
@@ -60,7 +60,7 @@
 		gambar: '/zona/zona3.jpg',
 		deskripsi:
 			'Rumpun Ilmu Saintek dan Agrokomplek terdiri dari Fakultas Matematika dan Ilmu Pengetahuan Alam, Fakutas Pertanian, Fakultas Peternakan, Fakultas Teknik Geologi, Fakultas Teknologi Industri Pertanian, Fakultas Perikanan dan Ilmu Kelautan. Pada zona ini, peserta akan diajak untuk mengenal lebih jauh tentang dunia sains dan teknologi melalui simulasi dan praktik langsung.',
-		link: '/',
+		link: '/eduventure/experience',
 		button: 'Pilih Zona 3',
 		isReverse: false
 	};
@@ -72,11 +72,11 @@
 		<HeroImg />
 	</div>
 	<div class="eduventure-intro">
-		<img src="/logo.webp" class="max-w-sm" alt="" />
+		<img src="/Logo-Eduventure.png" class="w-full max-w-lg" alt="" />
 		<div class="flex flex-col gap-4 text-justify">
 			<p>
 				Unpad Eduventure adalah program edukasi interaktif yang dirancang untuk siswa SMP dan SMA
-				(dan sederajat). Kegiatan ini menggabungkan konsep education dan adventure yang berfokus
+				(dan sederajat). Kegiatan ini menggabungkan konsep pendidikan dan petualangan yang berfokus
 				pada eksplorasi fakultas dan program studi yang ada di Universitas Padjadjaran.
 			</p>
 			<p>

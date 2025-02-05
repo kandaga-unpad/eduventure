@@ -26,8 +26,6 @@ export const load: PageServerLoad = async ({ fetch, params }) => {
     return acc;
   }, {});
 
-  console.log(countPilihanZona);
-
   return {
     tagihan: getDetailTagihan,
     totalTiket: countPilihanZona,
