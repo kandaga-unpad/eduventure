@@ -1,1 +1,1 @@
-HOST=0.0.0.0 PORT=5170 node build
+HOST=localhost PORT=5170 ORIGIN=http://localhost:5170 node build
