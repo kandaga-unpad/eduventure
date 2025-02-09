@@ -11,8 +11,6 @@
 	const menuBtn = () => {
 		$showMobile = !$showMobile;
 	};
-
-	console.log($showMobile);
 </script>
 
 <nav class="container ma flex justify-between items-center py-2 px-5">
@@ -29,7 +27,7 @@
 		{#if user}
 			<div class="hidden md:(block)">
 				<button onclick={() => ($profile = !$profile)} class="focus:outline-none">
-					<img src={user.image} class="w-10 h-10 rounded" alt="" />
+					<img src={user.image} class="w-10 h-10 rounded" alt="" referrerpolicy="no-referrer" />
 				</button>
 			</div>
 			{#if $profile}
@@ -42,7 +40,7 @@
 						>&#10006;</button
 					>
 					<div class="flex items-center gap-2">
-						<img src={user.image} class="w-8 h-8 rounded" alt="" />
+						<img src={user.image} class="w-8 h-8 rounded" alt="" referrerpolicy="no-referrer" />
 						<p class="text-sm">Halo, {user.name}!</p>
 					</div>
 					<div class="flex text-center">
@@ -102,7 +100,7 @@
 				<a href="/eduventure">Daftar Eduventure</a>
 				{#if user}
 					<div class="flex flex-col items-center gap-2">
-						<img src={user.image} class="w-18 h-18 rounded" alt="" />
+						<img src={user.image} class="w-18 h-18 rounded" alt="" referrerpolicy="no-referrer" />
 						<p class="text-sm">Halo, {user.name}!</p>
 					</div>
 					<div class="flex text-center">
