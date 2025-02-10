@@ -7,7 +7,7 @@
 
 	const eduventureExperience = {
 		color: 'green',
-		nama: 'Eduventure <br /> Experience',
+		nama: 'Eduventure Experience',
 		harga: 'Rp350.000',
 		detail: 'Kaos Unpad + Snackbox',
 		textPertama:
@@ -20,7 +20,7 @@
 
 	const eduventureFullPackage = {
 		color: 'orange',
-		nama: 'Eduventure <br /> Full Package',
+		nama: 'Eduventure Full Package',
 		harga: 'Spesial',
 		detail: 'Oleh MMU Event & Tour Organizer',
 		textPertama:
