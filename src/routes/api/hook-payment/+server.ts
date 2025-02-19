@@ -41,7 +41,7 @@ export const POST: RequestHandler = async ({ request }) => {
   } else if (status_code === '202' && transaction_status === 'expire') {
     const allKeys = keysOrQuery.map((item) => item.id);
     await directus.request(updateItems('tiket_eduventure_experience', allKeys, {
-      status_pendaftaran: 'pending',
+      status_pendaftaran: 'expired',
       response: body
     }))
     return json({

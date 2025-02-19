@@ -2,6 +2,7 @@
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
 	import { ticketStore } from '$lib/composables/ticketStore';
+	import { formatCurrency } from '$lib/composables/number';
 	import { SignIn } from '@auth/sveltekit/components';
 
 	let tiketZona1 = $state($ticketStore.tiketZona1);
@@ -11,6 +12,8 @@
 	let totalTiketZona1 = $derived(tiketZona1 * 350000);
 	let totalTiketZona2 = $derived(tiketZona2 * 350000);
 	let totalTiketZona3 = $derived(tiketZona3 * 350000);
+
+	let totalAmount = $derived(totalTiketZona1 + totalTiketZona2 + totalTiketZona3);
 
 	const addTiketZona = (/** @type {string} */ zona) => {
 		switch (zona) {
@@ -133,7 +136,7 @@
 					<div class="grid grid-cols-3 items-center justify-center text-sm">
 						<div>
 							<p>Harga Tiket</p>
-							<p class="font-bold">Rp350.000</p>
+							<p class="font-bold">Rp 350.000</p>
 						</div>
 						<div class="text-center">
 							<p>Jumlah</p>
@@ -160,7 +163,7 @@
 						</div>
 						<div class="flex flex-col items-center">
 							<p>Total</p>
-							<p class="font-bold">Rp{totalTiketZona1}</p>
+							<p class="font-bold">{formatCurrency(totalTiketZona1)}</p>
 						</div>
 					</div>
 				</div>
@@ -173,7 +176,7 @@
 					<div class="grid grid-cols-3 items-center justify-center text-sm">
 						<div>
 							<p>Harga Tiket</p>
-							<p class="font-bold">Rp350.000</p>
+							<p class="font-bold">Rp 350.000</p>
 						</div>
 						<div class="text-center">
 							<p>Jumlah</p>
@@ -200,7 +203,7 @@
 						</div>
 						<div class="flex flex-col items-center">
 							<p>Total</p>
-							<p class="font-bold">Rp{totalTiketZona2}</p>
+							<p class="font-bold">{formatCurrency(totalTiketZona2)}</p>
 						</div>
 					</div>
 				</div>
@@ -240,13 +243,13 @@
 						</div>
 						<div class="flex flex-col items-center">
 							<p>Total</p>
-							<p class="font-bold">Rp{totalTiketZona3}</p>
+							<p class="font-bold">{formatCurrency(totalTiketZona3)}</p>
 						</div>
 					</div>
 				</div>
 				<div>
 					<p>Jumlah: {tiketZona1 + tiketZona2 + tiketZona3}</p>
-					<p>Total Harga: Rp{totalTiketZona1 + totalTiketZona2 + totalTiketZona3}</p>
+					<p>Total Harga: {formatCurrency(totalAmount)}</p>
 				</div>
 				{#if !page.data.session?.user}
 					<div class="flex flex-col justify-center items-center">

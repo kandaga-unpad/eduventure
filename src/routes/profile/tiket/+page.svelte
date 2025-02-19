@@ -34,6 +34,10 @@
 		</div>
 		<div class="my-10 px-3">
 			<h2>Daftar Tiket yang dimiliki</h2>
+			<p>
+				Sebelum kamu berangkat ke Jatinangor, yuk cek dulu panduannya
+				<a href="/guidebook">disini</a>.
+			</p>
 			<div class="w-full my-10">
 				{#if data.tagihan.length === 0}
 					<h5 class="text-red-6">Anda belum memiliki tiket!</h5>
