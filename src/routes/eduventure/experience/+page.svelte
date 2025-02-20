@@ -7,7 +7,7 @@
 
 	let closeDateTiket1 = new Date('2025-02-22T08:00:00');
 	let closeDateTiket2 = new Date('2025-02-22T13:00:00');
-	let closeDateTiket3 = new Date('2025-02-19T08:00:00');
+	let closeDateTiket3 = new Date('2025-02-23T08:00:00');
 
 	let now = new Date();
 
