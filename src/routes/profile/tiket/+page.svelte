@@ -95,6 +95,10 @@
 										<p class="text-red-6 col-span-3">
 											: {statusPembayaran(tiket.status_pendaftaran)}
 										</p>
+									{:else if tiket.status_pendaftaran === 'expired'}
+										<p class="text-yellow-6 col-span-3">
+											: {statusPembayaran(tiket.status_pendaftaran)}
+										</p>
 									{/if}
 								</div>
 								<div class="w-full flex items-center justify-center gap-5 p-5">
@@ -110,6 +114,10 @@
 											href="/profile/tiket/{tiket.id}"
 											class="btn bg-brand-primary text-white w-full">Lihat Tiket</a
 										>
+									{:else if tiket.status_pendaftaran === 'expired'}
+										<a class="btn bg-yellow-3 text-dark w-full" href="/eduventure/experience">
+											Kadaluarsa, Pesan Tiket Baru
+										</a>
 									{:else if tiket.status_pendaftaran === 'cancel'}
 										<a href="tel:082211676765" class="btn bg-red-6 text-white w-full"
 											>Hubungi Eduventure</a

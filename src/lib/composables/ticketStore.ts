@@ -18,6 +18,8 @@ export const warnaStatusPembayaran = (status: string) => {
       break;
     case 'cancel':
       return 'text-red-6'
+    case 'expired':
+      return 'text-yellow-5'
     default:
       return 'text-brand-primary'
       break;
@@ -35,6 +37,8 @@ export const statusPembayaran = (status: string) => {
     case 'cancel':
       return 'Pembayaran Dibatalkan'
       break;
+    case 'expired':
+      return 'Pembayaran Kadaluarsa'
     default:
       return 'Tidak diketahui'
       break;
