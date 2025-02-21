@@ -17,6 +17,9 @@ export const load: PageServerLoad = async ({ fetch, locals }) => {
 
   const directus = getDirectusInstance(fetch);
   const getTiketZona = await directus.request(readItems('zona_eduventure', {
+    filter: {
+      status: 'published'
+    },
     sort: 'title'
   }))
   const getPesertaBiodata = await directus.request(readItems('peserta_eduventure', {
