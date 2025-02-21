@@ -6,6 +6,15 @@ import getDirectusInstance from '$lib/server/directus';
 export const load: PageServerLoad = async ({ fetch }) => {
   const directus = getDirectusInstance(fetch);
 
+  const getZonaInfo = await directus.request(readItems('zona_eduventure', {
+    filter: {
+      status: {
+        _eq: 'published'
+      }
+    },
+    sort: 'title'
+  }))
+
   const getTiketZona1 = await directus.request(readItems('tiket_eduventure_experience', {
     filter: {
       pilihan_zona: {
@@ -42,6 +51,7 @@ export const load: PageServerLoad = async ({ fetch }) => {
   const jumlahTiketSoldZona3 = getTiketZona3.length;
 
   return {
+    zonaInfo: getZonaInfo,
     soldTicket: {
       zona1: jumlahTiketSoldZona1,
       zona2: jumlahTiketSoldZona2,

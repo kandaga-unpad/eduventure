@@ -7,14 +7,17 @@
 	import { handleAnchorClick } from '$lib/composables/link.js';
 
 	let { data } = $props();
+	const [infoZona1, infoZona2, infoZona3] = data.zonaInfo;
 
-	let closeDateTiket1 = new Date('2025-02-22T08:00:00');
-	let closeDateTiket2 = new Date('2025-02-22T13:00:00');
-	let closeDateTiket3 = new Date('2025-02-23T08:00:00');
+	console.log(infoZona1);
 
-	let ticketSeatLeftZona1 = 90 - data.soldTicket.zona1;
-	let ticketSeatLeftZona2 = 60 - data.soldTicket.zona2;
-	let ticketSeatLeftZona3 = 60 - data.soldTicket.zona3;
+	let closeDateTiket1 = new Date(`${infoZona1.tanggal_acara}T${infoZona1.jam_mulai}`);
+	let closeDateTiket2 = new Date(`${infoZona2.tanggal_acara}T${infoZona2.jam_mulai}`);
+	let closeDateTiket3 = new Date(`${infoZona3.tanggal_acara}T${infoZona3.jam_mulai}`);
+
+	let ticketSeatLeftZona1 = infoZona1.kuota - data.soldTicket.zona1;
+	let ticketSeatLeftZona2 = infoZona2.kuota - data.soldTicket.zona2;
+	let ticketSeatLeftZona3 = infoZona3.kuota - data.soldTicket.zona3;
 
 	let now = new Date();
 
@@ -22,9 +25,9 @@
 	let tiketZona2 = $state($ticketStore.tiketZona2);
 	let tiketZona3 = $state($ticketStore.tiketZona3);
 
-	let totalTiketZona1 = $derived(tiketZona1 * 350000);
-	let totalTiketZona2 = $derived(tiketZona2 * 350000);
-	let totalTiketZona3 = $derived(tiketZona3 * 350000);
+	let totalTiketZona1 = $derived(tiketZona1 * infoZona1.harga_tiket);
+	let totalTiketZona2 = $derived(tiketZona2 * infoZona2.harga_tiket);
+	let totalTiketZona3 = $derived(tiketZona3 * infoZona3.harga_tiket);
 
 	let totalAmount = $derived(totalTiketZona1 + totalTiketZona2 + totalTiketZona3);
 
@@ -154,11 +157,13 @@
 							<p class="text-xs text-brand-primary font-bold">22 Februari 2025 | 08.00 - 12.00</p>
 						</div>
 					</div>
-					<div class="bg-gray-3 p-2 rounded-lg my-3 text-center">
-						<p class="font-bold">
-							Sisa Tiket : <span class="text-red-6">{ticketSeatLeftZona1}</span>
-						</p>
-					</div>
+					{#if now < closeDateTiket1}
+						<div class="bg-gray-3 p-2 rounded-lg my-3 text-center">
+							<p class="font-bold">
+								Sisa Tiket : <span class="text-red-6">{ticketSeatLeftZona1}</span>
+							</p>
+						</div>
+					{/if}
 
 					<hr class="my-2" />
 					{#if now < closeDateTiket1 && ticketSeatLeftZona1 > 0}
@@ -206,11 +211,13 @@
 							<p class="text-xs text-brand-primary font-bold">22 Februari 2025 | 13.00 - 17.00</p>
 						</div>
 					</div>
-					<div class="bg-gray-3 p-2 rounded-lg my-3 text-center">
-						<p class="font-bold">
-							Sisa Tiket : <span class="text-red-6">{ticketSeatLeftZona2}</span>
-						</p>
-					</div>
+					{#if now < closeDateTiket2}
+						<div class="bg-gray-3 p-2 rounded-lg my-3 text-center">
+							<p class="font-bold">
+								Sisa Tiket : <span class="text-red-6">{ticketSeatLeftZona2}</span>
+							</p>
+						</div>
+					{/if}
 
 					<hr class="my-2" />
 					{#if now < closeDateTiket2 && ticketSeatLeftZona2 > 0}
@@ -258,16 +265,19 @@
 							<p class="text-xs text-brand-primary font-bold">23 Februari 2025 | 08.00 - 12.00</p>
 						</div>
 					</div>
-					<div class="bg-gray-3 p-2 rounded-lg my-3 text-center">
-						<p class="font-bold">
-							Sisa Tiket : <span class="text-red-6">{ticketSeatLeftZona3}</span>
-						</p>
-					</div>
+					{#if now < closeDateTiket1}
+						<div class="bg-gray-3 p-2 rounded-lg my-3 text-center">
+							<p class="font-bold">
+								Sisa Tiket : <span class="text-red-6">{ticketSeatLeftZona3}</span>
+							</p>
+						</div>
+					{/if}
+
 					<hr class="my-2" />
 					{#if now < closeDateTiket3 && ticketSeatLeftZona3 > 0}
 						<div class="grid grid-cols-3 items-center justify-center text-sm">
 							<div>
-								<p>Harga Tiket {now < closeDateTiket3}</p>
+								<p>Harga Tiket</p>
 								<p class="font-bold">Rp350.000</p>
 							</div>
 							<div class="text-center">
@@ -328,6 +338,10 @@
 				>
 					{now > closeDateTiket3 ? 'Pembelian Tiket Ditutup' : 'Beli Tiket'}
 				</button>
+				<div class="my-5 text-center">
+					<p>Ada pertanyaan atau perlu bantuan ?</p>
+					<a href="tel:082211676765" class="text-brand-primary underline">Hubungi Kami</a>
+				</div>
 			</div>
 			<div class="bg-white-2 p-5 rounded-lg">
 				<h5>Tambahkan ke Kalender</h5>

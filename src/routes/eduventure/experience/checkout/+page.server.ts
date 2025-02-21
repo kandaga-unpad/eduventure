@@ -39,8 +39,16 @@ export const actions: Actions = {
     const data = await request.formData();
     const directus = getDirectusInstance(fetch);
     const session = await locals.auth();
+    const getTiketZona = await directus.request(readItems('zona_eduventure', {
+      filter: {
+        status: 'published'
+      },
+      sort: 'title'
+    }))
 
-    const orderId = `eduventure-tiket-${Math.random().toString(36).substring(2, 15)}`
+    const chosenZona = getTiketZona.find((zona: any) => zona.id === data.get('zona'));
+
+    const orderId = `eduventure-tiket-${Math.random().toString(36).substring(2, 15)}`;
 
     const dataPeserta = await directus.request(readItems('peserta_eduventure', {
       filter: {
@@ -64,7 +72,7 @@ export const actions: Actions = {
     const transactionDetails = {
       "transaction_details": {
         "order_id": orderId,
-        "gross_amount": 350000
+        "gross_amount": chosenZona?.harga_tiket
       },
       "customer_details": {
         "first_name": session?.user?.name?.split(" ")[0],
@@ -79,7 +87,7 @@ export const actions: Actions = {
       },
       "item_details": [{
         "id": orderId,
-        "price": 350000,
+        "price": chosenZona?.harga_tiket,
         "quantity": 1,
         "name": "Eduventure Experience",
         "brand": "Eduventure Unpad",
