@@ -9,8 +9,6 @@
 	let { data } = $props();
 	const [infoZona1, infoZona2, infoZona3] = data.zonaInfo;
 
-	console.log(infoZona1);
-
 	let closeDateTiket1 = new Date(`${infoZona1.tanggal_acara}T${infoZona1.jam_mulai}`);
 	let closeDateTiket2 = new Date(`${infoZona2.tanggal_acara}T${infoZona2.jam_mulai}`);
 	let closeDateTiket3 = new Date(`${infoZona3.tanggal_acara}T${infoZona3.jam_mulai}`);
@@ -265,7 +263,7 @@
 							<p class="text-xs text-brand-primary font-bold">23 Februari 2025 | 08.00 - 12.00</p>
 						</div>
 					</div>
-					{#if now < closeDateTiket1}
+					{#if now < closeDateTiket3}
 						<div class="bg-gray-3 p-2 rounded-lg my-3 text-center">
 							<p class="font-bold">
 								Sisa Tiket : <span class="text-red-6">{ticketSeatLeftZona3}</span>
