@@ -9,7 +9,7 @@
 		color: 'green',
 		nama: 'Eduventure Experience',
 		harga: 'Sold Out',
-		detail: 'SEE YOU MAYBE NEXT TIME?!',
+		detail: 'See you next Eduventure!',
 		textPertama:
 			'Pematerian umum dipandu oleh Kantor Komunikasi Publik dengan durasi 30 menit di Gedung Rektorat. Kegiatan dimulai dari Gedung Rektorat dan dilanjutkan ke fakultas/sekolah menggunakan angkutan dalam kampus yang dipandu oleh panitia mahasiswa magang.',
 		textKedua:
