@@ -4,6 +4,8 @@ import type { RequestHandler } from './$types';
 import { json } from '@sveltejs/kit';
 import { createItems, readItems, updateItem } from '@directus/sdk';
 import { midTransSnap } from '$lib/server/midtrans';
+import { xenditInvoiceClient } from '$lib/server/xendit';
+import { PRIVATE_XENDIT_USERPLATFORM } from '$env/static/private';
 
 import getDirectusInstance from '$lib/server/directus'
 
@@ -26,6 +28,7 @@ export const POST: RequestHandler = async ({ request, fetch, locals }) => {
   const { biodataPeserta } = await body;
   const orderId = `eduventure-tiket-${Math.random().toString(36).substring(2, 15)}`
 
+  // Midtrans
   const transactionDetails = {
     "transaction_details": {
       "order_id": orderId,
@@ -60,6 +63,53 @@ export const POST: RequestHandler = async ({ request, fetch, locals }) => {
         ...item,
         kode_tagihan: orderId,
         url_tagihan: transaction.redirect_url
+      }
+    })
+
+    await directus.request(createItems('tiket_eduventure_experience', alterBiodataPeserta));
+    await directus.request(updateItem('peserta_eduventure', dataPeserta[0].id, {
+      kode_tagihan: dataPeserta[0].kode_tagihan === null || dataPeserta[0].kode_tagihan.length === 0 ? [orderId] : [...dataPeserta[0].kode_tagihan, orderId]
+    }))
+    return transaction
+  })
+
+  // Xendit
+  const transactionDetail = {
+    "externalId": orderId,
+    "amount": biodataPeserta.length * 350000,
+    "payerEmail": biodataPeserta[0].email_pendaftar,
+    "description": `Pembelian Tiket Eduventure Experience sebanyak ${biodataPeserta.length} tiket`,
+    "shouldSendEmail": true,
+    "customer": {
+      "phoneNumber": biodataPeserta[0].kontak,
+      "givenNames": session?.user?.name?.split(" ")[0],
+      "surname": session?.user?.name?.split(" ")[1],
+      "email": biodataPeserta[0].email_pendaftar,
+      "mobileNumber": biodataPeserta[0].kontak
+    },
+    "currency": "IDR",
+    "locale": "ID",
+    "reminderTime": 1,
+    "items": [
+      {
+        "name": "Eduventure Experience",
+        "quantity": biodataPeserta.length,
+        "price": 350000,
+        "caregory": "Eduventure Ticket",
+        "url": "https://eduventure.unpad.ac.id"
+      }
+    ]
+  }
+
+  const processXendit = await xenditInvoiceClient.createInvoice({
+    data: transactionDetail,
+    forUserId: PRIVATE_XENDIT_USERPLATFORM
+  }).then(async (transaction: any) => {
+    const alterBiodataPeserta = await biodataPeserta.map((item: any) => {
+      return {
+        ...item,
+        kode_tagihan: orderId,
+        url_tagihan: transaction.invoice_url
       }
     })
 
