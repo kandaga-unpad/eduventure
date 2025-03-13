@@ -138,11 +138,11 @@
 				<figure>
 					<img src="/zona/3_zona.jpg" alt="3 Zona" />
 				</figure>
-				<h1>Merchandise Kaos Unpad</h1>
+				<!-- <h1>Merchandise Kaos Unpad</h1>
 				<figure>
 					<img src="/zona/kaosexp.jpg" class="sma-gallery" alt="" />
 					<figcaption>Kaos Unpad</figcaption>
-				</figure>
+				</figure> -->
 			</div>
 		</div>
 		<div class="flex flex-col gap-5" id="buyTicket">
