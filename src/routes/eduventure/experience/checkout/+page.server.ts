@@ -4,9 +4,11 @@ import type { PageServerLoad } from "./$types";
 
 import { error, redirect } from "@sveltejs/kit";
 import { midTransSnap } from '$lib/server/midtrans';
+import { xenditInvoiceClient } from '$lib/server/xendit';
 import { readItems, createItem, updateItem } from '@directus/sdk';
-import getDirectusInstance from '$lib/server/directus';
+import { PRIVATE_XENDIT_USERPLATFORM } from '$env/static/private';
 
+import getDirectusInstance from '$lib/server/directus';
 
 export const load: PageServerLoad = async ({ fetch, locals }) => {
   const session = await locals.auth();
@@ -69,47 +71,92 @@ export const actions: Actions = {
       url_tagihan: ''
     }
 
-    const transactionDetails = {
-      "transaction_details": {
-        "order_id": orderId,
-        "gross_amount": chosenZona?.harga_tiket
+    // Midtrans
+    // const transactionDetails = {
+    //   "transaction_details": {
+    //     "order_id": orderId,
+    //     "gross_amount": 350000
+    //   },
+    //   "customer_details": {
+    //     "first_name": session?.user?.name?.split(" ")[0],
+    //     "last_name": session?.user?.name?.split(" ")[1],
+    //     "email": biodataPeserta.email,
+    //     "phone": biodataPeserta.kontak,
+    //     "billing_address": {
+    //       "first_name": session?.user?.name?.split(" ")[0],
+    //       "last_name": session?.user?.name?.split(" ")[1],
+    //       "phone": biodataPeserta.kontak,
+    //     }
+    //   },
+    //   "item_details": [{
+    //     "id": orderId,
+    //     "price": 350000,
+    //     "quantity": 1,
+    //     "name": "Eduventure Experience",
+    //     "brand": "Eduventure Unpad",
+    //   }],
+    //   "credit_card": {
+    //     "secure": true
+    //   }
+    // }
+
+    // await midTransSnap.createTransaction(transactionDetails).then(async (transaction: any) => {
+    //   biodataPeserta['kode_tagihan'] = orderId
+    //   biodataPeserta['url_tagihan'] = transaction.redirect_url
+
+    //   await directus.request(createItem('tiket_eduventure_experience',
+    //     biodataPeserta
+    //   ));
+    //   await directus.request(updateItem('peserta_eduventure', dataPeserta[0].id, {
+    //     kode_tagihan: dataPeserta[0].kode_tagihan === null || dataPeserta[0].kode_tagihan.length === 0 ? [orderId] : [...dataPeserta[0].kode_tagihan, orderId]
+    //   }))
+    //   return transaction
+    // })
+
+    // Xendit
+    const transactionDetail = {
+      "externalId": orderId,
+      "amount": 350000,
+      "payerEmail": biodataPeserta.email_pendaftar || '',
+      "description": `Pembelian Tiket Eduventure Experience sebanyak 1 tiket`,
+      "shouldSendEmail": true,
+      "customer": {
+        "phoneNumber": biodataPeserta.kontak?.toString() || '',
+        "givenNames": session?.user?.name?.split(" ")[0],
+        "surname": session?.user?.name?.split(" ")[1],
+        "email": biodataPeserta.email_pendaftar,
+        "mobileNumber": biodataPeserta.kontak?.toString()
       },
-      "customer_details": {
-        "first_name": session?.user?.name?.split(" ")[0],
-        "last_name": session?.user?.name?.split(" ")[1],
-        "email": biodataPeserta.email,
-        "phone": biodataPeserta.kontak,
-        "billing_address": {
-          "first_name": session?.user?.name?.split(" ")[0],
-          "last_name": session?.user?.name?.split(" ")[1],
-          "phone": biodataPeserta.kontak,
+      "currency": "IDR",
+      "locale": "ID",
+      "reminderTime": 1,
+      "items": [
+        {
+          "name": "Eduventure Experience",
+          "quantity": 1,
+          "price": 350000,
+          "caregory": "Eduventure Ticket",
+          "url": "https://eduventure.unpad.ac.id"
         }
-      },
-      "item_details": [{
-        "id": orderId,
-        "price": chosenZona?.harga_tiket,
-        "quantity": 1,
-        "name": "Eduventure Experience",
-        "brand": "Eduventure Unpad",
-      }],
-      "credit_card": {
-        "secure": true
-      }
+      ]
     }
 
-    await midTransSnap.createTransaction(transactionDetails).then(async (transaction: any) => {
-      biodataPeserta['kode_tagihan'] = orderId
-      biodataPeserta['url_tagihan'] = transaction.redirect_url
+    await xenditInvoiceClient.createInvoice({
+      data: transactionDetail,
+      // forUserId: PRIVATE_XENDIT_USERPLATFORM
+    }).then(async (transaction: any) => {
+      biodataPeserta['kode_tagihan'] = transaction.externalId
+      biodataPeserta['url_tagihan'] = transaction.invoiceUrl
 
-      await directus.request(createItem('tiket_eduventure_experience',
-        biodataPeserta
-      ));
+      console.log(transaction)
+
+      await directus.request(createItem('tiket_eduventure_experience', biodataPeserta));
       await directus.request(updateItem('peserta_eduventure', dataPeserta[0].id, {
-        kode_tagihan: dataPeserta[0].kode_tagihan === null || dataPeserta[0].kode_tagihan.length === 0 ? [orderId] : [...dataPeserta[0].kode_tagihan, orderId]
+        kode_tagihan: dataPeserta[0].kode_tagihan === null || dataPeserta[0].kode_tagihan.length === 0 ? [transaction.externalId] : [...dataPeserta[0].kode_tagihan, transaction.externalId]
       }))
       return transaction
     })
 
-    await redirect(303, '/eduventure/experience/pembayaran/' + orderId)
+    redirect(303, '/eduventure/experience/pembayaran/' + orderId)
   }
 };
