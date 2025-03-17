@@ -7,20 +7,20 @@
 
 	const eduventureExperience = {
 		color: 'green',
-		nama: 'Eduventure <br /> Experience',
-		harga: 'Rp350.000',
-		detail: 'Kaos Unpad + Snackbox',
+		nama: 'Eduventure Experience',
+		harga: 'Sold Out',
+		detail: 'See you next Eduventure!',
 		textPertama:
 			'Pematerian umum dipandu oleh Kantor Komunikasi Publik dengan durasi 30 menit di Gedung Rektorat. Kegiatan dimulai dari Gedung Rektorat dan dilanjutkan ke fakultas/sekolah menggunakan angkutan dalam kampus yang dipandu oleh panitia mahasiswa magang.',
 		textKedua:
-			'Untuk Eduventure Experience tanggal 22-23 Februari 2025, tiket sudah termasuk akses kegiatan Open House Universitas Padjadjaran',
+			'Terima Kasih kepada seluruh Peserta Eduventure Experience yang telah mengikuti Eduventure pada 22-23 Februari 2025. Kami tunggu kehadiran kalian di Eduventure Experience berikutnya!',
 		select: 'Pilih Experience',
 		url: '/eduventure/experience'
 	};
 
 	const eduventureFullPackage = {
 		color: 'orange',
-		nama: 'Eduventure <br /> Full Package',
+		nama: 'Eduventure Full Package',
 		harga: 'Spesial',
 		detail: 'Oleh MMU Event & Tour Organizer',
 		textPertama:

@@ -1,1 +1,1 @@
-HOST=localhost PORT=5170 ORIGIN=http://localhost:5170 node build
+HOST=localhost PORT=5170 ORIGIN=https://eduventure.unpad.ac.id node build

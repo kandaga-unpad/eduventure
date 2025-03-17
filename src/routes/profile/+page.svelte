@@ -6,14 +6,24 @@
 </script>
 
 <div>
-	<img src="background.webp" class="w-full h-md object-cover object-center" alt="" />
+	<img
+		src="background.webp"
+		class="w-full h-md object-cover object-center"
+		alt=""
+		referrerpolicy="no-referrer"
+	/>
 </div>
 <section>
 	<div>
 		{#if page.data.session}
 			{#if page.data.session.user?.image}
 				<div class="w-full flex items-center justify-center">
-					<img src={page.data.session.user.image} class="avatar" alt="User Avatar" />
+					<img
+						src={page.data.session.user.image}
+						class="avatar"
+						alt="User Avatar"
+						referrerpolicy="no-referrer"
+					/>
 				</div>
 			{/if}
 			<div class="flex flex-col items-center justify-center mt-5">

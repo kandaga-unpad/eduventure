@@ -12,7 +12,7 @@
 				: 'to-green-7'} rounded-t-2xl"
 		></div>
 		<div class="absolute top-1/3 text-center w-full px-5">
-			<h2 class="text-white">{@html eduventure.nama}</h2>
+			<h2 class="text-white">{eduventure.nama}</h2>
 		</div>
 	</div>
 	<div class="px-10 absolute mt--15 text-center w-full flex flex-col gap-4">

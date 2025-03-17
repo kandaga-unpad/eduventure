@@ -19,6 +19,9 @@ export const load: PageServerLoad = async ({ fetch, locals }) => {
 
   const directus = getDirectusInstance(fetch);
   const getTiketZona = await directus.request(readItems('zona_eduventure', {
+    filter: {
+      status: 'published'
+    },
     sort: 'title'
   }))
   const getPesertaBiodata = await directus.request(readItems('peserta_eduventure', {
@@ -38,8 +41,16 @@ export const actions: Actions = {
     const data = await request.formData();
     const directus = getDirectusInstance(fetch);
     const session = await locals.auth();
+    const getTiketZona = await directus.request(readItems('zona_eduventure', {
+      filter: {
+        status: 'published'
+      },
+      sort: 'title'
+    }))
 
-    const orderId = `eduventure-tiket-${Math.random().toString(36).substring(2, 15)}`
+    const chosenZona = getTiketZona.find((zona: any) => zona.id === data.get('zona'));
+
+    const orderId = `eduventure-tiket-${Math.random().toString(36).substring(2, 15)}`;
 
     const dataPeserta = await directus.request(readItems('peserta_eduventure', {
       filter: {

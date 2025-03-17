@@ -39,9 +39,12 @@ export const { handle, signIn, signOut } = SvelteKitAuth({
 
       return true;
     },
-    async redirect() {
-
-      return PRIVATE_EDUVENTURE_AUTH_URL
+    async redirect({ url, baseUrl }) {
+      // Allows relative callback URLs
+      if (url.startsWith("/")) return `${baseUrl}${url}`
+      // Allows callback URLs on the same origin
+      else if (new URL(url).origin === baseUrl) return url
+      return baseUrl
     }
   }
 })

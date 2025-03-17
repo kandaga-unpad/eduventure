@@ -1,18 +1,35 @@
-<script>
+<script lang="ts">
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
 	import { ticketStore } from '$lib/composables/ticketStore';
+	import { formatCurrency } from '$lib/composables/number';
 	import { SignIn } from '@auth/sveltekit/components';
+	import { handleAnchorClick } from '$lib/composables/link.js';
+
+	let { data } = $props();
+	const [infoZona1, infoZona2, infoZona3] = data.zonaInfo;
+
+	let closeDateTiket1 = new Date(`${infoZona1.tanggal_acara}T${infoZona1.jam_mulai}`);
+	let closeDateTiket2 = new Date(`${infoZona2.tanggal_acara}T${infoZona2.jam_mulai}`);
+	let closeDateTiket3 = new Date(`${infoZona3.tanggal_acara}T${infoZona3.jam_mulai}`);
+
+	let ticketSeatLeftZona1 = infoZona1.kuota - data.soldTicket.zona1;
+	let ticketSeatLeftZona2 = infoZona2.kuota - data.soldTicket.zona2;
+	let ticketSeatLeftZona3 = infoZona3.kuota - data.soldTicket.zona3;
+
+	let now = new Date();
 
 	let tiketZona1 = $state($ticketStore.tiketZona1);
 	let tiketZona2 = $state($ticketStore.tiketZona2);
 	let tiketZona3 = $state($ticketStore.tiketZona3);
 
-	let totalTiketZona1 = $derived(tiketZona1 * 350000);
-	let totalTiketZona2 = $derived(tiketZona2 * 350000);
-	let totalTiketZona3 = $derived(tiketZona3 * 350000);
+	let totalTiketZona1 = $derived(tiketZona1 * infoZona1.harga_tiket);
+	let totalTiketZona2 = $derived(tiketZona2 * infoZona2.harga_tiket);
+	let totalTiketZona3 = $derived(tiketZona3 * infoZona3.harga_tiket);
 
-	const addTiketZona = (/** @type {string} */ zona) => {
+	let totalAmount = $derived(totalTiketZona1 + totalTiketZona2 + totalTiketZona3);
+
+	const addTiketZona = (zona: string) => {
 		switch (zona) {
 			case 'zona1':
 				tiketZona1 += 1;
@@ -29,7 +46,7 @@
 		}
 	};
 
-	const decreaseTiketZona = (/** @type {string} */ zona) => {
+	const decreaseTiketZona = (zona: string) => {
 		switch (zona) {
 			case 'zona1':
 				if (tiketZona1 === 0) return;
@@ -85,6 +102,13 @@
 			</div>
 			<div class="mb-10 flex flex-col items-center gap-5 px-15 text-justify">
 				<h2 class="text-center my-5">Eduventure Experience <br /> Universitas Padjadjaran</h2>
+				<a
+					href="#buyTicket"
+					onclick={handleAnchorClick}
+					class="btn bg-brand-primary text-white w-full text-center xl:hidden"
+				>
+					Pesan Tiket
+				</a>
 				<img
 					src="/background.webp"
 					class="w-full rounded-lg max-h-md object-cover"
@@ -114,139 +138,181 @@
 				<figure>
 					<img src="/zona/3_zona.jpg" alt="3 Zona" />
 				</figure>
-				<h1>Merchandise Kaos Unpad</h1>
+				<!-- <h1>Merchandise Kaos Unpad</h1>
 				<figure>
 					<img src="/zona/kaosexp.jpg" class="sma-gallery" alt="" />
 					<figcaption>Kaos Unpad</figcaption>
-				</figure>
+				</figure> -->
 			</div>
 		</div>
-		<div class="flex flex-col gap-5">
+		<div class="flex flex-col gap-5" id="buyTicket">
 			<div class="bg-blue-50 p-5 rounded-lg">
 				<h5 class="text-center">Pembelian Tiket</h5>
 				<div class="bg-white p-3 my-5">
-					<p class="text-lg font-bold">Zona 1 (Ilmu Kesehatan)</p>
 					<div>
-						<p class="text-xs text-brand-primary font-bold">22 Februari 2025 | 08.00 - 12.00</p>
-					</div>
-					<hr class="my-2" />
-					<div class="grid grid-cols-3 items-center justify-center text-sm">
+						<p class="text-lg font-bold">Zona 1 (Ilmu Kesehatan)</p>
 						<div>
-							<p>Harga Tiket</p>
-							<p class="font-bold">Rp350.000</p>
+							<p class="text-xs text-brand-primary font-bold">22 Februari 2025 | 08.00 - 12.00</p>
 						</div>
-						<div class="text-center">
-							<p>Jumlah</p>
-							<div class="flex items-center text-dark">
-								<button
-									class="px-2 h-8 border-1 border-dark rounded"
-									onclick={() => decreaseTiketZona('zona1')}
-									disabled={tiketZona1 === 0}
-								>
-									-
-								</button>
-								<input
-									type="number"
-									class="h-8 p-2 rounded-none text-center"
-									bind:value={tiketZona1}
-								/>
-								<button
-									class="px-2 h-8 border-1 border-dark rounded"
-									onclick={() => addTiketZona('zona1')}
-								>
-									+
-								</button>
+					</div>
+					{#if now < closeDateTiket1}
+						<div class="bg-gray-3 p-2 rounded-lg my-3 text-center">
+							<p class="font-bold">
+								Sisa Tiket : <span class="text-red-6">{ticketSeatLeftZona1}</span>
+							</p>
+						</div>
+					{/if}
+
+					<hr class="my-2" />
+					{#if now < closeDateTiket1 && ticketSeatLeftZona1 > 0}
+						<div class="grid grid-cols-3 items-center justify-center text-sm">
+							<div>
+								<p>Harga Tiket</p>
+								<p class="font-bold">Rp 350.000</p>
+							</div>
+							<div class="text-center">
+								<p>Jumlah</p>
+								<div class="flex items-center text-dark">
+									<button
+										class="px-2 h-8 border-1 border-dark rounded"
+										onclick={() => decreaseTiketZona('zona1')}
+										disabled={tiketZona1 === 0}
+									>
+										-
+									</button>
+									<input
+										type="number"
+										class="h-8 p-2 rounded-none text-center"
+										bind:value={tiketZona1}
+									/>
+									<button
+										class="px-2 h-8 border-1 border-dark rounded"
+										onclick={() => addTiketZona('zona1')}
+									>
+										+
+									</button>
+								</div>
+							</div>
+							<div class="flex flex-col items-center">
+								<p>Total</p>
+								<p class="font-bold">{formatCurrency(totalTiketZona1)}</p>
 							</div>
 						</div>
-						<div class="flex flex-col items-center">
-							<p>Total</p>
-							<p class="font-bold">Rp{totalTiketZona1}</p>
-						</div>
-					</div>
+					{:else}
+						<p class="text-red-6 font-semibold">Pembelian Tiket Zona 1 telah ditutup</p>
+					{/if}
 				</div>
 				<div class="bg-white p-3 my-5">
-					<p class="text-lg font-bold">Zona 2 (Sosial dan Humaniora)</p>
 					<div>
-						<p class="text-xs text-brand-primary font-bold">22 Februari 2025 | 13.00 - 17.00</p>
-					</div>
-					<hr class="my-2" />
-					<div class="grid grid-cols-3 items-center justify-center text-sm">
+						<p class="text-lg font-bold">Zona 2 (Sosial dan Humaniora)</p>
 						<div>
-							<p>Harga Tiket</p>
-							<p class="font-bold">Rp350.000</p>
+							<p class="text-xs text-brand-primary font-bold">22 Februari 2025 | 13.00 - 17.00</p>
 						</div>
-						<div class="text-center">
-							<p>Jumlah</p>
-							<div class="flex items-center text-dark">
-								<button
-									class="px-2 h-8 border-1 border-dark rounded"
-									onclick={() => decreaseTiketZona('zona2')}
-									disabled={tiketZona2 === 0}
-								>
-									-
-								</button>
-								<input
-									type="number"
-									class="h-8 p-2 rounded-none text-center"
-									bind:value={tiketZona2}
-								/>
-								<button
-									class="px-2 h-8 border-1 border-dark rounded"
-									onclick={() => addTiketZona('zona2')}
-								>
-									+
-								</button>
+					</div>
+					{#if now < closeDateTiket2}
+						<div class="bg-gray-3 p-2 rounded-lg my-3 text-center">
+							<p class="font-bold">
+								Sisa Tiket : <span class="text-red-6">{ticketSeatLeftZona2}</span>
+							</p>
+						</div>
+					{/if}
+
+					<hr class="my-2" />
+					{#if now < closeDateTiket2 && ticketSeatLeftZona2 > 0}
+						<div class="grid grid-cols-3 items-center justify-center text-sm">
+							<div>
+								<p>Harga Tiket</p>
+								<p class="font-bold">Rp 350.000</p>
+							</div>
+							<div class="text-center">
+								<p>Jumlah</p>
+								<div class="flex items-center text-dark">
+									<button
+										class="px-2 h-8 border-1 border-dark rounded"
+										onclick={() => decreaseTiketZona('zona2')}
+										disabled={tiketZona2 === 0}
+									>
+										-
+									</button>
+									<input
+										type="number"
+										class="h-8 p-2 rounded-none text-center"
+										bind:value={tiketZona2}
+									/>
+									<button
+										class="px-2 h-8 border-1 border-dark rounded"
+										onclick={() => addTiketZona('zona2')}
+									>
+										+
+									</button>
+								</div>
+							</div>
+							<div class="flex flex-col items-center">
+								<p>Total</p>
+								<p class="font-bold">{formatCurrency(totalTiketZona2)}</p>
 							</div>
 						</div>
-						<div class="flex flex-col items-center">
-							<p>Total</p>
-							<p class="font-bold">Rp{totalTiketZona2}</p>
-						</div>
-					</div>
+					{:else}
+						<p class="text-red-6 font-semibold">Pembelian Tiket Zona 2 telah ditutup</p>
+					{/if}
 				</div>
 				<div class="bg-white p-3 my-5">
-					<p class="text-lg font-bold">Zona 3 (Saintek dan Agrokomplek)</p>
 					<div>
-						<p class="text-xs text-brand-primary font-bold">23 Februari 2025 | 08.00 - 12.00</p>
-					</div>
-					<hr class="my-2" />
-					<div class="grid grid-cols-3 items-center justify-center text-sm">
+						<p class="text-lg font-bold">Zona 3 (Saintek dan Agrokomplek)</p>
 						<div>
-							<p>Harga Tiket</p>
-							<p class="font-bold">Rp350.000</p>
+							<p class="text-xs text-brand-primary font-bold">23 Februari 2025 | 08.00 - 12.00</p>
 						</div>
-						<div class="text-center">
-							<p>Jumlah</p>
-							<div class="flex items-center text-dark">
-								<button
-									class="px-2 h-8 border-1 border-dark rounded"
-									onclick={() => decreaseTiketZona('zona3')}
-									disabled={tiketZona3 === 0}
-								>
-									-
-								</button>
-								<input
-									type="number"
-									class="h-8 p-2 rounded-none text-center"
-									bind:value={tiketZona3}
-								/>
-								<button
-									class="px-2 h-8 border-1 border-dark rounded"
-									onclick={() => addTiketZona('zona3')}
-								>
-									+
-								</button>
+					</div>
+					{#if now < closeDateTiket3}
+						<div class="bg-gray-3 p-2 rounded-lg my-3 text-center">
+							<p class="font-bold">
+								Sisa Tiket : <span class="text-red-6">{ticketSeatLeftZona3}</span>
+							</p>
+						</div>
+					{/if}
+
+					<hr class="my-2" />
+					{#if now < closeDateTiket3 && ticketSeatLeftZona3 > 0}
+						<div class="grid grid-cols-3 items-center justify-center text-sm">
+							<div>
+								<p>Harga Tiket</p>
+								<p class="font-bold">Rp350.000</p>
+							</div>
+							<div class="text-center">
+								<p>Jumlah</p>
+								<div class="flex items-center text-dark">
+									<button
+										class="px-2 h-8 border-1 border-dark rounded"
+										onclick={() => decreaseTiketZona('zona3')}
+										disabled={tiketZona3 === 0}
+									>
+										-
+									</button>
+									<input
+										type="number"
+										class="h-8 p-2 rounded-none text-center"
+										bind:value={tiketZona3}
+									/>
+									<button
+										class="px-2 h-8 border-1 border-dark rounded"
+										onclick={() => addTiketZona('zona3')}
+									>
+										+
+									</button>
+								</div>
+							</div>
+							<div class="flex flex-col items-center">
+								<p>Total</p>
+								<p class="font-bold">{formatCurrency(totalTiketZona3)}</p>
 							</div>
 						</div>
-						<div class="flex flex-col items-center">
-							<p>Total</p>
-							<p class="font-bold">Rp{totalTiketZona3}</p>
-						</div>
-					</div>
+					{:else}
+						<p class="text-red-6 font-semibold">Pembelian Tiket Zona 3 telah ditutup</p>
+					{/if}
 				</div>
 				<div>
-					<p>Jumlah: {tiketZona1 + tiketZona2 + tiketZona3}</p>
-					<p>Total Harga: Rp{totalTiketZona1 + totalTiketZona2 + totalTiketZona3}</p>
+					<p>Jumlah: <span class="font-semibold">{tiketZona1 + tiketZona2 + tiketZona3}</span></p>
+					<p>Total Harga: <span class="font-semibold">{formatCurrency(totalAmount)}</span></p>
 				</div>
 				{#if !page.data.session?.user}
 					<div class="flex flex-col justify-center items-center">
@@ -261,12 +327,29 @@
 					</div>
 				{/if}
 
-				<button class="btn bg-brand-primary text-white w-full mt-5" onclick={buyTicket}>
-					Beli Tiket
+				<button
+					class="btn {now > closeDateTiket3
+						? 'bg-gray-3 text-dark'
+						: 'bg-brand-primary text-white'} w-full mt-5"
+					onclick={buyTicket}
+					disabled={now > closeDateTiket3}
+				>
+					{now > closeDateTiket3 ? 'Pembelian Tiket Ditutup' : 'Beli Tiket'}
 				</button>
+				<div class="my-5 text-center">
+					<p>Ada pertanyaan atau perlu bantuan ?</p>
+					<a href="tel:082211676765" class="text-brand-primary underline">Hubungi Kami</a>
+				</div>
 			</div>
-			<div class="bg-blue-2 p-5 rounded-lg">
+			<div class="bg-white-2 p-5 rounded-lg">
 				<h5>Tambahkan ke Kalender</h5>
+				<div>
+					<a
+						href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Eduventure+Experience+Universitas+Padjadjaran&details=Kegiatan+Eduventure+Experience+Program+ini+dirancang+untuk+membantu+siswa+memahami+dunia+perkuliahan+dan+karier+yang+sesuai+dengan+minat+mereka+melalui+simulasi,+ praktik+langsung,+dan+pengalaman+seru+di+Universitas+Padjadjaran&dates=20250222T080000/20250223T170000&ctz=Indonesia/Jakarta"
+					>
+						Tambahkan ke Google Calendar
+					</a>
+				</div>
 			</div>
 		</div>
 	</div>
