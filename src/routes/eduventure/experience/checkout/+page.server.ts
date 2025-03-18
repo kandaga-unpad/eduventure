@@ -20,7 +20,7 @@ export const load: PageServerLoad = async ({ fetch, locals }) => {
   const directus = getDirectusInstance(fetch);
   const getTiketZona = await directus.request(readItems('zona_eduventure', {
     filter: {
-      status: 'published'
+      status: 'draft'
     },
     sort: 'title'
   }))
@@ -29,10 +29,16 @@ export const load: PageServerLoad = async ({ fetch, locals }) => {
       email: session?.user?.email
     }
   }))
+  const getVoucherEduventure = await directus.request(readItems('voucher_eduventure', {
+    filter: {
+      status: 'published'
+    }
+  }))
 
   return {
     zona: getTiketZona,
-    peserta: getPesertaBiodata
+    peserta: getPesertaBiodata,
+    listVoucher: getVoucherEduventure
   }
 };
 

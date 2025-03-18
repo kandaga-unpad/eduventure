@@ -24,6 +24,12 @@ export const POST: RequestHandler = async ({ request, fetch, locals }) => {
       email: body.biodataPeserta[0].email_pendaftar
     }
   }))
+  const zonaExperience = await directus.request(readItems('zona_eduventure', {
+    filter: {
+      id: dataPeserta[0].zona
+    }
+  }))
+  const chosenZona = zonaExperience[0]
 
   const { biodataPeserta } = await body;
   const orderId = `eduventure-tiket-${Math.random().toString(36).substring(2, 15)}`
@@ -126,7 +132,9 @@ export const POST: RequestHandler = async ({ request, fetch, locals }) => {
     status: 'success',
     message: 'Berhasil memesan tiket',
     // midtrans: payMidtrans,
-    xendit: processXendit,
+    // xendit: processXendit,
+    body: body,
+    zona: chosenZona,
     kode: orderId
   })
 }

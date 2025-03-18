@@ -1,4 +1,3 @@
-
 import getDirectusInstance from "$lib/server/directus";
 import { readItems, updateItems } from "@directus/sdk";
 import { json, type RequestHandler } from "@sveltejs/kit";
@@ -32,6 +31,12 @@ export const POST: RequestHandler = async ({ request }) => {
       kode_tagihan: {
         _eq: body.external_id
       }
+    }
+  }))
+
+  const getListVoucher = await directus.request(readItems('voucher_eduventure', {
+    filter: {
+      status: 'published'
     }
   }))
 

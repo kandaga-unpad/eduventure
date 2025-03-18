@@ -6,22 +6,27 @@
 
 	let { data } = $props();
 
+	let isDiscounted = $state(false);
+	const [zona1, zona2, zona3] = data.zona;
+
 	type BiodataPeserta = {
 		nama: string;
 		kontak: string;
 		email: string;
 		sekolah: string;
-		kelas: number;
+		kelas: number | null;
 		kota: string;
 		email_pendaftar: string;
 		pilihan_zona: string;
 		kode_tagihan: string;
+		voucher: string;
+		applying_voucher: boolean;
 	};
 
 	let totalTiket = $state(
 		$ticketStore.tiketZona1 + $ticketStore.tiketZona2 + $ticketStore.tiketZona3
 	);
-	let userEmailGoogle = data.session?.user?.email;
+	let userEmailGoogle = data.session?.user?.email ?? '';
 
 	let biodataPeserta: BiodataPeserta[] = $state(
 		new Array($ticketStore.tiketZona1 + $ticketStore.tiketZona2 + $ticketStore.tiketZona3).fill({
@@ -33,7 +38,9 @@
 			kota: '',
 			email_pendaftar: userEmailGoogle,
 			kode_tagihan: '',
-			pilihan_zona: ''
+			pilihan_zona: '',
+			voucher: '',
+			applying_voucher: false
 		})
 	);
 
@@ -46,7 +53,9 @@
 		kota: '',
 		email_pendaftar: userEmailGoogle,
 		kode_tagihan: '',
-		pilihan_zona: ''
+		pilihan_zona: '',
+		voucher: '',
+		applying_voucher: false
 	});
 
 	const beliTiketBulk = async () => {
@@ -102,6 +111,39 @@
 				});
 		}
 	};
+
+	const applyVoucher = async (event: Event, biodata: BiodataPeserta) => {
+		event.preventDefault();
+
+		const voucher = data.listVoucher.find((voucher) => voucher.kode_voucher === biodata.voucher);
+
+		if (biodata.pilihan_zona === '') {
+			alert('Pilih zona terlebih dahulu!');
+			return;
+		}
+
+		if (voucher) {
+			const checkVoucherAvailability = voucher.total_kuota - voucher.tiket.length;
+			const checkVoucherValidity = voucher.zona === biodata.pilihan_zona;
+			console.log(checkVoucherValidity);
+			if (!checkVoucherValidity) {
+				alert(`Voucher ${biodata.voucher} tidak bisa digunakan untuk zona ini!`);
+			} else if (checkVoucherAvailability <= 0) {
+				alert(`Voucher ${biodata.voucher} sudah habis!`);
+			} else if (checkVoucherAvailability <= 0 || !checkVoucherValidity) {
+				alert(`Voucher ${biodata.voucher} sudah tidak bisa digunakan!`);
+			} else if (biodata.applying_voucher) {
+				alert(`Voucher ${biodata.voucher} sudah digunakan!`);
+			} else {
+				$ticketStore.totalHarga = $ticketStore.totalHarga - Number(voucher.jumlah_potongan);
+				isDiscounted = true;
+				biodata.applying_voucher = true;
+				alert(`Voucher ${biodata.voucher} berhasil digunakan!`);
+			}
+		} else {
+			alert(`Voucher ${biodata.voucher} tidak ditemukan!`);
+		}
+	};
 </script>
 
 <section>
@@ -127,7 +169,7 @@
 							<td>Zona 1 (Ilmu Kesehatan)</td>
 							<td>x {$ticketStore.tiketZona1}</td>
 							<td
-								>{($ticketStore.tiketZona1 * 350000).toLocaleString('id-ID', {
+								>{($ticketStore.tiketZona1 * zona1.harga_tiket).toLocaleString('id-ID', {
 									style: 'currency',
 									currency: 'IDR'
 								})}</td
@@ -139,7 +181,7 @@
 							<td>Zona 2 (Sosial dan Humaniora)</td>
 							<td>x {$ticketStore.tiketZona2}</td>
 							<td
-								>{($ticketStore.tiketZona2 * 350000).toLocaleString('id-ID', {
+								>{($ticketStore.tiketZona2 * zona2.harga_tiket).toLocaleString('id-ID', {
 									style: 'currency',
 									currency: 'IDR'
 								})}</td
@@ -151,7 +193,7 @@
 							<td>Zona 3 (Saintek dan Agrokomplek)</td>
 							<td>x {$ticketStore.tiketZona3}</td>
 							<td
-								>{($ticketStore.tiketZona3 * 350000).toLocaleString('id-ID', {
+								>{($ticketStore.tiketZona3 * zona3.harga_tiket).toLocaleString('id-ID', {
 									style: 'currency',
 									currency: 'IDR'
 								})}</td
@@ -159,9 +201,9 @@
 						</tr>
 					{/if}
 					<tr>
-						<td class="text-right">Total: </td>
+						<td class="text-right">{isDiscounted ? 'Total (Diskon Voucher)' : 'Total'}: </td>
 						<td class="text-right" colspan="2"
-							>{(totalTiket * 350000).toLocaleString('id-ID', {
+							>{$ticketStore.totalHarga.toLocaleString('id-ID', {
 								style: 'currency',
 								currency: 'IDR'
 							})}</td
@@ -254,10 +296,31 @@
 								required
 							/>
 						</div>
+						{#if biodataPeserta[i].applying_voucher}
+							<div class="w-full my-3">
+								<h6 class="text-center text-green-6">Voucher berhasil digunakan!</h6>
+							</div>
+						{:else}
+							<div class="w-full my-3">
+								<h6 class="mb-2 text-center">Punya Kode Voucher ? input disini :</h6>
+								<input
+									type="text"
+									placeholder="Kode Voucher"
+									bind:value={biodataPeserta[i].voucher}
+								/>
+								<button
+									class={`btn w-full py-1 ${biodataPeserta[i].voucher ? 'bg-brand-primary text-white' : 'bg-gray-3 text-dark'} mt-3`}
+									onclick={(event) => applyVoucher(event, biodataPeserta[i])}
+									disabled={!biodataPeserta[i].voucher}
+								>
+									Submit
+								</button>
+							</div>
+						{/if}
 					</form>
 				{/each}
 			</div>
-			<div class="px-3 my-5">
+			<div class="px-3 my-5 flex flex-col items-center justify-center">
 				<Turnstile siteKey="0x4AAAAAAAkrRdBxvh4fqUrA" />
 				<button onclick={beliTiketBulk} class="btn bg-brand-primary text-white w-full">
 					Beli Tiket
@@ -344,6 +407,23 @@
 							required
 						/>
 					</div>
+					{#if biodataPembeli.applying_voucher}
+						<div class="w-full my-3">
+							<h6 class="text-center text-green-6">Voucher berhasil digunakan!</h6>
+						</div>
+					{:else}
+						<div class="w-full my-3">
+							<h6 class="mb-2 text-center">Punya Kode Voucher ? input disini :</h6>
+							<input type="text" placeholder="Kode Voucher" bind:value={biodataPembeli.voucher} />
+							<button
+								class={`btn w-full py-1 ${biodataPembeli.voucher ? 'bg-brand-primary text-white' : 'bg-gray-3 text-dark'} mt-3`}
+								onclick={(event) => applyVoucher(event, biodataPembeli)}
+								disabled={!biodataPembeli.voucher}
+							>
+								Submit
+							</button>
+						</div>
+					{/if}
 					<Turnstile siteKey="0x4AAAAAAAkrRdBxvh4fqUrA" />
 					<div class="px-3 my-5">
 						<button

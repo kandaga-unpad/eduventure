@@ -3,6 +3,7 @@
 	import { page } from '$app/state';
 	import { ticketStore } from '$lib/composables/ticketStore';
 	import { formatCurrency } from '$lib/composables/number';
+	import { formatDateToIndonesian } from '$lib/composables/date';
 	import { SignIn } from '@auth/sveltekit/components';
 	import { handleAnchorClick } from '$lib/composables/link.js';
 
@@ -22,23 +23,25 @@
 	let tiketZona1 = $state($ticketStore.tiketZona1);
 	let tiketZona2 = $state($ticketStore.tiketZona2);
 	let tiketZona3 = $state($ticketStore.tiketZona3);
+	let totalHarga = $state($ticketStore.totalHarga);
 
 	let totalTiketZona1 = $derived(tiketZona1 * infoZona1.harga_tiket);
 	let totalTiketZona2 = $derived(tiketZona2 * infoZona2.harga_tiket);
 	let totalTiketZona3 = $derived(tiketZona3 * infoZona3.harga_tiket);
 
-	let totalAmount = $derived(totalTiketZona1 + totalTiketZona2 + totalTiketZona3);
-
 	const addTiketZona = (zona: string) => {
 		switch (zona) {
 			case 'zona1':
 				tiketZona1 += 1;
+				totalHarga += infoZona1.harga_tiket;
 				break;
 			case 'zona2':
 				tiketZona2 += 1;
+				totalHarga += infoZona2.harga_tiket;
 				break;
 			case 'zona3':
 				tiketZona3 += 1;
+				totalHarga += infoZona3.harga_tiket;
 				break;
 			default:
 				alert('Tidak tersedia');
@@ -51,14 +54,17 @@
 			case 'zona1':
 				if (tiketZona1 === 0) return;
 				tiketZona1 -= 1;
+				totalHarga -= infoZona1.harga_tiket;
 				break;
 			case 'zona2':
 				if (tiketZona2 === 0) return;
 				tiketZona2 -= 1;
+				totalHarga -= infoZona2.harga_tiket;
 				break;
 			case 'zona3':
 				if (tiketZona3 === 0) return;
 				tiketZona3 -= 1;
+				totalHarga -= infoZona3.harga_tiket;
 				break;
 			default:
 				alert('Tidak tersedia');
@@ -150,12 +156,14 @@
 				<h5 class="text-center">Pembelian Tiket</h5>
 				<div class="bg-white p-3 my-5">
 					<div>
-						<p class="text-lg font-bold">Zona 1 (Ilmu Kesehatan)</p>
+						<p class="text-lg font-bold mb-5">{infoZona1.title}</p>
 						<div>
-							<p class="text-xs text-brand-primary font-bold">22 Februari 2025 | 08.00 - 12.00</p>
+							<p class="text-xs text-brand-primary font-bold">
+								{formatDateToIndonesian(infoZona1.tanggal_acara)} | {infoZona1.jam_mulai} - {infoZona1.jam_selesai}
+							</p>
 						</div>
 					</div>
-					{#if now < closeDateTiket1}
+					{#if now < closeDateTiket1 && infoZona1.kuota !== null}
 						<div class="bg-gray-3 p-2 rounded-lg my-3 text-center">
 							<p class="font-bold">
 								Sisa Tiket : <span class="text-red-6">{ticketSeatLeftZona1}</span>
@@ -164,7 +172,7 @@
 					{/if}
 
 					<hr class="my-2" />
-					{#if now < closeDateTiket1 && ticketSeatLeftZona1 > 0}
+					{#if (now < closeDateTiket1 && ticketSeatLeftZona1 > 0) || infoZona1.kuota === null}
 						<div class="grid grid-cols-3 items-center justify-center text-sm">
 							<div>
 								<p>Harga Tiket</p>
@@ -204,12 +212,14 @@
 				</div>
 				<div class="bg-white p-3 my-5">
 					<div>
-						<p class="text-lg font-bold">Zona 2 (Sosial dan Humaniora)</p>
+						<p class="text-lg font-bold mb-5">{infoZona2.title}</p>
 						<div>
-							<p class="text-xs text-brand-primary font-bold">22 Februari 2025 | 13.00 - 17.00</p>
+							<p class="text-xs text-brand-primary font-bold">
+								{formatDateToIndonesian(infoZona2.tanggal_acara)} | {infoZona2.jam_mulai} - {infoZona2.jam_selesai}
+							</p>
 						</div>
 					</div>
-					{#if now < closeDateTiket2}
+					{#if now < closeDateTiket2 && infoZona2.kuota !== null}
 						<div class="bg-gray-3 p-2 rounded-lg my-3 text-center">
 							<p class="font-bold">
 								Sisa Tiket : <span class="text-red-6">{ticketSeatLeftZona2}</span>
@@ -218,7 +228,7 @@
 					{/if}
 
 					<hr class="my-2" />
-					{#if now < closeDateTiket2 && ticketSeatLeftZona2 > 0}
+					{#if (now < closeDateTiket2 && ticketSeatLeftZona2 > 0) || infoZona2.kuota === null}
 						<div class="grid grid-cols-3 items-center justify-center text-sm">
 							<div>
 								<p>Harga Tiket</p>
@@ -258,12 +268,14 @@
 				</div>
 				<div class="bg-white p-3 my-5">
 					<div>
-						<p class="text-lg font-bold">Zona 3 (Saintek dan Agrokomplek)</p>
+						<p class="text-lg font-bold mb-5">{infoZona3.title}</p>
 						<div>
-							<p class="text-xs text-brand-primary font-bold">23 Februari 2025 | 08.00 - 12.00</p>
+							<p class="text-xs text-brand-primary font-bold">
+								{formatDateToIndonesian(infoZona3.tanggal_acara)} | {infoZona3.jam_mulai} - {infoZona3.jam_selesai}
+							</p>
 						</div>
 					</div>
-					{#if now < closeDateTiket3}
+					{#if now < closeDateTiket3 && infoZona3.kuota !== null}
 						<div class="bg-gray-3 p-2 rounded-lg my-3 text-center">
 							<p class="font-bold">
 								Sisa Tiket : <span class="text-red-6">{ticketSeatLeftZona3}</span>
@@ -272,7 +284,7 @@
 					{/if}
 
 					<hr class="my-2" />
-					{#if now < closeDateTiket3 && ticketSeatLeftZona3 > 0}
+					{#if (now < closeDateTiket3 && ticketSeatLeftZona3 > 0) || infoZona1.kuota === null}
 						<div class="grid grid-cols-3 items-center justify-center text-sm">
 							<div>
 								<p>Harga Tiket</p>
@@ -312,7 +324,7 @@
 				</div>
 				<div>
 					<p>Jumlah: <span class="font-semibold">{tiketZona1 + tiketZona2 + tiketZona3}</span></p>
-					<p>Total Harga: <span class="font-semibold">{formatCurrency(totalAmount)}</span></p>
+					<p>Total Harga: <span class="font-semibold">{formatCurrency(totalHarga)}</span></p>
 				</div>
 				{#if !page.data.session?.user}
 					<div class="flex flex-col justify-center items-center">
@@ -363,11 +375,11 @@
 		@apply container ma pt-30;
 	}
 
-	figcaption {
+	/*figcaption {
 		@apply text-gray-5 text-xs italic text-center pt-1;
 	}
 
-	.sma-gallery {
+	/*.sma-gallery {
 		@apply max-h-xs h-full object-cover rounded-lg;
 	}
 
