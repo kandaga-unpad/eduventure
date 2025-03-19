@@ -1,5 +1,5 @@
 import getDirectusInstance from "$lib/server/directus";
-import { readItems, updateItems } from "@directus/sdk";
+import { readItems, updateItem, updateItems } from "@directus/sdk";
 import { json, type RequestHandler } from "@sveltejs/kit";
 
 export const POST: RequestHandler = async ({ request }) => {
@@ -31,12 +31,6 @@ export const POST: RequestHandler = async ({ request }) => {
       kode_tagihan: {
         _eq: body.external_id
       }
-    }
-  }))
-
-  const getListVoucher = await directus.request(readItems('voucher_eduventure', {
-    filter: {
-      status: 'published'
     }
   }))
 
@@ -83,11 +77,42 @@ export const POST: RequestHandler = async ({ request }) => {
   // Xendit
   if (status === 'PAID') {
     const allKeys = keysOrQuery.map((item) => item.id);
+
     await directus.request(updateItems('tiket_eduventure_experience', allKeys, {
       status_pendaftaran: 'paid',
       tanggal_pembayaran: paid_at,
       response: body
     }))
+
+    const getChosenVoucher = await directus.request(readItems('voucher_eduventure', {
+      filter: {
+        status: 'published',
+        kode_voucher: {
+          _eq: keysOrQuery[0].voucher
+        }
+      }
+    }))
+
+    if ((keysOrQuery[0].voucher || keysOrQuery[0].voucher !== "") && getChosenVoucher[0].tiket.length < getChosenVoucher[0].total_kuota) {
+      const keysOrQueryIds = keysOrQuery.map((item) => item.id);
+      const buildQuery = keysOrQueryIds.map((item) => {
+        return {
+          voucher_eduventure_id: getChosenVoucher[0].id,
+          tiket_eduventure_experience_id: item
+        }
+      })
+
+      await directus.request(updateItem('voucher_eduventure', getChosenVoucher[0].id, {
+        tiket: getChosenVoucher[0].tiket.length === 0 ? buildQuery : [...getChosenVoucher[0].tiket, buildQuery]
+      })).then((res) => {
+        console.log(res)
+      })
+    } else {
+      return json({
+        status: 'failed',
+        message: 'Kuota Voucher sudah penuh',
+      })
+    }
     return json({
       status: 'success',
       message: 'Berhasil memesan tiket',

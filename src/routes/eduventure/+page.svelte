@@ -7,7 +7,7 @@
 			title: 'Eduventure Lite',
 			date: 'Sesuai Jadwal',
 			description:
-				'Eduventure Lite adalah Program Sosialisasi Universitas Padjadjaran yang diselenggarakan oleh Humas Unpad.',
+				'Eduventure Lite adalah Program Sosialisasi Universitas Padjadjaran yang diselenggarakan oleh Humas Unpad. Pematerian umum dipandu oleh Kantor Komunikasi Publik dengan durasi 60 menit di Gedung Rektorat.',
 			image: '/zona/lite.webp',
 			location: 'Universitas Padjadjaran',
 			link: '/eduventure/lite'
@@ -15,7 +15,7 @@
 		{
 			id: 2,
 			title: 'Eduventure Experience',
-			date: '22 - 23 Februari 2025',
+			date: '19 - 20 April 2025',
 			description:
 				'Eduventure Experience diselenggarakan pada Tanggal 22 - 23 Februari 2025. Tersedia 3 Zona untuk Eduventure yang bisa dipilih oleh peserta yaitu Zona Kesehatan, Zona Soshum dan Zona Saintek & Agrokomplek',
 			image: '/background.webp',

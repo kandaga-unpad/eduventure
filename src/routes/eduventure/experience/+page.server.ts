@@ -9,7 +9,7 @@ export const load: PageServerLoad = async ({ fetch }) => {
   const getZonaInfo = await directus.request(readItems('zona_eduventure', {
     filter: {
       status: {
-        _eq: 'draft'
+        _eq: 'published'
       }
     },
     sort: 'title'

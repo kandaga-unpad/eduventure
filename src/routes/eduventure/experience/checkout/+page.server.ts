@@ -20,7 +20,7 @@ export const load: PageServerLoad = async ({ fetch, locals }) => {
   const directus = getDirectusInstance(fetch);
   const getTiketZona = await directus.request(readItems('zona_eduventure', {
     filter: {
-      status: 'draft'
+      status: 'published'
     },
     sort: 'title'
   }))
@@ -77,6 +77,8 @@ export const actions: Actions = {
       url_tagihan: ''
     }
 
+    const totalHarga = data.get('total_harga');
+
     // Midtrans
     // const transactionDetails = {
     //   "transaction_details": {
@@ -122,7 +124,7 @@ export const actions: Actions = {
     // Xendit
     const transactionDetail = {
       "externalId": orderId,
-      "amount": 350000,
+      "amount": Number(totalHarga),
       "payerEmail": biodataPeserta.email_pendaftar || '',
       "description": `Pembelian Tiket Eduventure Experience sebanyak 1 tiket`,
       "shouldSendEmail": true,
@@ -140,8 +142,8 @@ export const actions: Actions = {
         {
           "name": "Eduventure Experience",
           "quantity": 1,
-          "price": 350000,
-          "caregory": "Eduventure Ticket",
+          "price": Number(totalHarga),
+          "category": "Eduventure Ticket",
           "url": "https://eduventure.unpad.ac.id"
         }
       ]

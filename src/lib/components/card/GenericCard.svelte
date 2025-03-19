@@ -31,11 +31,11 @@
 		</div>
 	</div>
 	<div class="flex flex-col justify-between h-2xl">
-		<div class="mt-35 p-10 text-center">
+		<div class="mt-30 p-10 text-center">
 			<p>
 				{eduventure.textPertama}
 			</p>
-			<p class="mt-10">
+			<p class="mt-10 text-sm">
 				{@html eduventure.textKedua}
 			</p>
 		</div>

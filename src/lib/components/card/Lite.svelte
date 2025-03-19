@@ -29,7 +29,9 @@
 				merchandise berupa kaos Unpad) dan Rp100.000/siswa (mendapatkan merchandise berupa tote bag
 				Unpad).
 			</p>
-			<p class="mt-10">Silahkan isi form pendaftaran <br /> untuk mendaftar Eduventure Lite.</p>
+			<p class="mt-10 text-sm">
+				Silahkan isi form pendaftaran <br /> untuk mendaftar Eduventure Lite.
+			</p>
 		</div>
 		<div class="p-10">
 			<a href="/eduventure/lite">

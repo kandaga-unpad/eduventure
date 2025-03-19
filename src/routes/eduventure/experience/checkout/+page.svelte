@@ -55,7 +55,8 @@
 		kode_tagihan: '',
 		pilihan_zona: '',
 		voucher: '',
-		applying_voucher: false
+		applying_voucher: false,
+		total_harga: $ticketStore.totalHarga
 	});
 
 	const beliTiketBulk = async () => {
@@ -85,7 +86,8 @@
 					tiketZona1: $ticketStore.tiketZona1,
 					tiketZona2: $ticketStore.tiketZona2,
 					tiketZona3: $ticketStore.tiketZona3,
-					biodataPeserta
+					biodataPeserta,
+					totalHarga: $ticketStore.totalHarga
 				})
 			})
 				.then(async (res) => {
@@ -127,21 +129,25 @@
 			const checkVoucherValidity = voucher.zona === biodata.pilihan_zona;
 			console.log(checkVoucherValidity);
 			if (!checkVoucherValidity) {
-				alert(`Voucher ${biodata.voucher} tidak bisa digunakan untuk zona ini!`);
+				alert(`Voucher "${biodata.voucher}" tidak bisa digunakan untuk zona ini!`);
+				biodata.voucher = '';
 			} else if (checkVoucherAvailability <= 0) {
-				alert(`Voucher ${biodata.voucher} sudah habis!`);
+				alert(`Voucher "${biodata.voucher}" sudah habis!`);
+				biodata.voucher = '';
 			} else if (checkVoucherAvailability <= 0 || !checkVoucherValidity) {
-				alert(`Voucher ${biodata.voucher} sudah tidak bisa digunakan!`);
+				alert(`Voucher "${biodata.voucher}" sudah tidak bisa digunakan!`);
+				biodata.voucher = '';
 			} else if (biodata.applying_voucher) {
-				alert(`Voucher ${biodata.voucher} sudah digunakan!`);
+				alert(`Voucher "${biodata.voucher}" sudah digunakan!`);
+				biodata.voucher = '';
 			} else {
 				$ticketStore.totalHarga = $ticketStore.totalHarga - Number(voucher.jumlah_potongan);
 				isDiscounted = true;
 				biodata.applying_voucher = true;
-				alert(`Voucher ${biodata.voucher} berhasil digunakan!`);
+				alert(`Voucher "${biodata.voucher}"" berhasil digunakan!`);
 			}
 		} else {
-			alert(`Voucher ${biodata.voucher} tidak ditemukan!`);
+			alert(`Voucher "${biodata.voucher}" tidak ditemukan!`);
 		}
 	};
 </script>
@@ -166,7 +172,7 @@
 				<tbody>
 					{#if $ticketStore.tiketZona1 > 0}
 						<tr>
-							<td>Zona 1 (Ilmu Kesehatan)</td>
+							<td>Zona 1 (Sosial dan Humaniora)</td>
 							<td>x {$ticketStore.tiketZona1}</td>
 							<td
 								>{($ticketStore.tiketZona1 * zona1.harga_tiket).toLocaleString('id-ID', {
@@ -178,7 +184,7 @@
 					{/if}
 					{#if $ticketStore.tiketZona2 > 0}
 						<tr>
-							<td>Zona 2 (Sosial dan Humaniora)</td>
+							<td>Zona 2 (Saintek dan Agrokomplek)</td>
 							<td>x {$ticketStore.tiketZona2}</td>
 							<td
 								>{($ticketStore.tiketZona2 * zona2.harga_tiket).toLocaleString('id-ID', {
@@ -190,7 +196,7 @@
 					{/if}
 					{#if $ticketStore.tiketZona3 > 0}
 						<tr>
-							<td>Zona 3 (Saintek dan Agrokomplek)</td>
+							<td>Zona 3 (Ilmu Kesehatan)</td>
 							<td>x {$ticketStore.tiketZona3}</td>
 							<td
 								>{($ticketStore.tiketZona3 * zona3.harga_tiket).toLocaleString('id-ID', {

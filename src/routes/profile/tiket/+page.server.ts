@@ -25,9 +25,30 @@ export const load: PageServerLoad = async (events) => {
     filter: {
       email_pendaftar: {
         _eq: getUserProfile[0].email
+      },
+      pilihan_zona: {
+        status: {
+          _eq: 'published'
+        }
       }
     },
-    fields: ['*', 'pilihan_zona.*']
+    fields: ['*', 'pilihan_zona.*'],
+    sort: '-date_created'
+  }))
+
+  const getHistoricalTicket = await directus.request(readItems('tiket_eduventure_experience', {
+    filter: {
+      email_pendaftar: {
+        _eq: getUserProfile[0].email
+      },
+      pilihan_zona: {
+        status: {
+          _eq: 'draft'
+        }
+      }
+    },
+    fields: ['*', 'pilihan_zona.*'],
+    sort: '-date_created',
   }))
 
   const zonaMapping = {
@@ -47,6 +68,7 @@ export const load: PageServerLoad = async (events) => {
 
   return {
     tagihan: getDetailTagihan,
+    historicalTiket: getHistoricalTicket,
     totalTiket: countPilihanZona,
     session: session
   };
