@@ -14,8 +14,6 @@ export const POST: RequestHandler = async ({ request }) => {
 
   const directus = getDirectusInstance(fetch);
 
-  console.log(body);
-
   // Midtrans
   // const keysOrQuery = await directus.request(readItems('tiket_eduventure_experience', {
   //   filter: {
@@ -77,6 +75,7 @@ export const POST: RequestHandler = async ({ request }) => {
   // Xendit
   if (status === 'PAID') {
     const allKeys = keysOrQuery.map((item) => item.id);
+    let getChosenVoucher: any[] = [];
 
     await directus.request(updateItems('tiket_eduventure_experience', allKeys, {
       status_pendaftaran: 'paid',
@@ -84,15 +83,19 @@ export const POST: RequestHandler = async ({ request }) => {
       response: body
     }))
 
-    const getChosenVoucher = await directus.request(readItems('voucher_eduventure', {
-      filter: {
-        status: 'published',
-        kode_voucher: {
-          _contains: keysOrQuery[0].voucher
-        }
-      },
-      fields: ['*', 'tiket.*']
-    }))
+    if (keysOrQuery[0]?.voucher !== "") {
+      getChosenVoucher = await directus.request(readItems('voucher_eduventure', {
+        filter: {
+          status: 'published',
+          kode_voucher: {
+            _eq: keysOrQuery[0].voucher
+          }
+        },
+        fields: ['*', 'tiket.*']
+      }))
+    }
+
+    console.log(getChosenVoucher)
 
     if ((keysOrQuery[0]?.voucher || keysOrQuery[0]?.voucher !== "") && getChosenVoucher[0]?.tiket.length < getChosenVoucher[0]?.total_kuota) {
       const filteredTiket = keysOrQuery.filter((item) => item.voucher === getChosenVoucher[0]?.kode_voucher);
@@ -108,8 +111,6 @@ export const POST: RequestHandler = async ({ request }) => {
       newVoucherQuery.forEach((item) => {
         listTiketVoucher.push(item)
       })
-      console.log("listTiketVoucher: ", listTiketVoucher)
-      console.log("newVoucherQuery: ", newVoucherQuery)
 
       await directus.request(updateItem('voucher_eduventure', getChosenVoucher[0].id, {
         tiket: getChosenVoucher[0].tiket.length === 0 ? newVoucherQuery : listTiketVoucher
