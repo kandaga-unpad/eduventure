@@ -87,7 +87,9 @@
 					<p>Jumlah yang harus dibayarkan :</p>
 					<button onclick={copyJumlah} class="bg-transparent">
 						<h2>
-							{formatCurrency(data.tagihan[0].harga_akhir ?? $ticketStore.totalHarga)}
+							{formatCurrency(
+								data.tagihan.length > 1 ? data.tagihan.length * 350000 : data.tagihan[0].harga_akhir
+							)}
 						</h2>
 					</button>
 				</div>
