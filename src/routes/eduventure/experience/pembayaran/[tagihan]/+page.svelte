@@ -1,4 +1,7 @@
 <script>
+	import { formatCurrency } from '$lib/composables/number';
+	import { ticketStore } from '$lib/composables/ticketStore';
+
 	let { data } = $props();
 
 	const copyJumlah = () => {
@@ -84,10 +87,7 @@
 					<p>Jumlah yang harus dibayarkan :</p>
 					<button onclick={copyJumlah} class="bg-transparent">
 						<h2>
-							{(data.tagihan.length * 350000).toLocaleString('id-ID', {
-								style: 'currency',
-								currency: 'IDR'
-							})}
+							{formatCurrency(data.tagihan[0].harga_akhir ?? $ticketStore.totalHarga)}
 						</h2>
 					</button>
 				</div>

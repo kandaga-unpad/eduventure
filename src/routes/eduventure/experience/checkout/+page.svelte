@@ -27,6 +27,15 @@
 		$ticketStore.tiketZona1 + $ticketStore.tiketZona2 + $ticketStore.tiketZona3
 	);
 	let userEmailGoogle = data.session?.user?.email ?? '';
+	const chosenZona = () => {
+		if ($ticketStore.tiketZona1 === 1) {
+			return zona1.id;
+		} else if ($ticketStore.tiketZona2 === 1) {
+			return zona2.id;
+		} else if ($ticketStore.tiketZona3 === 1) {
+			return zona3.id;
+		}
+	};
 
 	let biodataPeserta: BiodataPeserta[] = $state(
 		new Array($ticketStore.tiketZona1 + $ticketStore.tiketZona2 + $ticketStore.tiketZona3).fill({
@@ -53,10 +62,9 @@
 		kota: '',
 		email_pendaftar: userEmailGoogle,
 		kode_tagihan: '',
-		pilihan_zona: '',
+		pilihan_zona: chosenZona(),
 		voucher: '',
-		applying_voucher: false,
-		total_harga: $ticketStore.totalHarga
+		applying_voucher: false
 	});
 
 	const beliTiketBulk = async () => {
@@ -114,7 +122,7 @@
 		}
 	};
 
-	const applyVoucher = async (event: Event, biodata: BiodataPeserta) => {
+	const applyVoucher = async (event: Event, biodata: any) => {
 		event.preventDefault();
 
 		const voucher = data.listVoucher.find((voucher) => voucher.kode_voucher === biodata.voucher);
@@ -127,7 +135,6 @@
 		if (voucher) {
 			const checkVoucherAvailability = voucher.total_kuota - voucher.tiket.length;
 			const checkVoucherValidity = voucher.zona === biodata.pilihan_zona;
-			console.log(checkVoucherValidity);
 			if (!checkVoucherValidity) {
 				alert(`Voucher "${biodata.voucher}" tidak bisa digunakan untuk zona ini!`);
 				biodata.voucher = '';
@@ -148,6 +155,7 @@
 			}
 		} else {
 			alert(`Voucher "${biodata.voucher}" tidak ditemukan!`);
+			biodata.voucher = '';
 		}
 	};
 </script>
@@ -344,6 +352,7 @@
 								<option value={zona.id}>{zona.title}</option>
 							{/each}
 						</select>
+						{biodataPembeli.pilihan_zona}
 					</div>
 					<div class="form-input">
 						<label for="nama">Nama :</label>
@@ -413,6 +422,15 @@
 							required
 						/>
 					</div>
+					<div>
+						<input
+							type="hidden"
+							bind:value={$ticketStore.totalHarga}
+							id="total_harga"
+							name="total_harga"
+							required
+						/>
+					</div>
 					{#if biodataPembeli.applying_voucher}
 						<div class="w-full my-3">
 							<h6 class="text-center text-green-6">Voucher berhasil digunakan!</h6>
@@ -420,7 +438,13 @@
 					{:else}
 						<div class="w-full my-3">
 							<h6 class="mb-2 text-center">Punya Kode Voucher ? input disini :</h6>
-							<input type="text" placeholder="Kode Voucher" bind:value={biodataPembeli.voucher} />
+							<input
+								type="text"
+								placeholder="Kode Voucher"
+								id="voucher"
+								name="voucher"
+								bind:value={biodataPembeli.voucher}
+							/>
 							<button
 								class={`btn w-full py-1 ${biodataPembeli.voucher ? 'bg-brand-primary text-white' : 'bg-gray-3 text-dark'} mt-3`}
 								onclick={(event) => applyVoucher(event, biodataPembeli)}

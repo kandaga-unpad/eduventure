@@ -73,8 +73,10 @@ export const actions: Actions = {
       kota: data.get('kota'),
       email_pendaftar: session?.user?.email,
       pilihan_zona: data.get('zona'),
+      voucher: data.get('voucher'),
       kode_tagihan: '',
-      url_tagihan: ''
+      url_tagihan: '',
+      harga_akhir: data.get('total_harga'),
     }
 
     const totalHarga = data.get('total_harga');
@@ -156,13 +158,13 @@ export const actions: Actions = {
       biodataPeserta['kode_tagihan'] = transaction.externalId
       biodataPeserta['url_tagihan'] = transaction.invoiceUrl
 
-      console.log(transaction)
-
       await directus.request(createItem('tiket_eduventure_experience', biodataPeserta));
       await directus.request(updateItem('peserta_eduventure', dataPeserta[0].id, {
         kode_tagihan: dataPeserta[0].kode_tagihan === null || dataPeserta[0].kode_tagihan.length === 0 ? [transaction.externalId] : [...dataPeserta[0].kode_tagihan, transaction.externalId]
       }))
       return transaction
+    }).catch((err: any) => {
+      console.log(err)
     })
 
     redirect(303, '/eduventure/experience/pembayaran/' + orderId)

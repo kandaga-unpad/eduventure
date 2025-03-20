@@ -90,29 +90,34 @@ export const POST: RequestHandler = async ({ request }) => {
         kode_voucher: {
           _eq: keysOrQuery[0].voucher
         }
-      }
+      },
+      fields: ['*', 'tiket.*']
     }))
 
-    if ((keysOrQuery[0].voucher || keysOrQuery[0].voucher !== "") && getChosenVoucher[0].tiket.length < getChosenVoucher[0].total_kuota) {
-      const keysOrQueryIds = keysOrQuery.map((item) => item.id);
-      const buildQuery = keysOrQueryIds.map((item) => {
+    console.log(getChosenVoucher)
+
+    if ((keysOrQuery[0]?.voucher || keysOrQuery[0]?.voucher !== "") && getChosenVoucher[0]?.tiket.length < getChosenVoucher[0]?.total_kuota) {
+      const filteredTiket = keysOrQuery.filter((item) => item.voucher === getChosenVoucher[0]?.kode_voucher);
+      const keysOrQueryIds = filteredTiket.map((item) => item.id);
+      let listTiketVoucher = getChosenVoucher[0].tiket;
+      let newVoucherQuery = keysOrQueryIds.map((item) => {
         return {
           voucher_eduventure_id: getChosenVoucher[0].id,
           tiket_eduventure_experience_id: item
         }
       })
 
+      newVoucherQuery.forEach((item) => {
+        listTiketVoucher.push(item)
+      })
+      console.log("listTiketVoucher: ", listTiketVoucher)
+      console.log("newVoucherQuery: ", newVoucherQuery)
+
       await directus.request(updateItem('voucher_eduventure', getChosenVoucher[0].id, {
-        tiket: getChosenVoucher[0].tiket.length === 0 ? buildQuery : [...getChosenVoucher[0].tiket, buildQuery]
-      })).then((res) => {
-        console.log(res)
-      })
-    } else {
-      return json({
-        status: 'failed',
-        message: 'Kuota Voucher sudah penuh',
-      })
+        tiket: getChosenVoucher[0].tiket.length === 0 ? newVoucherQuery : listTiketVoucher
+      }))
     }
+
     return json({
       status: 'success',
       message: 'Berhasil memesan tiket',

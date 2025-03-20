@@ -3,6 +3,7 @@
 	import { page } from '$app/state';
 	import { ticketStore } from '$lib/composables/ticketStore';
 	import { formatCurrency } from '$lib/composables/number';
+	import { cutString } from '$lib/composables/string';
 	import { formatDateToIndonesian } from '$lib/composables/date';
 	import { SignIn } from '@auth/sveltekit/components';
 	import { handleAnchorClick } from '$lib/composables/link.js';
@@ -158,7 +159,7 @@
 					<div>
 						<div class="bg-white p-3 my-5">
 							<div>
-								<p class="text-lg font-bold mb-5">{infoZona1.title}</p>
+								<p class="text-lg font-bold mb-5">{cutString(infoZona1.title)}</p>
 								<div>
 									<p class="text-xs text-brand-primary font-bold">
 										{formatDateToIndonesian(infoZona1.tanggal_acara)} | {infoZona1.jam_mulai} - {infoZona1.jam_selesai}
@@ -174,11 +175,13 @@
 							{/if}
 
 							<hr class="my-2" />
-							{#if (now < closeDateTiket1 && ticketSeatLeftZona1 > 0) || infoZona1.kuota === null}
+							{#if infoZona1.is_open === 'closed'}
+								<p class="text-red-6 font-semibold">Pembelian Tiket Zona 1 belum dibuka</p>
+							{:else if (now < closeDateTiket1 && ticketSeatLeftZona1 > 0) || infoZona1.kuota === null}
 								<div class="grid grid-cols-3 items-center justify-center text-sm">
 									<div>
 										<p>Harga Tiket</p>
-										<p class="font-bold">Rp 350.000</p>
+										<p class="font-bold">{formatCurrency(infoZona1.harga_tiket)}</p>
 									</div>
 									<div class="text-center">
 										<p>Jumlah</p>
@@ -214,7 +217,7 @@
 						</div>
 						<div class="bg-white p-3 my-5">
 							<div>
-								<p class="text-lg font-bold mb-5">{infoZona2.title}</p>
+								<p class="text-lg font-bold mb-5">{cutString(infoZona2.title)}</p>
 								<div>
 									<p class="text-xs text-brand-primary font-bold">
 										{formatDateToIndonesian(infoZona2.tanggal_acara)} | {infoZona2.jam_mulai} - {infoZona2.jam_selesai}
@@ -230,11 +233,13 @@
 							{/if}
 
 							<hr class="my-2" />
-							{#if (now < closeDateTiket2 && ticketSeatLeftZona2 > 0) || infoZona2.kuota === null}
+							{#if infoZona2.is_open === 'closed'}
+								<p class="text-red-6 font-semibold">Pembelian Tiket Zona 2 belum dibuka</p>
+							{:else if (now < closeDateTiket2 && ticketSeatLeftZona2 > 0) || infoZona2.kuota === null}
 								<div class="grid grid-cols-3 items-center justify-center text-sm">
 									<div>
 										<p>Harga Tiket</p>
-										<p class="font-bold">Rp 350.000</p>
+										<p class="font-bold">{formatCurrency(infoZona2.harga_tiket)}</p>
 									</div>
 									<div class="text-center">
 										<p>Jumlah</p>
@@ -270,7 +275,7 @@
 						</div>
 						<div class="bg-white p-3 my-5">
 							<div>
-								<p class="text-lg font-bold mb-5">{infoZona3.title}</p>
+								<p class="text-lg font-bold mb-5">{cutString(infoZona3.title)}</p>
 								<div>
 									<p class="text-xs text-brand-primary font-bold">
 										{formatDateToIndonesian(infoZona3.tanggal_acara)} | {infoZona3.jam_mulai} - {infoZona3.jam_selesai}
@@ -286,11 +291,13 @@
 							{/if}
 
 							<hr class="my-2" />
-							{#if (now < closeDateTiket3 && ticketSeatLeftZona3 > 0) || infoZona1.kuota === null}
+							{#if infoZona3.is_open === 'closed'}
+								<p class="text-red-6 font-semibold">Pembelian Tiket Zona 2 belum dibuka</p>
+							{:else if (now < closeDateTiket3 && ticketSeatLeftZona3 > 0) || infoZona1.kuota === null}
 								<div class="grid grid-cols-3 items-center justify-center text-sm">
 									<div>
 										<p>Harga Tiket</p>
-										<p class="font-bold">Rp350.000</p>
+										<p class="font-bold">{formatCurrency(infoZona3.harga_tiket)}</p>
 									</div>
 									<div class="text-center">
 										<p>Jumlah</p>

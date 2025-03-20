@@ -10,12 +10,22 @@ export const load: PageServerLoad = async ({ fetch, params }) => {
       kode_tagihan: params.tagihan
     }
   }))
+  const getActiveZona = await directus.request(readItems('zona_eduventure', {
+    filter: {
+      status: 'published'
+    }
+  }))
 
-  const zonaMapping = {
-    '61E35DCF-BBE3-493A-ADD8-7413FD71C317': 'zona_kesehatan',
-    '893DB4C7-9969-4D6E-A33E-E556103FE0C8': 'zona_saintek',
-    '3388F6AC-00E0-48D7-AE3B-01B04307F803': 'zona_soshum',
-  }
+  const zonaMapping = getActiveZona.reduce((acc, item) => {
+    if (item.title.includes('Sosial dan Humaniora')) {
+      acc[item.id] = 'zona_soshum';
+    } else if (item.title.includes('Saintek dan Agrokomplek')) {
+      acc[item.id] = 'zona_saintek';
+    } else if (item.title.includes('Ilmu Kesehatan')) {
+      acc[item.id] = 'zona_kesehatan';
+    }
+    return acc;
+  }, {});
 
   const countPilihanZona = getDetailTagihan.reduce((acc, item) => {
     const pilihanZona = item.pilihan_zona as keyof typeof zonaMapping;
