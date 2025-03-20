@@ -55,17 +55,17 @@
 				<div class="grid grid-cols-3 gap-2">
 					<div>
 						<h5>Zona 1</h5>
-						<h1>{data.totalTiket.zona_kesehatan ?? 0}</h1>
-						<p>Tiket</p>
-					</div>
-					<div>
-						<h5>Zona 2</h5>
 						<h1>{data.totalTiket.zona_soshum ?? 0}</h1>
 						<p>Tiket</p>
 					</div>
 					<div>
-						<h5>Zona 3</h5>
+						<h5>Zona 2</h5>
 						<h1>{data.totalTiket.zona_saintek ?? 0}</h1>
+						<p>Tiket</p>
+					</div>
+					<div>
+						<h5>Zona 3</h5>
+						<h1>{data.totalTiket.zona_kesehatan ?? 0}</h1>
 						<p>Tiket</p>
 					</div>
 				</div>
