@@ -352,7 +352,6 @@
 								<option value={zona.id}>{zona.title}</option>
 							{/each}
 						</select>
-						{biodataPembeli.pilihan_zona}
 					</div>
 					<div class="form-input">
 						<label for="nama">Nama :</label>

@@ -88,13 +88,11 @@ export const POST: RequestHandler = async ({ request }) => {
       filter: {
         status: 'published',
         kode_voucher: {
-          _eq: keysOrQuery[0].voucher
+          _contains: keysOrQuery[0].voucher
         }
       },
       fields: ['*', 'tiket.*']
     }))
-
-    console.log(getChosenVoucher)
 
     if ((keysOrQuery[0]?.voucher || keysOrQuery[0]?.voucher !== "") && getChosenVoucher[0]?.tiket.length < getChosenVoucher[0]?.total_kuota) {
       const filteredTiket = keysOrQuery.filter((item) => item.voucher === getChosenVoucher[0]?.kode_voucher);
