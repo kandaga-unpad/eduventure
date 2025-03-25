@@ -11,9 +11,9 @@
 		harga: 'Sold Out',
 		detail: 'See you next Eduventure!',
 		textPertama:
-			'Pematerian umum dipandu oleh Kantor Komunikasi Publik dengan durasi 30 menit di Gedung Rektorat. Kegiatan dimulai dari Gedung Rektorat dan dilanjutkan ke fakultas/sekolah menggunakan angkutan dalam kampus yang dipandu oleh panitia mahasiswa magang.',
+			'Program simulasi dan praktik langsung ke fakultas/program studi yang ada di Unpad. Tersedia 3 zona pilihan, yaitu zona 1 (Sosial dan Humaniora), zona 2 (Saintek dan Agrokomplek), dan zona 3 (Ilmu Kesehatan).',
 		textKedua:
-			'Terima Kasih kepada seluruh Peserta Eduventure Experience yang telah mengikuti Eduventure pada 22-23 Februari 2025. Kami tunggu kehadiran kalian di Eduventure Experience berikutnya!',
+			'Terbuka untuk siswa SMP, SMA (sederajat) maupun Gap Year. Eduventure Experience akan dilaksanakan pada 19 - 20 April 2025. Klik untuk daftar dan pilih zona.',
 		select: 'Pilih Experience',
 		url: '/eduventure/experience'
 	};

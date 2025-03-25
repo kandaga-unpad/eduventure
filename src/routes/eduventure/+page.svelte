@@ -17,7 +17,7 @@
 			title: 'Eduventure Experience',
 			date: '19 - 20 April 2025',
 			description:
-				'Eduventure Experience diselenggarakan pada Tanggal 22 - 23 Februari 2025. Tersedia 3 Zona untuk Eduventure yang bisa dipilih oleh peserta yaitu Zona Kesehatan, Zona Soshum dan Zona Saintek & Agrokomplek',
+				'Unpad Eduventure Experience adalah program edukasi interaktif yang dirancang untuk siswa SMP, SMA, dan sederajat. Tersedia 3 Zona untuk Eduventure yang bisa dipilih oleh peserta yaitu Zona Kesehatan, Zona Soshum dan Zona Saintek & Agrokomplek',
 			image: '/background.webp',
 			location: 'Universitas Padjadjaran',
 			link: '/eduventure/experience'

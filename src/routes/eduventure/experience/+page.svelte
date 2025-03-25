@@ -122,28 +122,26 @@
 					alt="Eduventure Experience"
 				/>
 				<p>
-					Unpad Eduventure adalah program edukasi interaktif yang dirancang untuk siswa SMP dan SMA
-					(dan sederajat). Kegiatan ini menggabungkan konsep pendidikan dan pengalaman yang berfokus
-					pada eksplorasi fakultas dan program studi yang ada di Universitas Padjadjaran. Program
-					ini dirancang untuk membantu siswa memahami dunia perkuliahan dan karier yang sesuai
-					dengan minat mereka melalui simulasi, praktik langsung, dan pengalaman seru.
+					Unpad Eduventure Experience adalah program edukasi interaktif yang dirancang untuk siswa
+					SMP, SMA, dan sederajat. Kegiatan ini menggabungkan konsep pendidikan dan pengalaman yang
+					berfokus pada eksplorasi fakultas dan program studi yang ada di Universitas Padjadjaran,
+					bertujuan untuk membantu siswa menemukan program studi dan memahami dunia perkuliahan
+					serta karier yang sesuai dengan minat mereka melalui simulasi dan praktik langsung.
 				</p>
 				<p>
-					Pematerian umum dipandu oleh Kantor Komunikasi Publik dengan durasi 30 menit di Gedung
-					Rektorat. Setiap sesi pengalaman di fakultas/sekolah berlangsung selama 30 menit dan
-					dipandu oleh satu mahasiswa yang ditugaskan oleh fakultas/sekolah. Kegiatan dimulai dari
-					Gedung Rektorat dan dilanjutkan ke fakultas/sekolah menggunakan angkutan dalam kampus yang
-					dipandu oleh panitia mahasiswa magang. Program ini dilaksanakan sesuai jadwal yang telah
-					ditentukan oleh Universitas Padjadjaran.
+					Kegiatan dimulai dari Gedung Rektorat Unpad Jatinangor dan dilanjutkan ke fakultas/sekolah
+					Unpad menggunakan angkutan dalam kampus yang dipandu oleh panitia. Setiap sesi pengalaman
+					di fakultas/sekolah berlangsung selama 50 menit dan dipandu oleh satu mahasiswa dan dosen
+					dari masing-masing fakultas/sekolah.
 				</p>
 				<p>
-					Harga tiket 1 zona adalah Rp350.000 per siswa termasuk merchandise kaos Unpad dan makanan
-					ringan. Untuk Eduventure Experience tanggal 22-23 Februari 2025, tiket sudah termasuk
-					akses kegiatan Open House Universitas Padjadjaran.
+					Harga tiket 1 zona adalah Rp350.000 per siswa, sudah termasuk merchandise tote bag Unpad
+					dan makanan ringan. Kegiatan Eduventure Experience akan dilaksanakan pada tanggal 19-20
+					April 2025.
 				</p>
 				<p>Terdapat 3 Zona untuk Eduventure yakni:</p>
 				<figure>
-					<img src="/zona/3_zona.jpg" alt="3 Zona" />
+					<img src="/zona/experience.webp" alt="3 Zona" />
 				</figure>
 				<!-- <h1>Merchandise Kaos Unpad</h1>
 				<figure>
