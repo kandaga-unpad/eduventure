@@ -409,6 +409,7 @@
 
 	/* Firefox */
 	input[type='number'] {
-		-appearance: textfield;
+		appearance: textfield;
+		-moz-appearance: textfield;
 	}
 </style>
