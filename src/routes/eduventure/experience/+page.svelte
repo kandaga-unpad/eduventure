@@ -374,7 +374,7 @@
 				<h5>Tambahkan ke Kalender</h5>
 				<div>
 					<a
-						href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Eduventure+Experience+Universitas+Padjadjaran&details=Kegiatan+Eduventure+Experience+Program+ini+dirancang+untuk+membantu+siswa+memahami+dunia+perkuliahan+dan+karier+yang+sesuai+dengan+minat+mereka+melalui+simulasi,+ praktik+langsung,+dan+pengalaman+seru+di+Universitas+Padjadjaran&dates=20250222T080000/20250223T170000&ctz=Indonesia/Jakarta"
+						href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Eduventure+Experience+Universitas+Padjadjaran&details=Kegiatan+Eduventure+Experience+Program+ini+dirancang+untuk+membantu+siswa+memahami+dunia+perkuliahan+dan+karier+yang+sesuai+dengan+minat+mereka+melalui+simulasi,+ praktik+langsung,+dan+pengalaman+seru+di+Universitas+Padjadjaran&dates=20250419T080000/20250320T170000&ctz=Indonesia/Jakarta"
 					>
 						Tambahkan ke Google Calendar
 					</a>
