@@ -1,11 +1,11 @@
 <script>
+	import { formatDateToIndonesianWithTime } from '$lib/composables/date';
 	import { formatCurrency } from '$lib/composables/number';
-	import { ticketStore } from '$lib/composables/ticketStore';
 
 	let { data } = $props();
 
 	const copyJumlah = () => {
-		navigator.clipboard.writeText(String(data.tagihan.length * 350000));
+		navigator.clipboard.writeText(String(data.invoiceXendit.amount));
 		alert('Jumlah tagihan berhasil disalin');
 	};
 </script>
@@ -84,14 +84,19 @@
 					<p></p>
 				</div>
 				<div class="mt-10 py-5 bg-blue-2 rounded-b-xl">
-					<p>Jumlah yang harus dibayarkan :</p>
+					<p class="font-semibold">Jumlah yang harus dibayarkan :</p>
 					<button onclick={copyJumlah} class="bg-transparent">
-						<h2>
-							{formatCurrency(
-								data.tagihan.length > 1 ? data.tagihan.length * 350000 : data.tagihan[0].harga_akhir
-							)}
+						<h2 class="text-green-6">
+							{formatCurrency(data.invoiceXendit.amount)}
 						</h2>
 					</button>
+					<p class="text-xs mt-2 italic">
+						Silahkan bayar sebelum tanggal : <br />
+						<span class="font-bold text-red-6">
+							<!-- {formatDateToIndonesianWithTime(data.invoiceXendit.expiryDate.toISOString())} -->
+							{formatDateToIndonesianWithTime('2025-04-18T10:59:59.704Z')}
+						</span>
+					</p>
 				</div>
 			</div>
 			<div class="w-full max-w-md flex gap-2">

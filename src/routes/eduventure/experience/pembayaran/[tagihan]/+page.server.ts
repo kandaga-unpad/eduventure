@@ -1,7 +1,9 @@
 import type { PageServerLoad } from "./$types";
 
 import { readItems } from '@directus/sdk';
+import { xenditInvoiceClient } from '$lib/server/xendit';
 import getDirectusInstance from "$lib/server/directus";
+
 
 export const load: PageServerLoad = async ({ fetch, params }) => {
   const directus = getDirectusInstance(fetch);
@@ -27,6 +29,11 @@ export const load: PageServerLoad = async ({ fetch, params }) => {
     return acc;
   }, {});
 
+  const tagihanId = getDetailTagihan[0]?.url_tagihan.split('/').slice(-1);
+  const getTagihanXendit = await xenditInvoiceClient.getInvoiceById({
+    invoiceId: tagihanId
+  })
+
   const countPilihanZona = getDetailTagihan.reduce((acc, item) => {
     const pilihanZona = item.pilihan_zona as keyof typeof zonaMapping;
     const customKey = zonaMapping[pilihanZona];
@@ -39,6 +46,7 @@ export const load: PageServerLoad = async ({ fetch, params }) => {
   return {
     tagihan: getDetailTagihan,
     totalTiket: countPilihanZona,
-    kodeTagihan: params.tagihan
+    kodeTagihan: params.tagihan,
+    invoiceXendit: getTagihanXendit,
   };
 };
