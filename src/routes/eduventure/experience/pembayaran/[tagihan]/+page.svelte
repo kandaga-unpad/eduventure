@@ -91,7 +91,7 @@
 						</h2>
 					</button>
 					<p class="text-xs mt-2 italic">
-						Silahkan bayar sebelum tanggal : <br />
+						Silahkan bayar sebelum : <br />
 						<span class="font-bold text-red-6">
 							<!-- {formatDateToIndonesianWithTime(data.invoiceXendit.expiryDate.toISOString())} -->
 							{formatDateToIndonesianWithTime('2025-04-18T10:59:59.704Z')}
