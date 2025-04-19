@@ -175,7 +175,7 @@
 							<hr class="my-2" />
 							{#if infoZona1.is_open === 'closed'}
 								<p class="text-red-6 font-semibold">Pembelian Tiket Zona 1 belum dibuka</p>
-							{:else if (now < closeDateTiket1 && ticketSeatLeftZona1 > 0) || infoZona1.kuota === null}
+							{:else if now < closeDateTiket1 && (ticketSeatLeftZona1 > 0 || infoZona1.kuota === null)}
 								<div class="grid grid-cols-3 items-center justify-center text-sm">
 									<div>
 										<p>Harga Tiket</p>
@@ -209,8 +209,10 @@
 										<p class="font-bold">{formatCurrency(totalTiketZona1)}</p>
 									</div>
 								</div>
-							{:else}
+							{:else if now > closeDateTiket1 || ticketSeatLeftZona1 <= 0}
 								<p class="text-red-6 font-semibold">Pembelian Tiket Zona 1 telah ditutup</p>
+							{:else}
+								<p class="text-red-6 font-semibold">Pembelian Tiket Zona 1 tidak dapat dilakukan</p>
 							{/if}
 						</div>
 						<div class="bg-white p-3 my-5">
@@ -222,7 +224,7 @@
 									</p>
 								</div>
 							</div>
-							{#if now < closeDateTiket2 && infoZona2.kuota !== null}
+							{#if now < closeDateTiket2 && infoZona2.kuota !== null && ticketSeatLeftZona2 > 0}
 								<div class="bg-gray-3 p-2 rounded-lg my-3 text-center">
 									<p class="font-bold">
 										Sisa Tiket : <span class="text-red-6">{ticketSeatLeftZona2}</span>
@@ -233,7 +235,7 @@
 							<hr class="my-2" />
 							{#if infoZona2.is_open === 'closed'}
 								<p class="text-red-6 font-semibold">Pembelian Tiket Zona 2 belum dibuka</p>
-							{:else if (now < closeDateTiket2 && ticketSeatLeftZona2 > 0) || infoZona2.kuota === null}
+							{:else if now < closeDateTiket2 && (ticketSeatLeftZona2 > 0 || infoZona2.kuota === null)}
 								<div class="grid grid-cols-3 items-center justify-center text-sm">
 									<div>
 										<p>Harga Tiket</p>
@@ -267,8 +269,10 @@
 										<p class="font-bold">{formatCurrency(totalTiketZona2)}</p>
 									</div>
 								</div>
-							{:else}
+							{:else if now > closeDateTiket2 || ticketSeatLeftZona2 <= 0}
 								<p class="text-red-6 font-semibold">Pembelian Tiket Zona 2 telah ditutup</p>
+							{:else}
+								<p class="text-red-6 font-semibold">Pembelian Tiket Zona 2 tidak dapat dilakukan</p>
 							{/if}
 						</div>
 						<div class="bg-white p-3 my-5">
@@ -280,7 +284,7 @@
 									</p>
 								</div>
 							</div>
-							{#if now < closeDateTiket3 && infoZona3.kuota !== null}
+							{#if now < closeDateTiket3 && infoZona3.kuota !== null && ticketSeatLeftZona3 > 0}
 								<div class="bg-gray-3 p-2 rounded-lg my-3 text-center">
 									<p class="font-bold">
 										Sisa Tiket : <span class="text-red-6">{ticketSeatLeftZona3}</span>
@@ -325,8 +329,10 @@
 										<p class="font-bold">{formatCurrency(totalTiketZona3)}</p>
 									</div>
 								</div>
-							{:else}
+							{:else if now > closeDateTiket3 || ticketSeatLeftZona3 <= 0}
 								<p class="text-red-6 font-semibold">Pembelian Tiket Zona 3 telah ditutup</p>
+							{:else}
+								<p class="text-red-6 font-semibold">Pembelian Tiket Zona 3 tidak dapat dilakukan</p>
 							{/if}
 						</div>
 						<div>
