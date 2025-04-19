@@ -164,7 +164,7 @@
 									</p>
 								</div>
 							</div>
-							{#if now < closeDateTiket1 && infoZona1.kuota !== null}
+							{#if now < closeDateTiket1 && infoZona1.kuota !== null && ticketSeatLeftZona1 > 0 && infoZona1.is_open === 'open'}
 								<div class="bg-gray-3 p-2 rounded-lg my-3 text-center">
 									<p class="font-bold">
 										Sisa Tiket : <span class="text-red-6">{ticketSeatLeftZona1}</span>
@@ -224,7 +224,7 @@
 									</p>
 								</div>
 							</div>
-							{#if now < closeDateTiket2 && infoZona2.kuota !== null && ticketSeatLeftZona2 > 0}
+							{#if now < closeDateTiket2 && infoZona2.kuota !== null && ticketSeatLeftZona2 > 0 && infoZona2.is_open === 'open'}
 								<div class="bg-gray-3 p-2 rounded-lg my-3 text-center">
 									<p class="font-bold">
 										Sisa Tiket : <span class="text-red-6">{ticketSeatLeftZona2}</span>
@@ -284,7 +284,7 @@
 									</p>
 								</div>
 							</div>
-							{#if now < closeDateTiket3 && infoZona3.kuota !== null && ticketSeatLeftZona3 > 0}
+							{#if now < closeDateTiket3 && infoZona3.kuota !== null && ticketSeatLeftZona3 > 0 && infoZona3.is_open === 'open'}
 								<div class="bg-gray-3 p-2 rounded-lg my-3 text-center">
 									<p class="font-bold">
 										Sisa Tiket : <span class="text-red-6">{ticketSeatLeftZona3}</span>
