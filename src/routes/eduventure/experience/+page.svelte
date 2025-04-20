@@ -295,7 +295,7 @@
 							<hr class="my-2" />
 							{#if infoZona3.is_open === 'closed'}
 								<p class="text-red-6 font-semibold">Pembelian Tiket Zona 3 belum dibuka</p>
-							{:else if (now < closeDateTiket3 && ticketSeatLeftZona3 > 0) || infoZona1.kuota === null}
+							{:else if now < closeDateTiket3 && (ticketSeatLeftZona3 > 0 || infoZona1.kuota === null)}
 								<div class="grid grid-cols-3 items-center justify-center text-sm">
 									<div>
 										<p>Harga Tiket</p>
