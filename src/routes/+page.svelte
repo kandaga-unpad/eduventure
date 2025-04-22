@@ -26,7 +26,7 @@
 		textPertama:
 			'Program dilaksanakan pada jadwal sesuai permintaan dalam jumlah peserta yang besar. Full Package juga termasuk dalam Kegiatan Eduventure Experience. Sudah termasuk transportasi, akomodasi, konsumsi, yang dilayani oleh MMU Event & Tour Organizer',
 		textKedua: `<p>Admin : <a href="tel:62822506090">+62 822 50 60 90</a></p>
-							<p>⁠Email : <a href="mailto:mahatmasagievent@gmail.com">mahatmasagievent@gmail.com</a></p>
+							<p>Email : <a href="mailto:mahatmasagievent@gmail.com">mahatmasagievent@gmail.com</a></p>
 							<p>Instagram: <a href="https://instagram.com/mmu.eventtourorganizer">mmu.eventtourorganizer</a></p>`,
 		select: 'Pilih Full Package',
 		url: '/eduventure/full-package'
@@ -75,9 +75,10 @@
 		<img src="/Logo-Eduventure.png" class="w-full max-w-lg" alt="" />
 		<div class="flex flex-col gap-4 text-justify">
 			<p>
-				Unpad Eduventure adalah program edukasi interaktif yang dirancang untuk siswa SMP dan SMA
-				(dan sederajat). Kegiatan ini menggabungkan konsep pendidikan dan petualangan yang berfokus
-				pada eksplorasi fakultas dan program studi yang ada di Universitas Padjadjaran.
+				Unpad Eduventure adalah program edukasi interaktif yang dirancang untuk siswa dari berbagai
+				jenjang pendidikan (SD-SMP-SMA) bahkan untuk komunitas umum. Kegiatan ini menggabungkan
+				konsep pendidikan dan petualangan yang berfokus pada eksplorasi fakultas dan program studi
+				yang ada di Universitas Padjadjaran.
 			</p>
 			<p>
 				Program ini dirancang untuk membantu siswa memahami dunia perkuliahan dan karier yang sesuai
