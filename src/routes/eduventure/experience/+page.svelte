@@ -26,23 +26,23 @@
 	let tiketZona3 = $state($ticketStore.tiketZona3);
 	let totalHarga = $state($ticketStore.totalHarga);
 
-	let totalTiketZona1 = $derived(tiketZona1 * infoZona1?.harga_tiket);
-	let totalTiketZona2 = $derived(tiketZona2 * infoZona2?.harga_tiket);
-	let totalTiketZona3 = $derived(tiketZona3 * infoZona3?.harga_tiket);
+	let totalTiketZona1 = $derived(tiketZona1 * (infoZona1?.harga_tiket ?? 0));
+	let totalTiketZona2 = $derived(tiketZona2 * (infoZona2?.harga_tiket ?? 0));
+	let totalTiketZona3 = $derived(tiketZona3 * (infoZona3?.harga_tiket ?? 0));
 
 	const addTiketZona = (zona: string) => {
 		switch (zona) {
 			case 'zona1':
 				tiketZona1 += 1;
-				totalHarga += infoZona1.harga_tiket;
+				totalHarga += infoZona1?.harga_tiket;
 				break;
 			case 'zona2':
 				tiketZona2 += 1;
-				totalHarga += infoZona2.harga_tiket;
+				totalHarga += infoZona2?.harga_tiket;
 				break;
 			case 'zona3':
 				tiketZona3 += 1;
-				totalHarga += infoZona3.harga_tiket;
+				totalHarga += infoZona3?.harga_tiket;
 				break;
 			default:
 				alert('Tidak tersedia');

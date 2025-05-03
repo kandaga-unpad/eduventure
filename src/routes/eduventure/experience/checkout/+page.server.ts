@@ -164,7 +164,7 @@ export const actions: Actions = {
       }))
       return transaction
     }).catch((err: any) => {
-      console.log(err)
+      console.log(JSON.stringify(err))
     })
 
     redirect(303, '/eduventure/experience/pembayaran/' + orderId)

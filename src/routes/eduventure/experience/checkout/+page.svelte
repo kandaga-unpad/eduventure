@@ -180,7 +180,7 @@
 				<tbody>
 					{#if $ticketStore.tiketZona1 > 0}
 						<tr>
-							<td>Zona 1 (Sosial dan Humaniora)</td>
+							<td>Zona Eduventure Experience</td>
 							<td>x {$ticketStore.tiketZona1}</td>
 							<td
 								>{($ticketStore.tiketZona1 * zona1.harga_tiket).toLocaleString('id-ID', {
