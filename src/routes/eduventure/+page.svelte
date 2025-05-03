@@ -15,7 +15,7 @@
 		{
 			id: 2,
 			title: 'Eduventure Experience',
-			date: '19 - 20 April 2025',
+			date: '18 Mei 2025',
 			description:
 				'Unpad Eduventure Experience adalah program edukasi interaktif yang dirancang untuk siswa SMP, SMA, dan sederajat. Tersedia 3 Zona untuk Eduventure yang bisa dipilih oleh peserta yaitu Zona Kesehatan, Zona Soshum dan Zona Saintek & Agrokomplek',
 			image: '/background.webp',
