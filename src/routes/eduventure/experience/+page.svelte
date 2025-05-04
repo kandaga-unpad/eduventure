@@ -123,15 +123,16 @@
 				/>
 				<p>
 					Unpad Eduventure Experience adalah program edukasi interaktif yang dirancang untuk siswa
-					SMP, SMA, dan sederajat. Kegiatan ini menggabungkan konsep pendidikan dan pengalaman yang
-					berfokus pada eksplorasi fakultas dan program studi yang ada di Universitas Padjadjaran,
-					bertujuan untuk membantu siswa menemukan program studi dan memahami dunia perkuliahan
-					serta karier yang sesuai dengan minat mereka melalui simulasi dan praktik langsung.
+					SD, SMP, SMA, dan sederajat. Kegiatan ini menggabungkan konsep pendidikan dan pengalaman
+					yang berfokus pada eksplorasi fakultas dan program studi yang ada di Universitas
+					Padjadjaran, bertujuan untuk membantu siswa menemukan program studi dan memahami dunia
+					perkuliahan serta karier yang sesuai dengan minat mereka melalui simulasi dan praktik
+					langsung.
 				</p>
 				<p>
 					Kegiatan dimulai dari Gedung Rektorat Unpad Jatinangor dan dilanjutkan ke fakultas/sekolah
 					Unpad menggunakan angkutan dalam kampus yang dipandu oleh panitia. Setiap sesi pengalaman
-					di fakultas/sekolah berlangsung selama 50 menit dan dipandu oleh satu mahasiswa dan dosen
+					di fakultas/sekolah berlangsung selama 40 menit dan dipandu oleh satu mahasiswa dan dosen
 					dari masing-masing fakultas/sekolah.
 				</p>
 				<p>
