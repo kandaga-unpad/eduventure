@@ -9,11 +9,11 @@
 		color: 'green',
 		nama: 'Eduventure Experience',
 		harga: 'Rp 350.000',
-		detail: '18 Mei 2025',
+		detail: '3 Zona Experience',
 		textPertama:
 			'Program simulasi dan praktik langsung ke fakultas/program studi yang ada di Unpad. Tersedia 3 zona pilihan, yaitu zona 1 (Sosial dan Humaniora), zona 2 (Saintek dan Agrokomplek), dan zona 3 (Ilmu Kesehatan).',
 		textKedua:
-			'Terbuka untuk siswa SMP, SMA (sederajat) maupun Gap Year. Eduventure Experience akan dilaksanakan pada 19 - 20 April 2025. Klik untuk daftar dan pilih zona.',
+			'Terbuka untuk siswa SMP, SMA (sederajat) maupun Gap Year. Eduventure Experience akan dilaksanakan pada 18 Mei 2025. Klik untuk daftar dan pilih zona.',
 		select: 'Pilih Experience',
 		url: '/eduventure/experience'
 	};

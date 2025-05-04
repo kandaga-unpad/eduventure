@@ -136,13 +136,51 @@
 				</p>
 				<p>
 					Harga tiket 1 zona adalah Rp350.000 per siswa, sudah termasuk merchandise tote bag Unpad
-					dan makanan ringan. Kegiatan Eduventure Experience akan dilaksanakan pada tanggal 19-20
-					April 2025.
+					dan makanan ringan. Kegiatan Eduventure Experience akan dilaksanakan pada tanggal 18 Mei
+					2025.
 				</p>
 				<p>Terdapat 3 Zona untuk Eduventure yakni:</p>
-				<figure>
+				<div>
+					<div>
+						<h5>Zona Ilmu Kesehatan pukul 07.30 - 12.00</h5>
+						<p>Fakultas :</p>
+						<ul>
+							<li>Kedokteran</li>
+							<li>Kedokteran Hewan</li>
+							<li>Kedokteran Gigi</li>
+							<li>Psikologi</li>
+							<li>Keperawatan</li>
+							<li>Farmasi</li>
+						</ul>
+					</div>
+					<div>
+						<h5>Zona Sosial dan Humaniora pukul 07.30 - 12.00</h5>
+						<p>Fakultas :</p>
+						<ul>
+							<li>Ekonomi dan Bisnis</li>
+							<li>Ilmu Komunikasi</li>
+							<li>Hukum</li>
+							<li>Ilmu Sosial dan Ilmu Politik</li>
+							<li>Ilmu Budaya</li>
+							<li>Sekolah Vokasi (Soshum)</li>
+						</ul>
+					</div>
+					<div>
+						<h5>Zona Saintek dan Agrokomplek pukul 13.00-16.00</h5>
+						<p>Fakultas :</p>
+						<ul>
+							<li>Peternakan</li>
+							<li>Perikanan dan Ilmu Kelautan</li>
+							<li>Pertanian</li>
+							<li>Matematika dan Ilmu Pengetahuan Alam</li>
+							<li>Teknik Geologi</li>
+							<li>Sekolah Vokasi (Saintek)</li>
+						</ul>
+					</div>
+				</div>
+				<!-- <figure>
 					<img src="/zona/experience.webp" alt="3 Zona" />
-				</figure>
+				</figure> -->
 				<!-- <h1>Merchandise Kaos Unpad</h1>
 				<figure>
 					<img src="/zona/kaosexp.jpg" class="sma-gallery" alt="" />
@@ -392,7 +430,7 @@
 				<h5>Tambahkan ke Kalender</h5>
 				<div>
 					<a
-						href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Eduventure+Experience+Universitas+Padjadjaran&details=Kegiatan+Eduventure+Experience+Program+ini+dirancang+untuk+membantu+siswa+memahami+dunia+perkuliahan+dan+karier+yang+sesuai+dengan+minat+mereka+melalui+simulasi,+ praktik+langsung,+dan+pengalaman+seru+di+Universitas+Padjadjaran&dates=20250419T080000/20250320T170000&ctz=Indonesia/Jakarta"
+						href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Eduventure+Experience+Universitas+Padjadjaran&details=Kegiatan+Eduventure+Experience+Program+ini+dirancang+untuk+membantu+siswa+memahami+dunia+perkuliahan+dan+karier+yang+sesuai+dengan+minat+mereka+melalui+simulasi,+praktik+langsung,+dan+pengalaman+seru+di+Universitas+Padjadjaran&dates=20250518T073000/20250518T160000&ctz=Indonesia/Jakarta"
 					>
 						Tambahkan ke Google Calendar
 					</a>

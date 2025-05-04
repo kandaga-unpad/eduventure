@@ -29,7 +29,7 @@ export const load: PageServerLoad = async ({ fetch }) => {
   const getTiketZona2 = await directus.request(readItems('tiket_eduventure_experience', {
     filter: {
       pilihan_zona: {
-        _eq: '023D3356-7E31-4B13-B300-B8C9DBD10A9F'
+        _eq: '64B7ECB3-C124-42AE-BD2E-B13112B43536'
       },
       status_pendaftaran: {
         _eq: 'paid'
@@ -40,7 +40,7 @@ export const load: PageServerLoad = async ({ fetch }) => {
   const getTiketZona3 = await directus.request(readItems('tiket_eduventure_experience', {
     filter: {
       pilihan_zona: {
-        _eq: '9CE68670-C4A4-4C90-90F3-F47917DCB96A'
+        _eq: '9B7CB4B9-782B-4D09-AC83-85A8A9D9EA6A'
       },
       status_pendaftaran: {
         _eq: 'paid'
