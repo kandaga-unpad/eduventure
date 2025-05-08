@@ -32,6 +32,42 @@
 		url: '/eduventure/full-package'
 	};
 
+	const eduventureDream = {
+		color: 'orange',
+		nama: 'Eduventure Dream',
+		harga: 'Rp 300.000',
+		detail: 'per orang, minimum 100 peserta. (sudah termasuk snack dan merchandise)',
+		textPertama:
+			'Eduventure Dream adalah program kunjungan edukatif di Universitas Padjadjaran yang dirancang khusus untuk siswa sekolah dasar.',
+		textKedua: `Semua kegiatan dikemas interaktif dan menyenangkan, dipandu oleh mahasiswa dan dosen dari berbagai fakultas di Unpad.`,
+		select: 'Pilih Dream',
+		url: '/eduventure/dream'
+	};
+
+	const eduventureThematicHumanAnatomy = {
+		color: 'green',
+		nama: 'Eduventure Thematic: Human Anatomy',
+		harga: 'Rp 250.000',
+		detail: 'per orang, minimum 70 peserta. (sudah termasuk snack dan merchandise)',
+		textPertama:
+			'Yuk, ikut petualangan seru ke dalam tubuh manusia! Dalam program Eduventure: Exploring Human Anatomy, siswa sekolah dasar akan belajar mengenal bagian-bagian tubuh manusia dengan cara yang seru dan mudah dimengerti.',
+		textKedua: `Kegiatan ini didesain khusus untuk memicu rasa ingin tahu anak dan menumbuhkan minat belajar di bidang sains dan kesehatan sejak dini.`,
+		select: 'Pilih Thematic',
+		url: '/eduventure/thematic/human-anatomy'
+	};
+
+	const eduventureThematicHydroponic = {
+		color: 'orange',
+		nama: 'Eduventure Thematic: Hydroponic Adventure',
+		harga: 'Rp 250.000',
+		detail: 'per orang, minimum 70 peserta. (sudah termasuk snack dan merchandise)',
+		textPertama:
+			'Yuk, seru-seruan belajar bercocok tanam tanpa tanah! Dalam program Eduventure: Hydroponic Adventure, siswa sekolah dasar akan diajak mengenal konsep pertanian modern yang ramah lingkungan melalui metode hidroponik.',
+		textKedua: `Program ini dirancang untuk menumbuhkan kepedulian terhadap lingkungan dan ketertarikan pada dunia pertanian sejak dini.`,
+		select: 'Pilih Thematic',
+		url: '/eduventure/thematic/hydroponic'
+	};
+
 	const zona1 = {
 		tipe: 'Zona 1 : Kesehatan',
 		nama: 'Rumpun Ilmu Kesehatan',
@@ -94,6 +130,9 @@
 			<Lite />
 			<GenericCard eduventure={eduventureExperience} />
 			<GenericCard eduventure={eduventureFullPackage} />
+			<GenericCard eduventure={eduventureDream} />
+			<GenericCard eduventure={eduventureThematicHumanAnatomy} />
+			<GenericCard eduventure={eduventureThematicHydroponic} />
 		</div>
 	</div>
 	<div class="w-full bg-brand-primary text-center py-10 mt-30">
