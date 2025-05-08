@@ -24,7 +24,7 @@
 			<div class="mb-10 flex flex-col items-center gap-5 px-15 text-justify">
 				<h2 class="text-center my-5">Eduventure Thematic <br /> Hydroponic Adventure</h2>
 				<img
-					src="/edu/thematic-anatomy.webp"
+					src="/edu/hydroponic.jpg"
 					class="w-full rounded-lg max-h-md object-cover object-bottom-center"
 					alt="Eduventure Lite"
 				/>
