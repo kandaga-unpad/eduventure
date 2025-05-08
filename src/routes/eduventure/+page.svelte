@@ -31,6 +31,36 @@
 			image: '/edu/2.jpg',
 			location: 'Universitas Padjadjaran',
 			link: '/eduventure/full-package'
+		},
+		{
+			id: 4,
+			title: 'Eduventure Dream',
+			date: 'Sesuai Jadwal',
+			description:
+				'Eduventure Dream adalah program kunjungan edukatif di Universitas Padjadjaran yang dirancang khusus untuk siswa sekolah dasar. Melalui kegiatan ini, anak-anak diajak menjelajah kampus sambil mengenal sains, teknologi, dan pentingnya menjaga lingkungan.',
+			image: '/edu/dream.webp',
+			location: 'Universitas Padjadjaran',
+			link: '/eduventure/dream'
+		},
+		{
+			id: 5,
+			title: 'Eduventure Thematic: Human Anatomy',
+			date: 'Sesuai Jadwal',
+			description:
+				'Yuk, ikut petualangan seru ke dalam tubuh manusia! Dalam program Eduventure: Exploring Human Anatomy, siswa sekolah dasar akan belajar mengenal bagian-bagian tubuh manusia dengan cara yang seru dan mudah dimengerti.',
+			image: '/edu/thematic-anatomy.webp',
+			location: 'Laboratorium Anatomi, Universitas Padjadjaran',
+			link: '/eduventure/thematic/human-anatomy'
+		},
+		{
+			id: 6,
+			title: 'Eduventure Thematic: Hydroponic Adventure',
+			date: 'Sesuai Jadwal',
+			description:
+				'Yuk, seru-seruan belajar bercocok tanam tanpa tanah! Dalam program Eduventure: Hydroponic Adventure, siswa sekolah dasar akan diajak mengenal konsep pertanian modern yang ramah lingkungan melalui metode hidroponik.',
+			image: '/edu/hydroponic.jpg',
+			location: 'Bale Tatanén, Fakultas Pertanian, Universitas Padjadjaran',
+			link: '/eduventure/thematic/hydroponic'
 		}
 	];
 </script>
