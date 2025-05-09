@@ -71,7 +71,7 @@
 	const zona1 = {
 		tipe: 'Zona 1 : Kesehatan',
 		nama: 'Rumpun Ilmu Kesehatan',
-		gambar: '/zona/zona1.jpg',
+		gambar: '/experience/FK0.jpg',
 		deskripsi:
 			'Rumpun Ilmu Kesehatan yang ada di Universitas Padjadjaran terdiri dari Fakultas Kedokteran, Fakultas Kedokteran Gigi, Fakultas Keperawatan, Fakultas Farmasi dan Fakultas Psikologi. Pada zona ini, peserta akan diajak untuk mengenal lebih jauh tentang dunia kesehatan melalui simulasi dan praktik langsung.',
 		link: '/eduventure/experience',
@@ -82,7 +82,7 @@
 	const zona2 = {
 		tipe: 'Zona 2 : Sosial & Humaniora',
 		nama: 'Rumpun Ilmu Sosial dan Humaniora',
-		gambar: '/zona/zona2.webp',
+		gambar: '/experience/FH0.jpg',
 		deskripsi:
 			'Rumpun Ilmu Sosial dan Humaniora terdiri dari Fakultas Hukum, Fakultas Ekonomi dan Bisnis, Fakultas Ilmu Sosial dan Ilmu Politik, Fakultas Ilmu Budaya dan Fakultas Ilmu Komunikasi. Pada zona ini, peserta akan diajak untuk mengenal lebih jauh tentang dunia sosial dan humaniora melalui simulasi dan praktik langsung.',
 		link: '/eduventure/experience',
@@ -93,7 +93,7 @@
 	const zona3 = {
 		tipe: 'Zona 3 : Saintek & Agrokomplek',
 		nama: 'Rumpun Ilmu Saintek dan Agrokomplek',
-		gambar: '/zona/zona3.jpg',
+		gambar: '/experience/FMIPA0.jpg',
 		deskripsi:
 			'Rumpun Ilmu Saintek dan Agrokomplek terdiri dari Fakultas Matematika dan Ilmu Pengetahuan Alam, Fakutas Pertanian, Fakultas Peternakan, Fakultas Teknik Geologi, Fakultas Teknologi Industri Pertanian, Fakultas Perikanan dan Ilmu Kelautan. Pada zona ini, peserta akan diajak untuk mengenal lebih jauh tentang dunia sains dan teknologi melalui simulasi dan praktik langsung.',
 		link: '/eduventure/experience',

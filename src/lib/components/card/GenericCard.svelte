@@ -26,8 +26,8 @@
 				class="h-20"
 				alt="icon"
 			/>
-			<h1>{eduventure.harga}</h1>
-			<p>{eduventure.detail}</p>
+			<h2>{eduventure.harga}</h2>
+			<p class="text-sm">{eduventure.detail}</p>
 		</div>
 	</div>
 	<div class="flex flex-col justify-between h-2xl">
