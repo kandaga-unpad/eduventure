@@ -63,6 +63,21 @@
 			<Footer />
 		</footer>
 	{/if}
+	<button
+		class="fixed bottom-6 right-6 z-50 bg-brand-primary text-white rounded-full shadow-lg p-3 transition focus:outline-none focus:ring-2 focus:ring-primary-400"
+		onclick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+		aria-label="Back to top"
+	>
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			class="w-6 h-6"
+			fill="none"
+			viewBox="0 0 24 24"
+			stroke="currentColor"
+		>
+			<path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 15l7-7 7 7" />
+		</svg>
+	</button>
 </main>
 
 <style>
