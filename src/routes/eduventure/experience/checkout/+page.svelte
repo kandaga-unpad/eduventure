@@ -180,7 +180,7 @@
 				<tbody>
 					{#if $ticketStore.tiketZona1 > 0}
 						<tr>
-							<td>Zona Eduventure Experience</td>
+							<td>Zona 1</td>
 							<td>x {$ticketStore.tiketZona1}</td>
 							<td
 								>{($ticketStore.tiketZona1 * zona1.harga_tiket).toLocaleString('id-ID', {
@@ -192,7 +192,7 @@
 					{/if}
 					{#if $ticketStore.tiketZona2 > 0}
 						<tr>
-							<td>Zona 2 (Saintek dan Agrokomplek)</td>
+							<td>Zona 2</td>
 							<td>x {$ticketStore.tiketZona2}</td>
 							<td
 								>{($ticketStore.tiketZona2 * zona2.harga_tiket).toLocaleString('id-ID', {
@@ -204,7 +204,7 @@
 					{/if}
 					{#if $ticketStore.tiketZona3 > 0}
 						<tr>
-							<td>Zona 3 (Ilmu Kesehatan)</td>
+							<td>Zona 3</td>
 							<td>x {$ticketStore.tiketZona3}</td>
 							<td
 								>{($ticketStore.tiketZona3 * zona3.harga_tiket).toLocaleString('id-ID', {
@@ -240,7 +240,7 @@
 							<select name="zona" id="zona" bind:value={biodataPeserta[i].pilihan_zona} required>
 								<option value="" selected disabled>Pilih Zona</option>
 								{#each data.zona as zona}
-									<option value={zona.id}>{zona.title}</option>
+									<option value={zona.id} disabled={zona.is_open == 'closed'}>{zona.title}</option>
 								{/each}
 							</select>
 						</div>
@@ -349,7 +349,7 @@
 						<select name="zona" id="zona" bind:value={biodataPembeli.pilihan_zona} required>
 							<option value="" selected disabled>Pilih Zona</option>
 							{#each data.zona as zona}
-								<option value={zona.id}>{zona.title}</option>
+								<option value={zona.id} disabled={zona.is_open == 'closed'}>{zona.title}</option>
 							{/each}
 						</select>
 					</div>
