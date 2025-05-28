@@ -28,7 +28,7 @@
 					class="w-full rounded-lg max-h-md object-cover object-bottom-center"
 					alt="Eduventure Lite"
 				/>
-				<h5>Lokasi : Bale Tatanén, Fakultas Pertanian, Universitas Padjadjaran</h5>
+				<h5>Lokasi : Hidroponik dan Urban Farming Learning Center FTIP</h5>
 				<p>
 					Yuk, seru-seruan belajar bercocok tanam tanpa tanah! Dalam program <strong>
 						Eduventure: Hydroponic Adventure</strong

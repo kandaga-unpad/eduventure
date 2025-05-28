@@ -59,7 +59,7 @@
 			description:
 				'Yuk, seru-seruan belajar bercocok tanam tanpa tanah! Dalam program Eduventure: Hydroponic Adventure, siswa sekolah dasar akan diajak mengenal konsep pertanian modern yang ramah lingkungan melalui metode hidroponik.',
 			image: '/edu/hydroponic.jpg',
-			location: 'Bale Tatanén, Fakultas Pertanian, Universitas Padjadjaran',
+			location: 'Hidroponik dan Urban Farming Learning Center FTIP',
 			link: '/eduventure/thematic/hydroponic'
 		}
 	];
