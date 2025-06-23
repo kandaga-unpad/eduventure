@@ -59,7 +59,7 @@
 					<h6 class="text-white">Eduventure</h6>
 				</a>
 			</div>
-			<div class="mb-10 flex flex-col items-center gap-5 px-15 text-justify">
+			<div class="my-10 flex flex-col items-center gap-5 px-15 text-justify">
 				<a
 					href="#buyTicket"
 					onclick={handleAnchorClick}
