@@ -32,59 +32,14 @@ export const POST: RequestHandler = async ({ request, fetch, locals }) => {
   const chosenZona = zonaExperience[0]
 
   const { biodataPeserta, totalHarga } = await body;
-  const orderId = `eduventure-tiket-${Math.random().toString(36).substring(2, 15)}`
-
-  // Midtrans
-  // const transactionDetails = {
-  //   "transaction_details": {
-  //     "order_id": orderId,
-  //     "gross_amount": biodataPeserta.length * 350000
-  //   },
-  //   "customer_details": {
-  //     "first_name": session?.user?.name?.split(" ")[0],
-  //     "last_name": session?.user?.name?.split(" ")[1],
-  //     "email": biodataPeserta[0].email_pendaftar,
-  //     "phone": biodataPeserta[0].kontak,
-  //     "billing_address": {
-  //       "first_name": session?.user?.name?.split(" ")[0],
-  //       "last_name": session?.user?.name?.split(" ")[1],
-  //       "phone": biodataPeserta[0].kontak,
-  //     }
-  //   },
-  //   "item_details": [{
-  //     "id": orderId,
-  //     "price": 350000,
-  //     "quantity": biodataPeserta.length,
-  //     "name": "Eduventure Experience",
-  //     "brand": "Eduventure Unpad",
-  //   }],
-  //   "credit_card": {
-  //     "secure": true
-  //   }
-  // }
-
-  // const payMidtrans = await midTransSnap.createTransaction(transactionDetails).then(async (transaction: any) => {
-  //   const alterBiodataPeserta = await biodataPeserta.map((item: any) => {
-  //     return {
-  //       ...item,
-  //       kode_tagihan: orderId,
-  //       url_tagihan: transaction.redirect_url
-  //     }
-  //   })
-
-  //   await directus.request(createItems('tiket_eduventure_experience', alterBiodataPeserta));
-  //   await directus.request(updateItem('peserta_eduventure', dataPeserta[0].id, {
-  //     kode_tagihan: dataPeserta[0].kode_tagihan === null || dataPeserta[0].kode_tagihan.length === 0 ? [orderId] : [...dataPeserta[0].kode_tagihan, orderId]
-  //   }))
-  //   return transaction
-  // })
+  const orderId = `eduventure-holiyeay-${Math.random().toString(36).substring(2, 15)}`
 
   // Xendit
   const transactionDetail = {
     "externalId": orderId,
     "amount": totalHarga,
     "payerEmail": biodataPeserta[0].email_pendaftar,
-    "description": `Pembelian Tiket Eduventure Experience sebanyak ${biodataPeserta.length} tiket`,
+    "description": `Pembelian Tiket Eduventure Holiyeay sebanyak ${biodataPeserta.length} tiket`,
     "shouldSendEmail": true,
     "customer": {
       "phoneNumber": biodataPeserta[0].kontak.toString(),
@@ -98,9 +53,9 @@ export const POST: RequestHandler = async ({ request, fetch, locals }) => {
     "reminderTime": 1,
     "items": [
       {
-        "name": "Eduventure Experience",
+        "name": "Eduventure Holiyeay Ticket",
         "quantity": biodataPeserta.length,
-        "price": 350000,
+        "price": chosenZona.harga_tiket,
         "category": "Eduventure Ticket",
         "url": "https://eduventure.unpad.ac.id"
       }
@@ -119,7 +74,7 @@ export const POST: RequestHandler = async ({ request, fetch, locals }) => {
       }
     })
 
-    await directus.request(createItems('tiket_eduventure_experience', alterBiodataPeserta));
+    await directus.request(createItems('tiket_eduventure_holiyeay', alterBiodataPeserta));
     await directus.request(updateItem('peserta_eduventure', dataPeserta[0].id, {
       kode_tagihan: dataPeserta[0].kode_tagihan === null || dataPeserta[0].kode_tagihan.length === 0 ? [transaction.externalId] : [...dataPeserta[0].kode_tagihan, transaction.externalId]
     }))

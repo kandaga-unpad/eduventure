@@ -8,6 +8,12 @@ export const ticketStore = writable({
   informasiPendaftar: []
 })
 
+export const holiyeayTicketStore = writable({
+  tiketZonaHoliyeay: 0,
+  totalHargaHoliyeay: 0,
+  informasiPendaftarHoliyeay: []
+})
+
 export const warnaStatusPembayaran = (status: string) => {
   switch (status) {
     case 'pendung':

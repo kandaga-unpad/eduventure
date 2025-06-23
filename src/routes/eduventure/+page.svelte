@@ -24,6 +24,16 @@
 		},
 		{
 			id: 3,
+			title: 'Eduventure Holiyeay',
+			date: '7 - 8 Juli 2025',
+			description:
+				'Program ini dirancang khusus untuk anak usia 8–12 tahun agar dapat merasakan pengalaman seru belajar sambil bermain di lingkungan kampus Universitas Padjadjaran!',
+			image: '/edu/holiyeay.webp',
+			location: 'Kampus Universitas Padjadjaran, Jatinangor',
+			link: '/holiyeay'
+		},
+		{
+			id: 3,
 			title: 'Eduventure Full Package',
 			date: 'Sesuai Jadwal',
 			description:

@@ -51,6 +51,23 @@ export const load: PageServerLoad = async (events) => {
     sort: '-date_created',
   }))
 
+  const getEduventureHoliyeay = await directus.request(readItems('tiket_eduventure_holiyeay', {
+    filter: {
+      email_pendaftar: {
+        _eq: getUserProfile[0].email
+      },
+      pilihan_zona: {
+        tipe_eduventure: {
+          _eq: 'holiyeay'
+        }
+      }
+    },
+    fields: ['*', 'pilihan_zona.*'],
+    sort: '-date_created'
+  }))
+
+  console.log(getEduventureHoliyeay)
+
   const zonaMapping = {
     '61E35DCF-BBE3-493A-ADD8-7413FD71C317': 'zona_kesehatan',
     '893DB4C7-9969-4D6E-A33E-E556103FE0C8': 'zona_saintek',
@@ -69,6 +86,7 @@ export const load: PageServerLoad = async (events) => {
   return {
     tagihan: getDetailTagihan,
     historicalTiket: getHistoricalTicket,
+    eduventureHoliyeay: getEduventureHoliyeay,
     totalTiket: countPilihanZona,
     session: session
   };
