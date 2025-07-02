@@ -20,7 +20,7 @@
 		},
 		{
 			id: 2,
-			namaFakultas: 'Fakultas Kedokteran Hewan',
+			namaFakultas: 'Kedokteran Hewan',
 			image1: '/experience/FKH1.jpg',
 			image2: '/experience/FKH2.jpg'
 		},
@@ -296,6 +296,11 @@
 								</div>
 							{/each}
 						</div>
+					</div>
+					<div>
+						<p class="font-semibold text-red-5 text-center">
+							**Kegiatan di fakultas dapat berubah sesuai dengan program studi pelaksana
+						</p>
 					</div>
 					<!-- <figure>
 					<img src="/zona/experience.webp" alt="3 Zona" />
