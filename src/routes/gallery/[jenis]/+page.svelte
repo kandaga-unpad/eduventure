@@ -53,7 +53,7 @@
 						{data.galleryEduventure.nama}
 					</span>
 				</h4>
-				<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 mb-20">
+				<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 lg:gap-10 mb-20 px-4">
 					{#each data.listOfSekolah as sekolah}
 						<div
 							class="flex flex-col items-center justify-between overflow-hidden rounded-lg shadow-brand-primary shadow-md hover:shadow-xl transition-shadow duration-300 mb-10"

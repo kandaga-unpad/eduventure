@@ -10,7 +10,7 @@
 	<h1 class="text-3xl font-bold mb-8 text-center">Gallery Eduventure</h1>
 
 	{#if data.galleryInfo.length > 0}
-		<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 mb-20">
+		<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 mb-20 px-4">
 			<!-- Gallery items -->
 			{#each galleryItems as item}
 				<div
