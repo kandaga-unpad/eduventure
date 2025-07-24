@@ -32,21 +32,12 @@
 					Unpad Eduventure adalah program edukasi interaktif yang dirancang untuk siswa SMP dan SMA
 					(dan sederajat).
 				</p>
-				<div class="grid grid-cols-3 gap-3">
-					<figure>
-						<img src="/edu/yasporbi.jpg" alt="Kunjungan SMA" class="sma-gallery" />
-						<figcaption>SMA Yasporbi Jakarta</figcaption>
-					</figure>
-					<figure>
-						<img src="/edu/al-irsyad.jpg" alt="Kunjungan SMA" class="sma-gallery" />
-						<figcaption>Al-Irsyad Boarding School</figcaption>
-					</figure>
-					<figure>
-						<img src="/edu/sman1padalarang.jpg" alt="Kunjungan SMA" class="sma-gallery" />
-						<figcaption>SMAN 1 Padalarang</figcaption>
-					</figure>
+				<div class="my-10">
+					<a href="/gallery/lite" class="btn bg-brand-primary text-white px-6">
+						Lihat Galeri Eduventure Lite
+					</a>
 				</div>
-				<p class="mt-10">
+				<p>
 					Program sosialisasi Universitas Padjadjaran berdurasi 1 jam termasuk makanan ringan dan
 					merchandise Unpad. Tersedia dalam dua kategori harga, yaitu Rp150.000/siswa (mendapatkan
 					merchandise berupa Kaos Unpad) dan Rp100.000/siswa (mendapatkan merchandise berupa Tote

@@ -36,6 +36,12 @@
 					melalui metode hidroponik.
 				</p>
 
+				<div class="my-10">
+					<a href="/gallery/thematic" class="btn bg-brand-primary text-white px-6">
+						Lihat Galeri Eduventure Thematic
+					</a>
+				</div>
+
 				<div class="w-full">
 					<p class="text-left">
 						Kegiatan dilakukan di <strong>Bale Tatanén Universitas Padjadjaran</strong>, dipandu

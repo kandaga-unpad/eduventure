@@ -246,6 +246,11 @@
 					perkuliahan serta karier yang sesuai dengan minat mereka melalui simulasi dan praktik
 					langsung.
 				</p>
+				<div class="my-10">
+					<a href="/gallery/experience" class="btn bg-brand-primary text-white px-6">
+						Lihat Galeri Eduventure Experience
+					</a>
+				</div>
 				<p>
 					Kegiatan dimulai dari Gedung Rektorat Unpad Jatinangor dan dilanjutkan ke fakultas/sekolah
 					Unpad menggunakan angkutan dalam kampus yang dipandu oleh panitia. Setiap sesi pengalaman
