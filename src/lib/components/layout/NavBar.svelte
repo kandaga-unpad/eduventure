@@ -23,6 +23,7 @@
 		<div class="hidden md:flex items-center gap-5">
 			<a href="/" class="hover:text-blue-6">Home</a>
 			<a href="/eduventure" class="hover:text-blue-6">Daftar Eduventure</a>
+			<a href="/gallery">Gallery</a>
 		</div>
 		{#if user}
 			<div class="hidden md:(block)">
