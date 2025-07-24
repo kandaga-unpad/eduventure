@@ -68,8 +68,12 @@
 								<p class="text-sm text-gray-500 dark:text-gray-400 mt-1 text-justify">
 									{sekolah.alamat}
 								</p>
-								<p>Kota/Kabupaten: {sekolah.kota ?? '-'}</p>
-								<p>Provinsi: {sekolah.provinsi ?? '-'}</p>
+								<div
+									class="text-sm text-gray-500 font-semibold dark:text-gray-400 mt-1 text-justify mt-1"
+								>
+									<p>Kota/Kabupaten: {sekolah.kota ?? '-'}</p>
+									<p>Provinsi: {sekolah.provinsi ?? '-'}</p>
+								</div>
 							</div>
 							<div class="w-full text-center mb-5">
 								<h6>Galeri Foto</h6>
