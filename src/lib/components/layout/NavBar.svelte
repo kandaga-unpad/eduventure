@@ -8,6 +8,12 @@
 	let profile = $state(desktopProfile);
 	let { user } = $props();
 
+	const eduventureMenu = [
+		{ name: 'Home', href: '/' },
+		{ name: 'Daftar Eduventure', href: '/eduventure' },
+		{ name: 'Gallery', href: '/gallery' }
+	];
+
 	const menuBtn = () => {
 		$showMobile = !$showMobile;
 	};
@@ -21,9 +27,9 @@
 	</div>
 	<div class="flex items-center gap-10">
 		<div class="hidden md:flex items-center gap-5">
-			<a href="/" class="hover:text-blue-6">Home</a>
-			<a href="/eduventure" class="hover:text-blue-6">Daftar Eduventure</a>
-			<a href="/gallery">Gallery</a>
+			{#each eduventureMenu as { name, href }}
+				<a {href} class="hover:text-blue-6">{name}</a>
+			{/each}
 		</div>
 		{#if user}
 			<div class="hidden md:(block)">
@@ -97,8 +103,9 @@
 		<div class="p-5 mt-10">
 			<button class="absolute right-0 top-0 p-5" onclick={menuBtn}>&#10006;</button>
 			<div class="flex flex-col items-center justify-center gap-5">
-				<a href="/">Home</a>
-				<a href="/eduventure">Daftar Eduventure</a>
+				{#each eduventureMenu as { name, href }}
+					<a {href} class="hover:text-blue-6">{name}</a>
+				{/each}
 				{#if user}
 					<div class="flex flex-col items-center gap-2">
 						<img src={user.image} class="w-18 h-18 rounded" alt="" referrerpolicy="no-referrer" />
