@@ -18,6 +18,9 @@ export const load: PageServerLoad = async ({ fetch, params }) => {
     filter: {
       jenis_eduventure: {
         _eq: getGalleryEduventure[0].id
+      },
+      status: {
+        _eq: 'published'
       }
     },
     fields: ['*', 'galeri_foto.*']

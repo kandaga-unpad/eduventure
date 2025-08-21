@@ -1,11 +1,11 @@
 <script>
+	import { getDirectusImageUrl } from '$lib/composables/directus';
+
 	let { data } = $props();
 
-	const copyText = () => {
-		const text = '9880619020200219';
-		navigator.clipboard.writeText(text);
-		alert('Nomor Rekening berhasil disalin!');
-	};
+	const { liteGallery } = data;
+
+	console.log(JSON.stringify(liteGallery[0].galeri_foto));
 </script>
 
 <section>
@@ -58,22 +58,84 @@
 					Rektorat. Program dilaksanakan pada jadwal yang disepakati pihak sekolah dan Universitas
 					Padjadjaran melalui korespondensi PIC.
 				</p>
-				<p>
+				<!-- <p>
 					Pembayaran dapat dilakukan melalui transfer ke Rekening BNI an. LUHUNG UNPAD Nomor:
 					9880619020200219 setelah mendapatkan surat konfirmasi dari panitia.
-					<!-- Kuota peserta sudah
-					penuh untuk hingga bulan Maret 2025. -->
+					Kuota peserta sudah
+					penuh untuk hingga bulan Maret 2025.
+				</p> -->
+				<p>
+					Pendaftaran dapat dilakukan dengan mengisi form berikut atau hubungi Tim Eduventure pada
+					tombol dibawah ini
 				</p>
 				<div class="w-full flex items-center justify-center gap-3 text-center">
-					<button class="btn bg-brand-secondary text-white w-full" onclick={copyText}
+					<!-- <button class="btn bg-brand-secondary text-white w-full" onclick={copyText}
 						>Salin Nomor Rekening</button
+					> -->
+					<a
+						href="https://wa.me/6282211676765"
+						target="_blank"
+						class="btn bg-brand-secondary text-white w-full"
 					>
+						Hubungi Kami
+					</a>
 					<a
 						href="https://www.cognitoforms.com/UniversitasPadjadjaran21/EduventureLite"
 						target="_blank"
 						class="btn bg-brand-primary text-white w-full"
 					>
 						Isi Form Pendaftaran
+					</a>
+				</div>
+				<div class="mt-20">
+					<h2 class="text-center mb-2">Eduventure Lite Program Afirmasi</h2>
+					<p>
+						Eduventure juga menyediakan pilihan program afirmasi yang memberikan pengalaman
+						Eduventure di Universitas Padjadjaran tanpa dipungut biaya. Program ini bertujuan untuk
+						memberikan kesempatan kepada siswa yang kurang mampu agar dapat mengakses informasi
+						mengenai pendidikan berkualitas di Universitas Padjadjaran.
+					</p>
+					<p>
+						Untuk informasi lebih lanjut mengenai program afirmasi ini, silakan hubungi Tim
+						Eduventure.
+					</p>
+					<div class="my-5 flex text-center">
+						<a
+							href="https://wa.me/6282211676765"
+							target="_blank"
+							class="btn bg-brand-secondary text-white w-full"
+						>
+							Hubungi Kami
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="my-5">
+			<h3 class="text-center mb-10">Gallery Eduventure Lite</h3>
+			<div class="flex flex-col gap-5 items-center px-5">
+				{#each liteGallery as item}
+					<div class="bg-gray-1 shadow-2xl rounded-lg flex flex-col items-center">
+						{#if item.galeri_foto.length === 0}
+							<p class="text-gray-5 italic">Tidak ada foto untuk galeri ini.</p>
+						{:else}
+							<figure>
+								<img
+									src={getDirectusImageUrl(item.galeri_foto[0].directus_files_id)}
+									class="w-86 h-48 object-cover rounded-lg"
+									alt={item.nama_sekolah}
+								/>
+								<figcaption class="my-4">{item.nama_sekolah}</figcaption>
+							</figure>
+						{/if}
+					</div>
+				{/each}
+				<div class="w-full px-10 py-3 flex">
+					<a
+						href="/gallery/lite"
+						class="btn text-xs w-full text-center bg-brand-primary text-white px-6"
+					>
+						Lihat Semua Galeri Eduventure Lite
 					</a>
 				</div>
 			</div>
