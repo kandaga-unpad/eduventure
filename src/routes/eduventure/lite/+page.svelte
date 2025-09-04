@@ -38,7 +38,7 @@
 					</a>
 				</div>
 				<p>
-					Program sosialisasi Universitas Padjadjaran berdurasi 1 jam termasuk makanan ringan dan
+					Program sosialisasi Universitas Padjadjaran berdurasi 2 jam termasuk makanan ringan dan
 					merchandise Unpad. Tersedia dalam dua kategori harga, yaitu Rp150.000/siswa (mendapatkan
 					merchandise berupa Kaos Unpad) dan Rp100.000/siswa (mendapatkan merchandise berupa Tote
 					Bag Unpad).
