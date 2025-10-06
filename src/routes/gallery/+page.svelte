@@ -55,6 +55,7 @@
 							<th>No</th>
 							<th>Nama Sekolah</th>
 							<th>Asal Sekolah</th>
+							<th>Tanggal Kunjungan</th>
 							<th>Jenis Eduventure</th>
 							<th>Jumlah Peserta</th>
 						</tr>
@@ -67,6 +68,7 @@
 								<td data-label="Asal Sekolah">
 									{(sekolah.kota ?? '') + ' ' + (sekolah.provinsi ?? '')}
 								</td>
+								<td data-label="Tanggal Kunjungan">{sekolah.tanggal_kunjungan ?? '-'}</td>
 								<td data-label="Jenis Eduventure">{sekolah.jenis_eduventure.nama}</td>
 								<td data-label="Jumlah Peserta">{sekolah.jumlah_peserta ?? '-'}</td>
 							</tr>
