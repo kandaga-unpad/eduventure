@@ -13,7 +13,17 @@ export const load: PageServerLoad = async ({ fetch }) => {
     }
   }));
 
+  const getDataSekolah = await directus.request(readItems('gallery_eduventure_sekolah', {
+    filter: {
+      status: {
+        _eq: 'published'
+      }
+    },
+    fields: ['*', 'jenis_eduventure.*']
+  }));
+
   return {
-    galleryInfo: getGalleryInfo
+    galleryInfo: getGalleryInfo,
+    getDataSekolah: getDataSekolah
   };
 };
