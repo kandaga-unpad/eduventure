@@ -5,8 +5,6 @@
 
 	const galleryItems = data.galleryInfo;
 	const dataSekolah = data.getDataSekolah;
-
-	console.log(dataSekolah[0]);
 </script>
 
 <section>
