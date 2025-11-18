@@ -8,7 +8,7 @@ import { xenditInvoiceClient } from '$lib/server/xendit';
 import { readItems, createItem, updateItem } from '@directus/sdk';
 import { PRIVATE_XENDIT_USERPLATFORM } from '$env/static/private';
 
-import getDirectusInstance from '$lib/server/directus';
+import getDirectusInstance from '$lib/server/directus-cf';
 
 export const load: PageServerLoad = async ({ fetch, locals }) => {
   const session = await locals.auth();

@@ -7,7 +7,7 @@ import { midTransSnap } from '$lib/server/midtrans';
 import { xenditInvoiceClient } from '$lib/server/xendit';
 import { PRIVATE_XENDIT_USERPLATFORM } from '$env/static/private';
 
-import getDirectusInstance from '$lib/server/directus'
+import getDirectusInstance from '$lib/server/directus-cf'
 
 export const GET: RequestHandler = async () => {
   return json({

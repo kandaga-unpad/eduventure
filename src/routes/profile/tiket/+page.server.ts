@@ -4,7 +4,7 @@ import { redirect } from "@sveltejs/kit"
 import type { PageServerLoad } from "./$types"
 
 import { readItems } from '@directus/sdk';
-import getDirectusInstance from "$lib/server/directus";
+import getDirectusInstance from "$lib/server/directus-cf";
 
 export const load: PageServerLoad = async (events) => {
   const session = await events.locals.auth()

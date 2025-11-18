@@ -5,7 +5,7 @@ import { json } from '@sveltejs/kit';
 import { createItems, readItems, updateItem } from '@directus/sdk';
 import { midTransSnap } from '$lib/server/midtrans';
 
-import getDirectusInstance from '$lib/server/directus'
+import getDirectusInstance from '$lib/server/directus-cf'
 
 export const GET: RequestHandler = async () => {
   return json({

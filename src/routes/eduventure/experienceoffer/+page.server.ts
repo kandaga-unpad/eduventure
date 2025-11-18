@@ -1,5 +1,5 @@
 import type { PageServerLoad } from "./$types";
-import getDirectusInstance from '$lib/server/directus';
+import getDirectusInstance from '$lib/server/directus-cf';
 import { readItems } from "@directus/sdk";
 
 export const load: PageServerLoad = async ({ fetch, locals }) => {

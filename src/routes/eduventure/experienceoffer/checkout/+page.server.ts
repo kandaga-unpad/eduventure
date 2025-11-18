@@ -5,7 +5,7 @@ import type { PageServerLoad } from "./$types";
 import { error, redirect } from "@sveltejs/kit";
 import { midTransSnap } from '$lib/server/midtrans';
 import { readItems, createItem, updateItem } from '@directus/sdk';
-import getDirectusInstance from '$lib/server/directus';
+import getDirectusInstance from '$lib/server/directus-cf';
 
 
 export const load: PageServerLoad = async ({ fetch, locals }) => {

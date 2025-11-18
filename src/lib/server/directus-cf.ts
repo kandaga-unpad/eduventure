@@ -2,7 +2,7 @@ import { createDirectus, rest, staticToken } from '@directus/sdk';
 import { PUBLIC_EDUVENTURE_APIURL } from '$env/static/public';
 import { PRIVATE_EDUVENTURE_APITOKEN } from '$env/static/private';
 
-function getEnhancedDirectusInstance(fetch?: typeof globalThis.fetch) {
+function getDirectusInstance(fetch?: typeof globalThis.fetch) {
   const customFetch = async (url: string | URL | Request, options: RequestInit = {}) => {
     const maxRetries = 2;
     const fetchFn = fetch || globalThis.fetch;
@@ -47,4 +47,4 @@ function getEnhancedDirectusInstance(fetch?: typeof globalThis.fetch) {
     .with(staticToken(PRIVATE_EDUVENTURE_APITOKEN));
 }
 
-export default getEnhancedDirectusInstance;
+export default getDirectusInstance;

@@ -2,7 +2,7 @@ import type { PageServerLoad } from "./$types";
 
 import { readItems } from "@directus/sdk";
 import { xenditInvoiceClient } from "$lib/server/xendit";
-import getDirectusInstance from "$lib/server/directus";
+import getDirectusInstance from "$lib/server/directus-cf";
 
 export const load: PageServerLoad = async ({ fetch, params }) => {
   const directus = getDirectusInstance(fetch);

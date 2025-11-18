@@ -3,7 +3,7 @@ import type { RequestHandler } from './$types';
 import { json } from '@sveltejs/kit';
 import { readItems } from '@directus/sdk';
 
-import getDirectusInstance from '$lib/server/directus'
+import getDirectusInstance from '$lib/server/directus-cf'
 
 export const GET: RequestHandler = async ({ params, fetch }) => {
   const directus = getDirectusInstance(fetch);

@@ -1,6 +1,6 @@
 import type { Actions } from "./$types";
 
-import getDirectusInstance from '$lib/server/directus';
+import getDirectusInstance from '$lib/server/directus-cf';
 import { readItems, createItem, updateItem } from '@directus/sdk';
 
 export const actions: Actions = {

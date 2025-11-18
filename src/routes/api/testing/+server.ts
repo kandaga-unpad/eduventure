@@ -1,4 +1,4 @@
-import getDirectusInstance from "$lib/server/directus";
+import getDirectusInstance from "$lib/server/directus-cf";
 import { readItems, updateItem, updateItems } from "@directus/sdk";
 import { json } from "@sveltejs/kit"
 import type { RequestHandler } from "./$types"

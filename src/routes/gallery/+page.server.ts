@@ -1,4 +1,4 @@
-import getDirectusInstance from '$lib/server/directus';
+import getDirectusInstance from '$lib/server/directus-cf';
 import { readItems } from '@directus/sdk';
 import type { PageServerLoad } from './$types';
 
