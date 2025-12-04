@@ -258,9 +258,9 @@
 					dari masing-masing fakultas/sekolah.
 				</p>
 				<p>
-					Harga tiket 1 zona adalah Rp350.000 per siswa, sudah termasuk merchandise tote bag Unpad
-					dan makanan ringan. Kegiatan Eduventure Experience akan dilaksanakan pada tanggal 18 Mei
-					2025.
+					Harga tiket 1 zona adalah Rp350.000 per siswa, sudah termasuk merchandise dan makanan
+					ringan. Kegiatan Eduventure Experience akan dilaksanakan sesuai pada tanggal yang tertera
+					di pemesanan tiket.
 				</p>
 				<p>Terdapat 3 Zona untuk Eduventure yakni:</p>
 				<div>
