@@ -150,16 +150,22 @@
 	const addTiketZona = (zona: string) => {
 		switch (zona) {
 			case 'zona1':
-				tiketZona1 += 1;
-				totalHarga += infoZona1?.harga_tiket;
+				if (tiketZona1 < ticketSeatLeftZona1) {
+					tiketZona1 += 1;
+					totalHarga += infoZona1?.harga_tiket;
+				}
 				break;
 			case 'zona2':
-				tiketZona2 += 1;
-				totalHarga += infoZona2?.harga_tiket;
+				if (tiketZona2 < ticketSeatLeftZona2) {
+					tiketZona2 += 1;
+					totalHarga += infoZona2?.harga_tiket;
+				}
 				break;
 			case 'zona3':
-				tiketZona3 += 1;
-				totalHarga += infoZona3?.harga_tiket;
+				if (tiketZona3 < ticketSeatLeftZona3) {
+					tiketZona3 += 1;
+					totalHarga += infoZona3?.harga_tiket;
+				}
 				break;
 			default:
 				alert('Tidak tersedia');
@@ -368,6 +374,7 @@
 												<button
 													class="px-2 h-8 border-1 border-dark rounded"
 													onclick={() => addTiketZona('zona1')}
+													disabled={tiketZona1 >= ticketSeatLeftZona1}
 												>
 													+
 												</button>
@@ -432,6 +439,7 @@
 												<button
 													class="px-2 h-8 border-1 border-dark rounded"
 													onclick={() => addTiketZona('zona2')}
+													disabled={tiketZona2 >= ticketSeatLeftZona2}
 												>
 													+
 												</button>
@@ -496,6 +504,7 @@
 												<button
 													class="px-2 h-8 border-1 border-dark rounded"
 													onclick={() => addTiketZona('zona3')}
+													disabled={tiketZona3 >= ticketSeatLeftZona3}
 												>
 													+
 												</button>
