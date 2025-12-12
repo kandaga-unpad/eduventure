@@ -13,6 +13,24 @@ export const load: PageServerLoad = async (events) => {
 
   const directus = getDirectusInstance(events.fetch);
 
+  const zonaData = await directus.request(readItems('zona_eduventure', {
+    filter: {
+      status: 'published'
+    },
+    fields: ['id', 'title']
+  }))
+
+  const zonaMapping: Record<string, string> = {};
+  zonaData.forEach(zona => {
+    if (zona.title.startsWith('Zona 1 (Ilmu Kesehatan)')) {
+      zonaMapping[zona.id] = 'zona_kesehatan';
+    } else if (zona.title.startsWith('Zona 2 (Sosial dan Humaniora)')) {
+      zonaMapping[zona.id] = 'zona_soshum';
+    } else if (zona.title.startsWith('Zona 3 (Saintek dan Agrokomplek)')) {
+      zonaMapping[zona.id] = 'zona_saintek';
+    }
+  });
+
   const getUserProfile = await directus.request(readItems('peserta_eduventure', {
     filter: {
       email: session.user.email
@@ -23,16 +41,15 @@ export const load: PageServerLoad = async (events) => {
     filter: {
       email_pendaftar: {
         _eq: getUserProfile[0].email
+      },
+      pilihan_zona: {
+        status: {
+          _eq: 'published'
+        }
       }
     },
     fields: ['*', 'pilihan_zona.*']
   }))
-
-  const zonaMapping = {
-    '61E35DCF-BBE3-493A-ADD8-7413FD71C317': 'zona_kesehatan',
-    '893DB4C7-9969-4D6E-A33E-E556103FE0C8': 'zona_saintek',
-    '3388F6AC-00E0-48D7-AE3B-01B04307F803': 'zona_soshum',
-  }
 
   const countPilihanZona = getDetailTagihan.reduce((acc, item) => {
     const pilihanZona = item.pilihan_zona.id as keyof typeof zonaMapping;
