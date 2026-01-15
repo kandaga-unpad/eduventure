@@ -1,0 +1,22 @@
+{
+  "name": "backoffice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "bootstrap": "directus bootstrap",
+    "start": "directus start",
+    "dev": "directus start --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.25.0",
+  "dependencies": {
+    "@directus/storage-driver-local": "^12.0.3",
+    "@directus/storage-driver-s3": "^12.1.0",
+    "directus": "^11.14.1",
+    "mysql2": "^3.11.5"
+  }
+}
