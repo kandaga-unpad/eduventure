@@ -67,7 +67,9 @@
 									{(sekolah.kota ?? '') + ' ' + (sekolah.provinsi ?? '')}
 								</td>
 								<td data-label="Tanggal Kunjungan">{sekolah.tanggal_kunjungan ?? '-'}</td>
-								<td data-label="Jenis Eduventure">{sekolah.jenis_eduventure.nama}</td>
+								<td data-label="Jenis Eduventure"
+									>{sekolah.jenis_eduventure?.nama ?? 'Eduventure'}</td
+								>
 								<td data-label="Jumlah Peserta">{sekolah.jumlah_peserta ?? '-'}</td>
 							</tr>
 						{/each}

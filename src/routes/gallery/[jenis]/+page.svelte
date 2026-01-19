@@ -4,7 +4,6 @@
 	import { quintOut } from 'svelte/easing';
 
 	let { data } = $props();
-	console.log(JSON.stringify(data));
 
 	let modalOpen = $state(false);
 	let selectedImage = $state('');
@@ -59,7 +58,7 @@
 							class="flex flex-col items-center justify-between overflow-hidden rounded-lg shadow-brand-primary shadow-md hover:shadow-xl transition-shadow duration-300 mb-10"
 						>
 							<img
-								src={getDirectusImageUrl(sekolah.galeri_foto[0].directus_files_id)}
+								src={getDirectusImageUrl(sekolah.galeri_foto[0]?.directus_files_id)}
 								alt={sekolah.nama_sekolah}
 								class="w-full h-48 object-cover"
 							/>
