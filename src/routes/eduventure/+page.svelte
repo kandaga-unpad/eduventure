@@ -15,17 +15,17 @@
 		{
 			id: 2,
 			title: 'Eduventure Experience',
-			date: '18 Mei 2025',
+			date: 'Sesuai Jadwal',
 			description:
 				'Unpad Eduventure Experience adalah program edukasi interaktif yang dirancang untuk siswa SMP, SMA, dan sederajat. Tersedia 3 Zona untuk Eduventure yang bisa dipilih oleh peserta yaitu Zona Kesehatan, Zona Soshum dan Zona Saintek & Agrokomplek',
 			image: '/background.webp',
-			location: 'Universitas Padjadjaran',
+			location: 'Seluruh Fakultas Universitas Padjadjaran',
 			link: '/eduventure/experience'
 		},
 		{
 			id: 3,
 			title: 'Eduventure Holiyeay',
-			date: '7 - 8 Juli 2025',
+			date: 'Sesuai Jadwal',
 			description:
 				'Program ini dirancang khusus untuk anak usia 8–12 tahun agar dapat merasakan pengalaman seru belajar sambil bermain di lingkungan kampus Universitas Padjadjaran!',
 			image: '/edu/holiyeay.webp',
