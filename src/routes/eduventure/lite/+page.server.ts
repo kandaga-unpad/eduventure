@@ -10,7 +10,7 @@ export const load: PageServerLoad = async ({ fetch }) => {
   const getLiteGallery = await directus.request(readItems('gallery_eduventure_sekolah', {
     filter: {
       jenis_eduventure: {
-        _eq: '89BD8BD5-8230-4A05-8255-3EF15DDAE513'
+        _eq: '9c3250ad-ea81-4e36-ae5b-dab363e5b2ec'
       },
       status: {
         _eq: 'published'

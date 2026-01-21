@@ -4,8 +4,6 @@
 	let { data } = $props();
 
 	const { liteGallery } = data;
-
-	console.log(JSON.stringify(liteGallery[0].galeri_foto));
 </script>
 
 <section>
