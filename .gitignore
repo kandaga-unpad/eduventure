@@ -27,3 +27,8 @@ vite.config.ts.timestamp-*
 
 # NodeJS
 /backoffice/pnpm-workspace.yaml
+
+# Excluded Data
+ecosystem.config.js
+/backoffice/uploads
+/backoffice/uploads/*
