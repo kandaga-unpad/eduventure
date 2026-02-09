@@ -68,6 +68,20 @@ export const actions: Actions = {
 			const fileId = result.data.id;
 
 			const selectedSession = data.get('select-session');
+			let sessionDetails = null;
+			if (selectedSession) {
+				const sessionData = await directus.request(
+					readItems('jadwal_kegiatan_edu_lite', {
+						filter: { id: selectedSession },
+						fields: ['tanggal_kegiatan', 'sesi_mulai']
+					})
+				);
+				if (sessionData.length > 0) {
+					sessionDetails = sessionData[0];
+				} else {
+					return fail(400, { message: 'Invalid session selected' });
+				}
+			}
 			const dataPengajuanSekolah = {
 				status: 'published',
 				nama_sekolah: data.get('nama-sekolah'),
@@ -82,7 +96,11 @@ export const actions: Actions = {
 				keterangan: data.get('keterangan'),
 				jumlah_peserta: Number(data.get('jumlah-peserta')),
 				...(selectedSession
-					? { jadwal_kegiatan: selectedSession }
+					? {
+							jadwal_kegiatan: selectedSession,
+							usulan_tanggal_kunjungan: sessionDetails?.tanggal_kegiatan,
+							waktu: sessionDetails?.sesi_mulai
+						}
 					: {
 							usulan_tanggal_kunjungan: data.get('usulan-tanggal-kunjungan'),
 							waktu: data.get('usulan-jam-kunjungan')
