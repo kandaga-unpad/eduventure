@@ -13,14 +13,14 @@
 		referrerpolicy="no-referrer"
 	/>
 </div>
-<section>
+<section class="container ma">
 	<div>
 		{#if page.data.session}
 			{#if page.data.session.user?.image}
 				<div class="w-full flex items-center justify-center">
 					<img
 						src={page.data.session.user.image}
-						class="avatar"
+						class="rounded mt--12 border-8 border-white"
 						alt="User Avatar"
 						referrerpolicy="no-referrer"
 					/>
@@ -80,24 +80,48 @@
 						{/if}
 					</div>
 				</div>
+				<div class="bg-green-50 shadow-lg rounded w-full max-w-md p-5 text-center">
+					<h3>Pengajuan Eduventure Lite</h3>
+					<!-- @ts-ignore -->
+					{#if !data.pengajuan || data.pengajuan.length === 0}
+						<p>Anda belum memiliki pengajuan</p>
+						<div class="flex w-full mt-5">
+							<a href="/eduventure/lite/daftar" class="btn py-2 w-full bg-blue-7 text-white"
+								>Ajukan Sekarang</a
+							>
+						</div>
+					{:else}
+						<div class="text-left">
+							<!-- @ts-ignore -->
+							{#each data.pengajuan as pengajuan}
+								<div class="border-b border-gray-200 py-2">
+									<p class="font-semibold">{pengajuan.nama_sekolah}</p>
+									<p class="text-sm text-gray-600">
+										Status: <span
+											class="capitalize {pengajuan.status_pengajuan === 'approved'
+												? 'text-green-600'
+												: pengajuan.status_pengajuan === 'rejected'
+													? 'text-red-600'
+													: 'text-yellow-600'}">{pengajuan.status_pengajuan}</span
+										>
+									</p>
+									<p class="text-sm text-gray-500">
+										{new Date(pengajuan.date_created).toLocaleDateString()}
+									</p>
+								</div>
+							{/each}
+						</div>
+						<div class="flex w-full mt-5">
+							<a href="/profile/pengajuan" class="btn py-2 w-full bg-blue-7 text-white"
+								>Lihat Semua Pengajuan</a
+							>
+						</div>
+					{/if}
+				</div>
 				<SignOut>
-					<div slot="submitButton" class="logout">Sign out</div>
+					<div slot="submitButton" class="btn bg-red-6 rounded py-2 text-white">Sign out</div>
 				</SignOut>
 			</div>
 		{/if}
 	</div>
 </section>
-
-<style>
-	section {
-		@apply container ma;
-	}
-
-	.avatar {
-		@apply rounded mt--12 border-8 border-white;
-	}
-
-	.logout {
-		@apply btn bg-red-6 rounded py-2 text-white;
-	}
-</style>

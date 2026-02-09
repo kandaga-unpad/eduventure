@@ -2,11 +2,9 @@
 	import { getDirectusImageUrl } from '$lib/composables/directus';
 
 	let { data } = $props();
-
-	const { liteGallery } = data;
 </script>
 
-<section>
+<section class="container ma pt-30">
 	<div class="grid grid-cols-1 xl:grid-cols-3 gap-5">
 		<div class="flex flex-col items-center col-span-2 bg-gray-1 shadow-2xl rounded-lg">
 			<div class="flex my-10">
@@ -43,12 +41,14 @@
 				</p>
 				<div class="grid grid-cols-2 gap-3">
 					<figure>
-						<img src="/zona/KaosUnpad.jpg" class="sma-gallery" alt="" />
-						<figcaption>Kaos Unpad</figcaption>
+						<img src="/zona/KaosUnpad.jpg" class="max-h-xs h-full object-cover rounded-lg" alt="" />
+						<figcaption class="text-gray-5 text-xs italic text-center pt-1">Kaos Unpad</figcaption>
 					</figure>
 					<figure>
-						<img src="/zona/BagUnpad.jpg" class="sma-gallery" alt="" />
-						<figcaption>Tote Bag Unpad</figcaption>
+						<img src="/zona/BagUnpad.jpg" class="max-h-xs h-full object-cover rounded-lg" alt="" />
+						<figcaption class="text-gray-5 text-xs italic text-center pt-1">
+							Tote Bag Unpad
+						</figcaption>
 					</figure>
 				</div>
 				<p class="mt-5">
@@ -77,11 +77,7 @@
 					>
 						Hubungi Kami
 					</a>
-					<a
-						href="https://www.cognitoforms.com/UniversitasPadjadjaran21/EduventureLite"
-						target="_blank"
-						class="btn bg-brand-primary text-white w-full"
-					>
+					<a href="/eduventure/lite/daftar" class="btn bg-brand-primary text-white w-full">
 						Isi Form Pendaftaran
 					</a>
 				</div>
@@ -112,7 +108,7 @@
 		<div class="my-5">
 			<h3 class="text-center mb-10">Gallery Eduventure Lite</h3>
 			<div class="flex flex-col gap-5 items-center px-5">
-				{#each liteGallery as item}
+				{#each data.liteGallery as item}
 					<div class="bg-gray-1 shadow-2xl rounded-lg flex flex-col items-center">
 						{#if item.galeri_foto.length === 0}
 							<p class="text-gray-5 italic">Tidak ada foto untuk galeri ini.</p>
@@ -143,17 +139,3 @@
 		<a href="/eduventure">&leftarrow;Kembali</a>
 	</div>
 </section>
-
-<style>
-	section {
-		@apply container ma pt-30;
-	}
-
-	figcaption {
-		@apply text-gray-5 text-xs italic text-center pt-1;
-	}
-
-	.sma-gallery {
-		@apply max-h-xs h-full object-cover rounded-lg;
-	}
-</style>

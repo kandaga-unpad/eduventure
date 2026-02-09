@@ -1,5 +1,5 @@
 <script>
-	import { goto } from '$app/navigation';
+	import { page } from '$app/state';
 	import { Turnstile } from 'svelte-turnstile';
 	import { enhance } from '$app/forms';
 	import { listProvinceName, listFakultas } from '$lib/composables/form_data';
@@ -28,16 +28,7 @@
 
 	let activeTab = $state('manual');
 	let selectedSessionId = $state('');
-
-	$effect(() => {
-		if (activeTab === 'scheduled' && selectedSessionId) {
-			const session = data.listJadwal.find((s) => s.id === selectedSessionId);
-			if (session) {
-				dataPengajuan.usulanTanggalKunjungan = session.tanggal_kegiatan;
-				dataPengajuan.waktuKunjungan = session.sesi_mulai;
-			}
-		}
-	});
+	let isSubmitting = $state(false);
 </script>
 
 <section class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 pt-32 pb-12 px-4">
@@ -46,17 +37,29 @@
 			<h1 class="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-4">
 				Pendaftaran Kegiatan Eduventure Lite
 			</h1>
-			<p class="text-center text-gray-600 mb-8">{JSON.stringify(data.listJadwal)}</p>
-			<form method="POST" action="?/register" use:enhance class="space-y-6">
-				<p class="text-center text-gray-700 font-medium text-lg mb-6">
-					Mohon isi data untuk mengajukan pendaftaran kegiatan Eduventure Lite
-				</p>
+			<p class="text-center text-gray-700 font-medium text-lg mb-6">
+				Mohon isi data untuk mengajukan pendaftaran kegiatan Eduventure Lite
+			</p>
+			<form
+				method="POST"
+				action="?/register"
+				use:enhance={({ formData, action, cancel, submitter }) => {
+					isSubmitting = true;
+					return async ({ update, result }) => {
+						isSubmitting = false;
+						update();
+					};
+				}}
+				enctype="multipart/form-data"
+				class="space-y-6"
+			>
 				<div class="form-input">
 					<label for="nama-sekolah" class="block text-sm font-medium text-gray-700 mb-2"
 						>Nama Sekolah:</label
 					>
 					<input
 						type="text"
+						name="nama-sekolah"
 						id="nama-sekolah"
 						minlength="3"
 						maxlength="200"
@@ -71,6 +74,7 @@
 						>Alamat Sekolah:</label
 					>
 					<textarea
+						name="alamat-sekolah"
 						id="alamat-sekolah"
 						bind:value={dataPengajuan.alamatSekolah}
 						placeholder="Silahkan isi Alamat Sekolah"
@@ -84,6 +88,7 @@
 						>Kota / Kabupaten:</label
 					>
 					<input
+						name="kota-kabupaten"
 						id="kota-kabupaten"
 						bind:value={dataPengajuan.kotaKabupaten}
 						placeholder="Silahkan isi asal Kota / Kabupaten"
@@ -92,9 +97,9 @@
 					/>
 				</div>
 				<div class="form-input">
-					<label for="provinsi" class="block text-sm font-medium text-gray-700 mb-2"
-						>Provinsi:</label
-					>
+					<label for="provinsi" class="block text-sm font-medium text-gray-700 mb-2">
+						Provinsi:
+					</label>
 					<select
 						name="provinsi"
 						id="provinsi"
@@ -116,6 +121,7 @@
 						>Email PIC:</label
 					>
 					<input
+						name="email-pic"
 						id="email-pic"
 						type="email"
 						bind:value={dataPengajuan.emailPic}
@@ -129,6 +135,7 @@
 						>Kontak PIC:</label
 					>
 					<input
+						name="kontak-pic"
 						id="kontak-pic"
 						type="tel"
 						bind:value={dataPengajuan.kontakPic}
@@ -142,6 +149,7 @@
 						>Pilihan Kunjungan:</label
 					>
 					<select
+						name="pilihan-kunjungan"
 						id="pilihan-kunjungan"
 						bind:value={dataPengajuan.pilihanKunjungan}
 						class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 bg-white"
@@ -159,19 +167,22 @@
 						<select
 							name="pilihan-fakultas"
 							id="pilihan-fakultas"
+							bind:value={dataPengajuan.pilihanFakultas}
 							class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 bg-white"
 						>
 							<option value="" disabled selected>Pilih Fakultas</option>
 							{#each fakultasList as fakultas}
-								<option value={fakultas}>{fakultas}</option>
+								<option value={fakultas.singkatan || fakultas}
+									>{fakultas.namaFakultas || fakultas}</option
+								>
 							{/each}
 						</select>
 					</div>
 				{/if}
 				<div class="form-input">
-					<label class="block text-sm font-medium text-gray-700 mb-2"
-						>Usulan Tanggal dan Jam Kunjungan:</label
-					>
+					<p class="block text-sm font-medium text-gray-700 mb-2">
+						Usulan Tanggal dan Jam Kunjungan:
+					</p>
 					<div class="flex border-b border-gray-200 mb-4">
 						<button
 							class="py-2 px-4 text-sm font-medium {activeTab === 'manual'
@@ -194,6 +205,8 @@
 									class="block text-sm font-medium text-gray-700 mb-2">Tanggal:</label
 								>
 								<input
+									name="usulan-tanggal-kunjungan"
+									id="usulan-tanggal-kunjungan"
 									type="date"
 									bind:value={dataPengajuan.usulanTanggalKunjungan}
 									class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
@@ -205,6 +218,8 @@
 									class="block text-sm font-medium text-gray-700 mb-2">Jam:</label
 								>
 								<input
+									name="usulan-jam-kunjungan"
+									id="usulan-jam-kunjungan"
 									type="time"
 									bind:value={dataPengajuan.waktuKunjungan}
 									class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
@@ -218,6 +233,7 @@
 									>Pilih Sesi:</label
 								>
 								<select
+									name="select-session"
 									id="select-session"
 									bind:value={selectedSessionId}
 									class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 bg-white"
@@ -225,22 +241,36 @@
 									<option value="" disabled selected>Pilih Sesi</option>
 									{#each data.listJadwal as session}
 										<option value={session.id}
-											>{session.nama_sesi} - {session.tanggal_kegiatan} ({session.sesi_mulai} - {session.sesi_selesai})</option
+											>{session.nama_sesi} - {session.tanggal_kegiatan} ({session.sesi_mulai} - {session.sesi_selesai})
+											- {session.lokasi_kegiatan.nama_ruangan} (Kap: {session.lokasi_kegiatan
+												.kapasitas})</option
 										>
 									{/each}
 								</select>
 							</div>
 							{#if selectedSessionId}
-								<div class="bg-gray-50 p-4 rounded-lg">
-									<p class="text-sm text-gray-700">
-										<strong>Tanggal:</strong>
-										{dataPengajuan.usulanTanggalKunjungan}
-									</p>
-									<p class="text-sm text-gray-700">
-										<strong>Jam:</strong>
-										{dataPengajuan.waktuKunjungan}
-									</p>
-								</div>
+								{@const session = data.listJadwal.find((s) => s.id === selectedSessionId)}
+								{#if session}
+									<div class="bg-gray-50 p-4 rounded-lg">
+										<p class="text-sm text-gray-700">
+											<strong>Sesi:</strong>
+											{session.nama_sesi}
+										</p>
+										<p class="text-sm text-gray-700">
+											<strong>Tanggal:</strong>
+											{session.tanggal_kegiatan}
+										</p>
+										<p class="text-sm text-gray-700">
+											<strong>Jam:</strong>
+											{session.sesi_mulai} - {session.sesi_selesai}
+										</p>
+										<p class="text-sm text-gray-700">
+											<strong>Lokasi:</strong>
+											{session.lokasi_kegiatan.nama_ruangan} - {session.lokasi_kegiatan.unit} (Kapasitas:
+											{session.lokasi_kegiatan.kapasitas})
+										</p>
+									</div>
+								{/if}
 							{/if}
 						</div>
 					{/if}
@@ -250,27 +280,29 @@
 						>Perkiraan Jumlah Peserta:</label
 					>
 					<input
+						name="jumlah-peserta"
 						type="number"
 						bind:value={dataPengajuan.jumlahPeserta}
 						class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
 					/>
 				</div>
 				<div class="form-input">
-					<label for="paket-eduventure" class="block text-sm font-medium text-gray-700 mb-2"
+					<label for="paket-eduventure-lite" class="block text-sm font-medium text-gray-700 mb-2"
 						>Paket Pilihan:</label
 					>
 					<select
+						name="paket-eduventure-lite"
 						id="paket-eduventure"
 						bind:value={dataPengajuan.paketEduventureLite}
 						class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 bg-white"
 					>
 						<option value="" disabled selected>Pilih Paket Eduventure</option>
-						<option value="paket-a">Paket A</option>
-						<option value="paket-b">Paket B</option>
+						<option value="paket_1">Paket 1 (Rp 100.000/siswa)</option>
+						<option value="paket_2">Paket 2 (Rp 150.000/siswa)</option>
 					</select>
 				</div>
 				<div class="form-input">
-					<label for="Keterangan" class="block text-sm font-medium text-gray-700 mb-2"
+					<label for="keterangan" class="block text-sm font-medium text-gray-700 mb-2"
 						>Keterangan Tambahan:</label
 					>
 					<textarea
@@ -282,6 +314,19 @@
 						class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 resize-vertical"
 					></textarea>
 				</div>
+				<div class="form-input">
+					<label for="surat-pengajuan" class="block text-sm font-medium text-gray-700 mb-2"
+						>Surat Pengajuan (PDF, maksimal 5MB):</label
+					>
+					<input
+						type="file"
+						name="surat-pengajuan"
+						id="surat-pengajuan"
+						accept=".pdf"
+						required
+						class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+					/>
+				</div>
 				<div class="flex justify-center">
 					<Turnstile siteKey="0x4AAAAAAAkrRdBxvh4fqUrA" class="mb-6" />
 				</div>
@@ -289,11 +334,18 @@
 					<button
 						type="submit"
 						formaction="?/register"
-						class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transition duration-200 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-						>Ajukan</button
+						disabled={isSubmitting}
+						class="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transition duration-200 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
 					>
+						{isSubmitting ? 'Memproses...' : 'Ajukan'}
+					</button>
 				</div>
 			</form>
+			{#if page.form?.message}
+				<div class="mt-4 p-4 bg-red-100 text-red-700 rounded-lg">
+					{page.form.message}
+				</div>
+			{/if}
 		</div>
 	</div>
 </section>
