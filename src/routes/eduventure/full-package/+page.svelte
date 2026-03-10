@@ -48,8 +48,8 @@
 					</div>
 				</div>
 				<div class="w-full flex items-center justify-center gap-3 text-center">
-					<a href="tel:62822506090" class="btn bg-brand-primary text-white w-full">
-						Hubungi MMU Event & Tour Organizer
+					<a href="tel:082211676765" class="btn bg-brand-primary text-white w-full">
+						Hubungi Kami
 					</a>
 				</div>
 			</div>

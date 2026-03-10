@@ -25,9 +25,7 @@
 		detail: 'Oleh MMU Event & Tour Organizer',
 		textPertama:
 			'Program dilaksanakan pada jadwal sesuai permintaan dalam jumlah peserta yang besar. Full Package juga termasuk dalam Kegiatan Eduventure Experience. Sudah termasuk transportasi, akomodasi, konsumsi, yang dilayani oleh MMU Event & Tour Organizer',
-		textKedua: `<p>Admin : <a href="tel:62822506090">+62 822 50 60 90</a></p>
-							<p>Email : <a href="mailto:mahatmasagievent@gmail.com">mahatmasagievent@gmail.com</a></p>
-							<p>Instagram: <a href="https://instagram.com/mmu.eventtourorganizer">mmu.eventtourorganizer</a></p>`,
+		textKedua: `Silahkan hubungi kontak kami untuk informasi lebih lanjut.`,
 		select: 'Pilih Full Package',
 		url: '/eduventure/full-package'
 	};
