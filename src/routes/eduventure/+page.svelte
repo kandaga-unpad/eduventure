@@ -1,7 +1,15 @@
 <script>
 	import EduCard from '$lib/components/card/EduCard.svelte';
+	import { getDirectusImageUrl } from '$lib/composables/directus';
 
-	let eduventureEvent = [
+	let { data } = $props();
+
+	let dataEduventure = $derived(data.galleryInfo ? data.galleryInfo.reduce((acc, item) => {
+		acc[item.url_gallery] = item;
+		return acc;
+	}, {}) : {});
+
+	const originalEvents = [
 		{
 			id: 1,
 			title: 'Eduventure Lite',
@@ -27,7 +35,7 @@
 			title: 'Eduventure Holiyeay',
 			date: 'Sesuai Jadwal',
 			description:
-				'Program ini dirancang khusus untuk anak usia 8–12 tahun agar dapat merasakan pengalaman seru belajar sambil bermain di lingkungan kampus Universitas Padjadjaran!',
+				'Program ini dirancang khusus untuk anak usia 8-12 tahun agar dapat merasakan pengalaman seru belajar sambil bermain di lingkungan kampus Universitas Padjadjaran!',
 			image: '/edu/holiyeay.webp',
 			location: 'Kampus Universitas Padjadjaran, Jatinangor',
 			link: '/holiyeay'
@@ -73,6 +81,15 @@
 			link: '/eduventure/thematic/hydroponic'
 		}
 	];
+
+	let eduventureEvent = $derived(originalEvents.map(item => {
+		const key = item.link.split('/')[2];
+		const thumb = dataEduventure[key]?.thumbnail;
+		return {
+			...item,
+			image: thumb ? getDirectusImageUrl(thumb) : item.image
+		};
+	}));
 </script>
 
 <section>
