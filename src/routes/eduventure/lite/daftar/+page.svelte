@@ -1,8 +1,8 @@
 <script>
-	import { page } from '$app/state';
-	import { Turnstile } from 'svelte-turnstile';
 	import { enhance } from '$app/forms';
-	import { listProvinceName, listFakultas } from '$lib/composables/form_data';
+	import { page } from '$app/state';
+	import { listFakultas, listProvinceName } from '$lib/composables/form_data';
+	import { Turnstile } from 'svelte-turnstile';
 
 	let { data } = $props();
 
@@ -241,9 +241,10 @@
 									<option value="" disabled selected>Pilih Sesi</option>
 									{#each data.listJadwal as session}
 										<option value={session.id}
-											>{session.nama_sesi} - {session.tanggal_kegiatan} ({session.sesi_mulai} - {session.sesi_selesai})
-											- {session.lokasi_kegiatan.nama_ruangan} (Kap: {session.lokasi_kegiatan
-												.kapasitas})</option
+											>{session.nama_sesi ?? ''} - {session.tanggal_kegiatan ?? ''} ({session.sesi_mulai ??
+												''} - {session.sesi_selesai ?? ''}) - {session.lokasi_kegiatan
+												.nama_ruangan ?? ''} (Kap: {session.lokasi_kegiatan.kapasitas ??
+												''})</option
 										>
 									{/each}
 								</select>
