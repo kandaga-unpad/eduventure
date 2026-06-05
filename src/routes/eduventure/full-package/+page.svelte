@@ -36,7 +36,7 @@
 				</p>
 				<div>
 					<h3 class="text-center mb-2">Kontak</h3>
-					<div class="my-2">Admin : <a href="tel:62822506090"> +62 822 50 60 90</a></div>
+					<div class="my-2">Admin : <a href="tel:628121724848"> +62 812-1724-848</a></div>
 					<div class="my-2">
 						Email : <a href="mailto:mahatmasagievent@gmail.com"> mahatmasagievent@gmail.com </a>
 					</div>
